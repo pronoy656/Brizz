@@ -122,35 +122,35 @@ export default function DistrictsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-32 pb-24">
+    <div className="min-h-screen bg-gray-50 dark:bg-[#09090b] pt-32 pb-24 transition-colors">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 text-brand-800 text-sm font-bold mb-6 uppercase tracking-wider border border-brand-100 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 dark:bg-brand-900/20 text-brand-800 dark:text-brand-400 text-sm font-bold mb-6 uppercase tracking-wider border border-brand-100 dark:border-brand-500/20 shadow-sm">
             <MapPin className="w-4 h-4" /> Nationwide Coverage
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
             Explore All 64 Districts
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Find trusted professionals, service providers, and solutions in every corner of Bangladesh. 
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-gray-200 mb-12">
+        <div className="bg-white dark:bg-[#121214] rounded-3xl p-6 md:p-10 shadow-sm border border-gray-200 dark:border-white/10 mb-12">
           
           {/* Controls: Search and Tabs */}
-          <div className="flex flex-col gap-6 mb-8 border-b border-gray-100 pb-8">
+          <div className="flex flex-col gap-6 mb-8 border-b border-gray-100 dark:border-white/5 pb-8">
             
             <div className="relative max-w-md mx-auto w-full">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
               <input 
                 type="text" 
                 placeholder="Search for a district..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:border-brand-500 transition-colors text-gray-900"
+                className="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-black/50 border border-gray-200 dark:border-white/10 rounded-xl outline-none focus:border-brand-500 dark:focus:border-brand-500 transition-colors text-gray-900 dark:text-white dark:placeholder-gray-500"
               />
             </div>
 
@@ -160,7 +160,7 @@ export default function DistrictsPage() {
                 className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
                   activeTab === "All" 
                     ? "bg-brand-800 text-white shadow-md shadow-brand-900/10" 
-                    : "bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200"
+                    : "bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 border border-gray-200 dark:border-white/10"
                 }`}
               >
                 All 64
@@ -172,7 +172,7 @@ export default function DistrictsPage() {
                   className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
                     activeTab === div.name 
                       ? "bg-brand-800 text-white shadow-md shadow-brand-900/10" 
-                      : "bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200"
+                      : "bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 border border-gray-200 dark:border-white/10"
                   }`}
                 >
                   {div.name}
@@ -183,17 +183,17 @@ export default function DistrictsPage() {
 
           {/* Context Action */}
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-gray-900">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
               {activeTab === "All" 
                 ? "All Districts in Bangladesh" 
                 : `Districts in ${activeTab} Division`}
-              <span className="text-gray-400 text-sm ml-2 font-normal">({displayedDistricts.length})</span>
+              <span className="text-gray-400 dark:text-gray-500 text-sm ml-2 font-normal">({displayedDistricts.length})</span>
             </h2>
             
             {activeTab !== "All" && (
               <button 
                 onClick={() => handleLocationClick(activeTab)}
-                className="text-sm font-bold text-brand-800 hover:text-brand-950 flex items-center gap-1 transition-colors bg-brand-50 px-4 py-2 rounded-full border border-brand-100 hover:border-brand-200"
+                className="text-sm font-bold text-brand-800 dark:text-brand-400 hover:text-brand-950 dark:hover:text-brand-300 flex items-center gap-1 transition-colors bg-brand-50 dark:bg-brand-900/20 px-4 py-2 rounded-full border border-brand-100 dark:border-brand-500/20 hover:border-brand-200 dark:hover:border-brand-500/40"
               >
                 View {activeTab} Services
               </button>
@@ -209,13 +209,13 @@ export default function DistrictsPage() {
                   onClick={() => handleLocationClick(item.district)}
                   className={`p-4 rounded-xl font-medium border transition-all text-sm flex flex-col items-start gap-1 group shadow-sm hover:shadow-md text-left ${
                     selectedLocation === item.district
-                      ? "bg-brand-50 border-brand-500 text-brand-900 ring-2 ring-brand-500/20"
-                      : "bg-gray-50 text-gray-800 border-gray-200 hover:bg-brand-50 hover:border-brand-300"
+                      ? "bg-brand-50 dark:bg-brand-900/20 border-brand-500 text-brand-900 dark:text-brand-300 ring-2 ring-brand-500/20"
+                      : "bg-gray-50 dark:bg-white/5 text-gray-800 dark:text-gray-300 border-gray-200 dark:border-white/10 hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:border-brand-300 dark:hover:border-brand-500/50"
                   }`}
                 >
                   <span className="font-bold">{item.district}</span>
                   {activeTab === "All" && (
-                    <span className="text-[10px] uppercase tracking-wider text-gray-400 group-hover:text-brand-500">
+                    <span className="text-[10px] uppercase tracking-wider text-gray-400 dark:text-gray-500 group-hover:text-brand-500 dark:group-hover:text-brand-400">
                       {item.division}
                     </span>
                   )}
@@ -223,7 +223,7 @@ export default function DistrictsPage() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-12 text-gray-500">
+            <div className="text-center py-12 text-gray-500 dark:text-gray-400">
               No districts found matching your search.
             </div>
           )}
@@ -284,25 +284,25 @@ export default function DistrictsPage() {
                   <h3 className="text-lg font-bold text-white mb-6 uppercase tracking-wider">Top Verified Providers</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {MOCK_PROVIDERS.map((provider) => (
-                      <div key={provider.id} className="bg-white rounded-2xl p-5 hover:shadow-xl transition-all group flex flex-col h-full">
+                      <div key={provider.id} className="bg-white dark:bg-[#121214] rounded-2xl p-5 hover:shadow-xl transition-all group flex flex-col h-full border border-transparent dark:border-white/10">
                         <div className="flex justify-between items-start mb-4">
                           <img 
                             src={provider.avatar} 
                             alt={provider.name} 
-                            className="w-14 h-14 rounded-xl object-cover border border-gray-100 shadow-sm" 
+                            className="w-14 h-14 rounded-xl object-cover border border-gray-100 dark:border-white/10 shadow-sm" 
                           />
-                          <div className="bg-brand-50 text-brand-800 text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1 border border-brand-100">
+                          <div className="bg-brand-50 dark:bg-brand-900/20 text-brand-800 dark:text-brand-300 text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1 border border-brand-100 dark:border-brand-500/20">
                             <CheckCircle2 className="w-3.5 h-3.5" /> Verified
                           </div>
                         </div>
                         
-                        <h4 className="text-lg font-bold text-gray-900 mb-1">
+                        <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
                           {provider.name}
                         </h4>
-                        <p className="text-sm font-medium text-gray-500 mb-4">{provider.category}</p>
+                        <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">{provider.category}</p>
                         
                         <div className="mt-auto flex items-center justify-between text-sm">
-                          <div className="flex items-center gap-1 font-bold text-gray-900">
+                          <div className="flex items-center gap-1 font-bold text-gray-900 dark:text-white">
                             <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" /> {provider.rating}
                           </div>
                           <Link href={`/providers/${provider.id}`} className="text-brand-800 font-bold hover:underline">
