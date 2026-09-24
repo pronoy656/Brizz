@@ -9,8 +9,8 @@ const DIVISIONS = [
     id: "rangpur",
     name: "Rangpur",
     nameBn: "রংপুর",
-    top: "15%",
-    left: "30%",
+    top: "21.9%",
+    left: "30.7%",
     color: "bg-[#F36B41]", // Orange
     shadow: "shadow-[#F36B41]/50",
     path: "M130,40 L160,20 L180,30 L180,70 L210,90 L220,120 L190,140 L160,150 L110,130 L90,100 L110,50 Z",
@@ -20,8 +20,8 @@ const DIVISIONS = [
     id: "mymensingh",
     name: "Mymensingh",
     nameBn: "ময়মনসিংহ",
-    top: "30%",
-    left: "60%",
+    top: "34.3%",
+    left: "50.3%",
     color: "bg-[#8CA8FF]", // Light Blue
     shadow: "shadow-[#8CA8FF]/50",
     path: "M220,120 L270,110 L310,120 L320,170 L280,190 L250,170 L220,160 L190,140 L200,90 L210,90 Z",
@@ -31,8 +31,8 @@ const DIVISIONS = [
     id: "sylhet",
     name: "Sylhet",
     nameBn: "সিলেট",
-    top: "40%",
-    left: "80%",
+    top: "38.3%",
+    left: "56.0%",
     color: "bg-[#71F2A7]", // Green
     shadow: "shadow-[#71F2A7]/50",
     path: "M310,120 L370,110 L410,120 L420,150 L390,180 L350,190 L320,170 Z",
@@ -42,8 +42,8 @@ const DIVISIONS = [
     id: "rajshahi",
     name: "Rajshahi",
     nameBn: "রাজশাহী",
-    top: "45%",
-    left: "25%",
+    top: "33.4%",
+    left: "35.6%",
     color: "bg-[#B474FF]", // Purple
     shadow: "shadow-[#B474FF]/50",
     path: "M110,130 L160,150 L190,140 L220,160 L210,210 L200,260 L140,250 L110,210 L80,180 Z",
@@ -53,8 +53,8 @@ const DIVISIONS = [
     id: "dhaka",
     name: "Dhaka",
     nameBn: "ঢাকা",
-    top: "55%",
-    left: "55%",
+    top: "46.2%",
+    left: "46.4%",
     color: "bg-[#FBE64D]", // Yellow
     shadow: "shadow-[#FBE64D]/50",
     path: "M220,160 L250,170 L280,190 L320,170 L350,190 L360,230 L320,280 L290,260 L250,330 L210,320 L190,290 L200,260 L210,210 Z",
@@ -64,8 +64,8 @@ const DIVISIONS = [
     id: "khulna",
     name: "Khulna",
     nameBn: "খুলনা",
-    top: "70%",
-    left: "30%",
+    top: "43.7%",
+    left: "32.9%",
     color: "bg-[#FCA2A7]", // Pink
     shadow: "shadow-[#FCA2A7]/50",
     path: "M140,250 L200,260 L190,290 L210,320 L200,380 L180,430 L140,490 L130,460 L150,430 L130,400 L100,350 L80,290 Z",
@@ -75,8 +75,8 @@ const DIVISIONS = [
     id: "barishal",
     name: "Barishal",
     nameBn: "বরিশাল",
-    top: "80%",
-    left: "55%",
+    top: "54.5%",
+    left: "43.2%",
     color: "bg-[#63D7FC]", // Cyan
     shadow: "shadow-[#63D7FC]/50",
     path: "M210,320 L250,330 L290,260 L320,280 L310,340 L290,380 L260,450 L250,420 L220,400 L200,380 Z",
@@ -86,8 +86,8 @@ const DIVISIONS = [
     id: "chittagong",
     name: "Chittagong",
     nameBn: "চট্টগ্রাম",
-    top: "75%",
-    left: "80%",
+    top: "58.7%",
+    left: "51.8%",
     color: "bg-[#AE821B]", // Gold/Brown
     shadow: "shadow-[#AE821B]/50",
     path: "M320,280 L360,230 L350,190 L390,180 L420,150 L460,220 L440,260 L400,280 L390,330 L450,400 L440,500 L420,560 L390,580 L380,510 L360,450 L310,340 Z",
@@ -151,7 +151,8 @@ export default function DistrictsMap() {
             
             {/* The Colorful Bangladesh Map */}
             <div className="absolute inset-0 flex items-center justify-center p-8 pointer-events-none">
-              <svg viewBox="0 -60 500 700" className="w-[120%] h-[120%] -ml-[10%] drop-shadow-xl pointer-events-auto" stroke="#fff" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round">
+              <div className="w-full h-full relative" style={{ maxWidth: '500px', aspectRatio: '970/1240' }}>
+                <svg viewBox="-195 -292 970 1240" className="w-full h-full drop-shadow-xl pointer-events-auto" stroke="#fff" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round">
                 {DIVISIONS.map((div) => {
                   const isHovered = activeDivision?.id === div.id;
                   const fillClass = div.color.replace('bg-', 'fill-').replace(']', '').replace('[', ''); // Handle arbitrary colors if needed, but since we use raw hex in arbitrary classes like bg-[#F36B41], fill-[#F36B41] works in tailwind, but it's safer to use style for fill.
@@ -167,12 +168,13 @@ export default function DistrictsMap() {
                     />
                   );
                 })}
-              </svg>
+                </svg>
+              </div>
             </div>
 
             {/* Division Nodes */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none p-8">
-              <div className="w-full h-full relative" style={{ maxWidth: '500px', maxHeight: '600px', aspectRatio: '500/600' }}>
+              <div className="w-full h-full relative" style={{ maxWidth: '500px', aspectRatio: '970/1240' }}>
                 {DIVISIONS.map((div) => (
                   <div 
                     key={div.id} 
