@@ -2,6 +2,7 @@
 
 import React from "react";
 import Hero from "@/components/Hero";
+import OneStopSolution from "@/components/OneStopSolution";
 import TrustSection from "@/components/TrustSection";
 
 import NeedSomethingForm from "@/components/NeedSomethingForm";
@@ -25,6 +26,8 @@ export default function HomePage() {
       {/* 1. Hero */}
       <Hero />
 
+
+
       {/* 1.2 Solutions For Everyone */}
       <SolutionsForEveryone />
 
@@ -40,6 +43,9 @@ export default function HomePage() {
 
       {/* 4. How It Works (The clear path) */}
       <HowItWorks />
+
+
+
 
       {/* 64 Districts Map Section */}
       <DistrictsMap />
@@ -58,6 +64,9 @@ export default function HomePage() {
       {/* 7. Become a Partner / Provider */}
       <BecomePartner />
 
+
+      {/* 1.1 One Stop Solution */}
+      <OneStopSolution />
 
       {/* 2. Trust / Social Proof */}
       <TrustSection />

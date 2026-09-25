@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Search, Menu, X, ChevronDown, User, MapPin, Moon, Sun } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
+import GlobalSearch from "@/components/GlobalSearch";
 
 function ThemeToggleInline() {
   const { theme, toggleTheme } = useTheme();
@@ -19,6 +20,41 @@ function ThemeToggleInline() {
     </button>
   );
 }
+
+const solutionCategories = [
+  {
+    title: { en: "Wholesale & Supply", bn: "পাইকারি ও সাপ্লাই" },
+    items: [
+      { en: "Raw Materials", bn: "কাঁচামাল", href: "/solutions/wholesale/raw-materials" },
+      { en: "Packaging Solutions", bn: "প্যাকেজিং সমাধান", href: "/solutions/wholesale/packaging" },
+      { en: "Machinery & Equipment", bn: "মেশিনারিজ ও ইকুইপমেন্ট", href: "/solutions/wholesale/machinery" },
+    ]
+  },
+  {
+    title: { en: "Tech & IT Solutions", bn: "টেক ও আইটি সমাধান" },
+    items: [
+      { en: "Web Development", bn: "ওয়েব ডেভেলপমেন্ট", href: "/solutions/tech/web" },
+      { en: "App Development", bn: "অ্যাপ ডেভেলপমেন্ট", href: "/solutions/tech/app" },
+      { en: "Custom Software", bn: "কাস্টম সফটওয়্যার", href: "/solutions/tech/software" },
+    ]
+  },
+  {
+    title: { en: "Real Estate & Building", bn: "রিয়েল এস্টেট ও নির্মাণ" },
+    items: [
+      { en: "Interior Design", bn: "ইন্টেরিয়র ডিজাইন", href: "/solutions/real-estate/interior" },
+      { en: "Construction Materials", bn: "নির্মাণ সামগ্রী", href: "/solutions/real-estate/materials" },
+      { en: "Property Consulting", bn: "প্রপার্টি কনসাল্টিং", href: "/solutions/real-estate/consulting" },
+    ]
+  },
+  {
+    title: { en: "Business Services", bn: "বিজনেস সার্ভিসেস" },
+    items: [
+      { en: "Legal & Compliance", bn: "লিগ্যাল ও কমপ্লায়েন্স", href: "/solutions/business/legal" },
+      { en: "Marketing & Branding", bn: "মার্কেটিং ও ব্র্যান্ডিং", href: "/solutions/business/marketing" },
+      { en: "HR & Recruitment", bn: "এইচআর ও রিক্রুটমেন্ট", href: "/solutions/business/hr" },
+    ]
+  }
+];
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -36,19 +72,16 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: t("Solutions", "সমাধান"), href: "/solutions" },
-    { name: t("How It Works", "কিভাবে কাজ করে"), href: "/#how-it-works" },
     { name: t("Network", "নেটওয়ার্ক"), href: "/network" },
-    { name: t("Free Help", "ফ্রি সাহায্য"), href: "/free-help" },
-    { name: t("Insights", "ইনসাইটস"), href: "/insights" },
+    { name: t("Profile", "প্রোফাইল"), href: "/profile" },
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "py-3 bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-md border-b border-gray-100 dark:border-white/10 shadow-sm"
-          : "py-5 bg-white dark:bg-[#0a0a0a]"
+          ? "py-2.5 bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-md border-b border-gray-100 dark:border-white/10 shadow-sm"
+          : "py-4 bg-white dark:bg-[#0a0a0a]"
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
@@ -61,7 +94,61 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
+            {/* Home */}
+            <Link
+              href="/"
+              className={`text-sm font-medium transition-colors ${
+                pathname === "/"
+                  ? "text-brand-700 dark:text-brand-400"
+                  : "text-gray-600 dark:text-gray-300 hover:text-brand-900 dark:hover:text-white"
+              }`}
+            >
+              {t("Home", "হোম")}
+            </Link>
+
+            {/* Solutions with Mega Menu */}
+            <div className="relative group">
+              <Link
+                href="/solutions"
+                className={`text-sm font-medium flex items-center gap-1 transition-colors py-2 ${
+                  pathname.startsWith("/solutions")
+                    ? "text-brand-700 dark:text-brand-400"
+                    : "text-gray-600 dark:text-gray-300 hover:text-brand-900 dark:hover:text-white"
+                }`}
+              >
+                {t("Solutions", "সমাধান")} <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+              </Link>
+              
+              {/* Mega Menu */}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[800px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white dark:bg-[#121214] rounded-2xl shadow-2xl border border-gray-100 dark:border-white/10 overflow-hidden z-50">
+                <div className="grid grid-cols-4 p-6 gap-6">
+                  {solutionCategories.map((category) => (
+                    <div key={category.title.en} className="space-y-4">
+                      <h4 className="font-bold text-sm text-brand-900 dark:text-brand-400 border-b border-gray-100 dark:border-white/10 pb-2">
+                        {language === 'bn' ? category.title.bn : category.title.en}
+                      </h4>
+                      <ul className="space-y-3">
+                        {category.items.map((item) => (
+                          <li key={item.en}>
+                            <Link href={item.href} className="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors block">
+                              {language === 'bn' ? item.bn : item.en}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-gray-50 dark:bg-white/5 p-4 text-center border-t border-gray-100 dark:border-white/10">
+                  <Link href="/solutions" className="text-sm font-bold text-brand-600 dark:text-brand-400 hover:underline">
+                    {t("View all solutions", "সকল সমাধান দেখুন")} →
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Other Nav Links */}
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -78,7 +165,7 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center gap-5">
+          <div className="hidden lg:flex items-center gap-3 xl:gap-5">
             
             {/* District Selector Link */}
             <Link
@@ -86,16 +173,10 @@ export default function Navbar() {
               className="flex items-center gap-1.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-900 dark:hover:text-white transition-colors bg-brand-50 dark:bg-white/5 px-3 py-1.5 rounded-full border border-brand-100 dark:border-white/10"
             >
               <MapPin className="w-4 h-4 text-brand-800 dark:text-brand-400" />
-              <span className="font-bold text-brand-900 dark:text-white">{t("64 Districts", "৬৪ জেলা")}</span>
+              <span className="font-bold whitespace-nowrap text-brand-900 dark:text-white">{t("64 Districts", "৬৪ জেলা")}</span>
             </Link>
 
-            <button
-              type="button"
-              className="text-gray-500 dark:text-gray-400 hover:text-brand-900 dark:hover:text-white transition-colors"
-              aria-label="Search"
-            >
-              <Search className="w-5 h-5" />
-            </button>
+            <GlobalSearch />
 
             {/* Language Toggle */}
             <div className="flex items-center gap-1 text-sm font-medium text-gray-500 dark:text-gray-400">
@@ -117,18 +198,10 @@ export default function Navbar() {
             {/* Inline Theme Toggle */}
             <ThemeToggleInline />
 
-            <Link
-              href="/login"
-              className="flex items-center gap-1.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-900 dark:hover:text-brand-400 transition-colors"
-            >
-              <User className="w-4 h-4" />
-              {t("Login", "লগইন")}
-            </Link>
-
             <div className="relative">
               <button
                 onClick={() => setGetStartedOpen(!getStartedOpen)}
-                className="bg-brand-900 text-white dark:bg-white dark:text-[#0a0a0a] hover:bg-brand-800 dark:hover:bg-gray-200 px-5 py-2.5 rounded-xl font-bold transition-all flex items-center gap-2 text-sm"
+                className="bg-brand-900 text-white dark:bg-white dark:text-[#0a0a0a] hover:bg-brand-800 dark:hover:bg-gray-200 px-5 py-2.5 rounded-xl font-bold transition-all flex items-center gap-2 text-sm whitespace-nowrap"
               >
                 {t("Get Started", "শুরু করুন")}
                 <ChevronDown className="w-4 h-4" />
@@ -142,6 +215,13 @@ export default function Navbar() {
                     </p>
                   </div>
                   <div className="flex flex-col">
+                    <Link
+                      href="/login"
+                      className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-brand-50 dark:hover:bg-white/5 hover:text-brand-900 dark:hover:text-white transition-colors border-b border-gray-100 dark:border-white/10"
+                    >
+                      <User className="w-4 h-4" />
+                      {t("Login to your account", "আপনার অ্যাকাউন্টে লগইন করুন")}
+                    </Link>
                     <Link
                       href="/needs/new"
                       className="px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-brand-50 dark:hover:bg-white/5 hover:text-brand-900 dark:hover:text-white transition-colors"
@@ -178,7 +258,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-[#121214] border-b border-gray-100 dark:border-white/10 shadow-sm animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-[#121214] border-b border-gray-100 dark:border-white/10 shadow-sm animate-in fade-in slide-in-from-top-2 duration-200 h-screen overflow-y-auto pb-32">
           <div className="flex flex-col p-4 space-y-2">
             
             <div className="flex items-center justify-between px-4 py-2 mb-2">
@@ -195,6 +275,22 @@ export default function Navbar() {
               </div>
               <ThemeToggleInline />
             </div>
+
+            <Link
+              href="/"
+              className="px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5"
+              onClick={() => setMobileOpen(false)}
+            >
+              {t("Home", "হোম")}
+            </Link>
+
+            <Link
+              href="/solutions"
+              className="px-4 py-3 text-sm font-medium text-brand-700 dark:text-brand-400 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/10"
+              onClick={() => setMobileOpen(false)}
+            >
+              {t("Solutions (View All)", "সমাধান (সবগুলো দেখুন)")}
+            </Link>
 
             {navLinks.map((link) => (
               <Link
@@ -222,18 +318,21 @@ export default function Navbar() {
                 <Link
                   href="/needs/new"
                   className="px-4 py-2.5 text-sm font-bold text-brand-900 dark:text-white bg-white dark:bg-[#18181b] border border-gray-200 dark:border-white/10 rounded-lg text-center shadow-sm hover:border-brand-500 transition-colors"
+                  onClick={() => setMobileOpen(false)}
                 >
                   {t("I need something", "আমার কিছু প্রয়োজন")}
                 </Link>
                 <Link
                   href="/providers/join"
                   className="px-4 py-2.5 text-sm font-bold text-brand-900 dark:text-white bg-white dark:bg-[#18181b] border border-gray-200 dark:border-white/10 rounded-lg text-center shadow-sm hover:border-brand-500 transition-colors"
+                  onClick={() => setMobileOpen(false)}
                 >
                   {t("I can provide something", "আমি কিছু দিতে পারবো")}
                 </Link>
                 <Link
                   href="/network/join"
                   className="px-4 py-2.5 text-sm font-bold text-brand-900 dark:text-white bg-white dark:bg-[#18181b] border border-gray-200 dark:border-white/10 rounded-lg text-center shadow-sm hover:border-brand-500 transition-colors"
+                  onClick={() => setMobileOpen(false)}
                 >
                   {t("Join the network", "নেটওয়ার্কে যুক্ত হোন")}
                 </Link>
