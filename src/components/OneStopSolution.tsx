@@ -1,197 +1,283 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import { Package, Code, TrendingUp, ArrowRight, Zap, Target, Layers } from "lucide-react";
-
-const features = [
-  {
-    id: "supply",
-    icon: <Package className="w-8 h-8" />,
-    title: { en: "Wholesale & Supply", bn: "পাইকারি ও সাপ্লাই" },
-    desc: { en: "Need materials or products for your business? We provide seamless wholesale & supply solutions to keep your operations running smoothly at scale.", bn: "আপনার ব্যবসার জন্য কাঁচামাল বা প্রোডাক্ট প্রয়োজন? আপনার কার্যক্রম সচল রাখতে আমরা সরবরাহ করি পাইকারি ও সাপ্লাই সলিউশন।" },
-    color: "from-blue-500 to-cyan-400",
-    bgLight: "bg-blue-50 dark:bg-blue-500/10",
-    iconColor: "text-blue-600 dark:text-blue-400",
-    align: "left",
-    stats: { en: "500+ Suppliers", bn: "৫০০+ সাপ্লায়ার" },
-    tagIcon: <Layers className="w-4 h-4" />
-  },
-  {
-    id: "tech",
-    icon: <Code className="w-8 h-8" />,
-    title: { en: "Tech & IT Solutions", bn: "টেক ও আইটি সমাধান" },
-    desc: { en: "Ready to scale online? Get custom websites, apps, and enterprise digital tools tailored specifically for your unique business needs.", bn: "অনলাইনে ব্যবসা বড় করতে প্রস্তুত? আপনার ব্যবসার প্রয়োজন অনুযায়ী ওয়েবসাইট, অ্যাপ এবং ডিজিটাল টুলস তৈরি করে নিন।" },
-    color: "from-brand-500 to-purple-500",
-    bgLight: "bg-brand-50 dark:bg-brand-500/10",
-    iconColor: "text-brand-600 dark:text-brand-400",
-    align: "right",
-    stats: { en: "Modern Tech Stack", bn: "মডার্ন টেক স্ট্যাক" },
-    tagIcon: <Zap className="w-4 h-4" />
-  },
-  {
-    id: "consultancy",
-    icon: <TrendingUp className="w-8 h-8" />,
-    title: { en: "Business Consultancy", bn: "বিজনেস কনসালটেন্সি" },
-    desc: { en: "From zero to future success. Our expert consultants guide you through every step of your growth journey with actionable data insights.", bn: "শূন্য থেকে ভবিষ্যতের সাফল্যের পথে। আমাদের এক্সপার্ট কনসালটেন্টরা আপনার ব্যবসার প্রতিটি পদক্ষেপে সঠিক গাইডলাইন দেবে।" },
-    color: "from-orange-500 to-rose-500",
-    bgLight: "bg-orange-50 dark:bg-orange-500/10",
-    iconColor: "text-orange-600 dark:text-orange-400",
-    align: "left",
-    stats: { en: "Actionable Insights", bn: "কার্যকরী ইনসাইটস" },
-    tagIcon: <Target className="w-4 h-4" />
-  }
-];
+import { 
+  Package, 
+  Code, 
+  TrendingUp, 
+  Building2, 
+  ArrowRight, 
+  Sparkles, 
+  ShieldCheck, 
+  Zap, 
+  Layers, 
+  CheckCircle2, 
+  Cpu, 
+  Truck, 
+  FileText,
+  Briefcase
+} from "lucide-react";
 
 export default function OneStopSolution() {
   const { t, language } = useLanguage();
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeCategory, setActiveCategory] = useState<string>("all");
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        // Dynamic trigger point based on window height
-        const offset = window.innerHeight * 0.7; 
-        const scrolled = offset - rect.top;
-        
-        let progress = (scrolled / rect.height) * 100;
-        progress = Math.max(0, Math.min(progress, 100));
-        setScrollProgress(progress);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll);
-    handleScroll();
-    
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, []);
+  const pillars = [
+    {
+      id: "wholesale",
+      title: { en: "Wholesale & Industrial Sourcing", bn: "পাইকারি কাঁচামাল ও সাপ্লাই" },
+      category: { en: "Supply Chain", bn: "সাপ্লাই চেইন" },
+      desc: { 
+        en: "Source high-grade raw materials, industrial machinery, custom packaging, and bulk inventory with guaranteed delivery across 64 districts.", 
+        bn: "উচ্চমানের কাঁচামাল, শিল্প যন্ত্রপাতি, কাস্টম প্যাকেজিং এবং বাল্ক পণ্য সরবরাহ নিশ্চিত করুন ৬৪ জেলার যেকোনো প্রান্তে।" 
+      },
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80",
+      href: "/solutions?category=wholesale",
+      tags: [
+        { en: "GPUs & PC Hardware", bn: "জিপিইউ ও কম্পিউটার" },
+        { en: "Pakistani Dresses", bn: "পাকিস্তানি ড্রেস" },
+        { en: "China Factory Sourcing", bn: "চায়না সরাসরি আমদানি" },
+        { en: "Raw Materials", bn: "কাঁচামাল" }
+      ],
+      stat: { en: "500+ Verified Suppliers", bn: "৫০০+ ভেরিফাইড সাপ্লায়ার" },
+      icon: Package,
+      gradient: "from-blue-600/90 via-cyan-600/80 to-blue-900/90"
+    },
+    {
+      id: "tech",
+      title: { en: "Tech & Software Engineering", bn: "সফটওয়্যার ও ডিজিটাল সলিউশন" },
+      category: { en: "Digital & IT", bn: "ডিজিটাল ও আইটি" },
+      desc: { 
+        en: "Custom enterprise software, high-speed Next.js web portals, iOS/Android apps, ERP automation, and cloud infrastructure tailored to your business.", 
+        bn: "কাস্টম এন্টারপ্রাইজ সফটওয়্যার, আধুনিক ওয়েবসাইট, মোবাইল অ্যাপ, ইআরপি এবং ক্লাউড অটোমেশন আপনার ব্যবসার প্রয়োজন অনুযায়ী।" 
+      },
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
+      href: "/solutions?category=tech",
+      tags: [
+        { en: "Web & Mobile Apps", bn: "ওয়েব ও মোবাইল অ্যাপ" },
+        { en: "Enterprise ERP & CRM", bn: "ইআরপি ও সিআরএম" },
+        { en: "Cloud & APIs", bn: "ক্লাউড ও এপিআই" },
+        { en: "UI/UX Engineering", bn: "ইউআই/ইউএক্স ডিজাইন" }
+      ],
+      stat: { en: "Modern Tech Stack", bn: "আধুনিক টেক স্ট্যাক" },
+      icon: Code,
+      gradient: "from-purple-600/90 via-indigo-600/80 to-purple-900/90"
+    },
+    {
+      id: "realestate",
+      title: { en: "Commercial Space & Interior", bn: "অফিস স্পেস, ইন্টেরিয়র ও কনস্ট্রাকশন" },
+      category: { en: "Infrastructure", bn: "ইনফ্রাস্ট্রাকচার" },
+      desc: { 
+        en: "Turnkey office layouts, acoustic architectural interiors, commercial furniture, certified construction materials, and verified space leasing.", 
+        bn: "টার্নকি অফিস ইন্টেরিয়র, আধুনিক ফার্নিচার, সার্টিফাইড নির্মাণ সামগ্রী এবং বাণিজ্যিক স্পেস সোর্সিং ও লিগ্যাল লিজ সহায়তা।" 
+      },
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80",
+      href: "/solutions?category=real-estate",
+      tags: [
+        { en: "Office Interior & Fitouts", bn: "অফিস ইন্টেরিয়র" },
+        { en: "Commercial Furniture", bn: "বাণিজ্যিক ফার্নিচার" },
+        { en: "Building Materials", bn: "নির্মাণ সামগ্রী" },
+        { en: "Space Sourcing", bn: "স্পেস সোর্সিং" }
+      ],
+      stat: { en: "Turnkey Workspace", bn: "টার্নকি ওয়ার্কস্পেস" },
+      icon: Building2,
+      gradient: "from-amber-600/90 via-orange-600/80 to-rose-900/90"
+    },
+    {
+      id: "business",
+      title: { en: "Legal, Tax & Growth Advisory", bn: "আইনি লাইসেন্স, ট্যাক্স ও গ্রোথ" },
+      category: { en: "Corporate Advisory", bn: "কর্পোরেট অ্যাডভাইজরি" },
+      desc: { 
+        en: "Company registration, trade licenses, VAT/tax filing, trademark protection, executive recruitment, and performance growth marketing.", 
+        bn: "কোম্পানি নিবন্ধন, ট্রেড লাইসেন্স, ভ্যাট ও ট্যাক্স ফাইলিং, ট্রেডমার্ক ও আইপি, ট্যালেন্ট হায়ার এবং রেজাল্ট-ওরিয়েন্টেড মার্কেটিং।" 
+      },
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80",
+      href: "/solutions?category=business",
+      tags: [
+        { en: "RJSC & Trade License", bn: "আরজেএসসি ও ট্রেড লাইসেন্স" },
+        { en: "Tax & VAT Compliance", bn: "ট্যাক্স ও ভ্যাট ফাইলিং" },
+        { en: "Growth Marketing", bn: "গ্রোথ মার্কেটিং" },
+        { en: "HR & Recruitment", bn: "এইচআর ও রিক্রুটমেন্ট" }
+      ],
+      stat: { en: "100% Compliant", bn: "১০০% কমপ্লায়েন্ট" },
+      icon: TrendingUp,
+      gradient: "from-emerald-600/90 via-teal-600/80 to-emerald-950/90"
+    }
+  ];
 
   return (
-    <section className="py-32 bg-gray-50 dark:bg-[#050505] transition-colors duration-300 relative border-y border-gray-200 dark:border-white/5 overflow-hidden" ref={containerRef}>
+    <section className="py-24 lg:py-32 bg-white dark:bg-[#070709] transition-colors duration-300 relative overflow-hidden border-y border-gray-100 dark:border-white/5">
       
-      {/* Premium Ambient Backgrounds */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-500/5 rounded-full blur-[150px] pointer-events-none"></div>
-      <div className="absolute bottom-20 left-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+      {/* Background Lighting Accents */}
+      <div className="absolute top-1/4 right-0 w-[550px] h-[550px] bg-brand-500/10 dark:bg-brand-500/15 rounded-full blur-[140px] pointer-events-none"></div>
+      <div className="absolute bottom-10 left-0 w-[500px] h-[500px] bg-indigo-500/10 dark:bg-indigo-500/15 rounded-full blur-[140px] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none"></div>
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-7xl">
         
-        {/* Header Area */}
-        <div className="text-center max-w-4xl mx-auto mb-32">
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 shadow-sm text-brand-700 dark:text-brand-300 text-sm font-bold mb-8 uppercase tracking-widest backdrop-blur-md">
-            <span className="w-2.5 h-2.5 rounded-full bg-brand-500 animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]"></span>
-            {t("The Complete Journey", "সম্পূর্ণ সলিউশন যাত্রা")}
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-brand-50 dark:bg-brand-900/20 text-brand-800 dark:text-brand-400 text-xs sm:text-sm font-bold mb-6 uppercase tracking-wider border border-brand-100 dark:border-brand-500/20 shadow-sm backdrop-blur-md">
+            <Sparkles className="w-4 h-4 text-brand-500 animate-pulse" />
+            <span>{t("Integrated Ecosystem", "সমন্বিত ওয়ান-স্টপ ইকোসিস্টেম")}</span>
           </div>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-8 tracking-tight leading-[1.1]">
-            {t("Your Ultimate", "আপনার একমাত্র")} <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-indigo-500 to-purple-600 dark:from-brand-400 dark:via-indigo-400 dark:to-purple-400">
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white tracking-tight leading-tight mb-6">
+            {t("Your Ultimate", "আপনার পূর্ণাঙ্গ")} <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-indigo-600 to-teal-500 dark:from-brand-400 dark:via-indigo-400 dark:to-teal-300">
               {t("One-Stop Solution", "ওয়ান-স্টপ সমাধান")}
             </span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 font-medium leading-relaxed max-w-2xl mx-auto">
-            {t("Follow the path. We bring everything you need together. From raw materials to digital presence and expert consultancy.", "আমাদের সাথে চলুন। আপনার যা কিছু প্রয়োজন তার সবই আমরা একসাথে নিয়ে এসেছি। কাঁচামাল থেকে শুরু করে ডিজিটাল প্রেজেন্স এবং এক্সপার্ট পরামর্শ।")}
+
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
+            {t(
+              "Stop juggling dozens of unverified vendors. BRIIZZ connects your business to raw materials, digital engineering, workspace setups, and corporate growth under one single roof.",
+              "আলাদা আলাদা ভেন্ডরের ঝামেলা ভুলে যান। কাঁচামাল সংগ্রহ, সফটওয়্যার ও ডিজিটাল ডেভেলপমেন্ট, অফিস সেটআপ এবং ব্যবসায়িক পরামর্শ—সব সমাধান পান এক প্ল্যাটফর্মে।"
+            )}
           </p>
         </div>
 
-        {/* Winding Road / Timeline Layout */}
-        <div className="relative max-w-5xl mx-auto pb-10">
-          
-          {/* Main Road Track */}
-          <div className="absolute left-8 md:left-1/2 top-4 bottom-0 w-1.5 md:-ml-[3px] bg-gray-200 dark:bg-white/5 rounded-full"></div>
-          
-          {/* Glowing Progress Line */}
-          <div 
-            className="absolute left-8 md:left-1/2 top-4 w-1.5 md:-ml-[3px] bg-gradient-to-b from-brand-500 via-indigo-500 to-rose-500 rounded-full transition-all duration-300 ease-out z-0 shadow-[0_0_30px_rgba(139,92,246,0.8)]"
-            style={{ height: `${scrollProgress}%` }}
-          >
-            {/* The Leading Spark on the line */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-5 bg-white rounded-full shadow-[0_0_25px_10px_rgba(139,92,246,0.7)] border-4 border-brand-500"></div>
-          </div>
+        {/* 4-Pillar Visual Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16">
+          {pillars.map((pillar) => {
+            const Icon = pillar.icon;
+            const pTitle = language === "bn" ? pillar.title.bn : pillar.title.en;
+            const pDesc = language === "bn" ? pillar.desc.bn : pillar.desc.en;
+            const pCategory = language === "bn" ? pillar.category.bn : pillar.category.en;
+            const pStat = language === "bn" ? pillar.stat.bn : pillar.stat.en;
 
-          {features.map((feature, idx) => {
-            const activationPoint = idx * 28; // slightly earlier trigger
-            const isActive = scrollProgress > activationPoint;
-            const isLeft = feature.align === 'left';
-            
             return (
-              <div key={feature.id} className={`relative flex flex-col md:flex-row items-center mb-28 md:mb-40 last:mb-0 ${!isLeft ? 'md:flex-row-reverse' : ''}`}>
-                
-                {/* Node Point on the Road */}
-                <div className={`absolute left-8 md:left-1/2 -ml-3 md:-ml-4 top-12 md:top-1/2 md:-mt-4 w-8 h-8 rounded-full border-[5px] z-20 transition-all duration-700 ${
-                  isActive 
-                    ? 'border-brand-500 bg-white dark:bg-[#0a0a0a] scale-125 shadow-[0_0_20px_rgba(139,92,246,0.5)]' 
-                    : 'border-gray-300 dark:border-gray-800 bg-gray-100 dark:bg-gray-900'
-                }`}>
-                  {isActive && (
-                    <div className="absolute inset-0 rounded-full animate-ping bg-brand-500 opacity-50 duration-1000"></div>
-                  )}
-                  {isActive && (
-                    <div className="absolute inset-1.5 rounded-full bg-brand-500"></div>
-                  )}
+              <div 
+                key={pillar.id}
+                className="group relative rounded-3xl md:rounded-[2.5rem] bg-gray-900 text-white overflow-hidden border border-gray-800 dark:border-white/10 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between min-h-[440px] sm:min-h-[480px]"
+              >
+                {/* Background Photography with Zoom Hover */}
+                <div className="absolute inset-0 overflow-hidden">
+                  <img 
+                    src={pillar.image} 
+                    alt={pTitle}
+                    className="w-full h-full object-cover opacity-35 dark:opacity-25 group-hover:scale-105 group-hover:opacity-45 dark:group-hover:opacity-35 transition-all duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  {/* Subtle Gradient Veil */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-900/85 to-gray-900/40 pointer-events-none"></div>
                 </div>
 
-                {/* Card Container */}
-                <div className={`w-full pl-24 md:pl-0 md:w-1/2 ${isLeft ? 'md:pr-24' : 'md:pl-24'}`}>
-                  
-                  {/* The Premium Card */}
-                  <div className={`group relative p-8 md:p-10 rounded-[2.5rem] bg-white dark:bg-[#0f0f11] border border-gray-200 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]
-                    ${isActive 
-                      ? 'translate-y-0 opacity-100 scale-100' 
-                      : (isLeft ? '-translate-x-16 opacity-0 scale-95' : 'translate-x-16 opacity-0 scale-95')
-                    } hover:-translate-y-2 hover:shadow-2xl`}
-                  >
-                    {/* Inner Ambient Glow */}
-                    <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 dark:group-hover:opacity-[0.15] transition-opacity duration-700 bg-gradient-to-br ${feature.color} rounded-[2.5rem] pointer-events-none`}></div>
-                    
-                    <div className="relative z-10 flex flex-col h-full">
-                      {/* Top Header Row of Card */}
-                      <div className="flex items-start justify-between mb-8">
-                        <div className={`w-16 h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br ${feature.color} text-white shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
-                          {feature.icon}
-                        </div>
-                        
-                        <div className={`flex items-center gap-2 px-4 py-2 rounded-full ${feature.bgLight} border border-gray-200 dark:border-white/10`}>
-                          <span className={`${feature.iconColor}`}>
-                            {feature.tagIcon}
-                          </span>
-                          <span className="text-xs font-bold text-gray-700 dark:text-gray-300">
-                            {language === 'bn' ? feature.stats.bn : feature.stats.en}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <h3 className="text-3xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
-                        {language === 'bn' ? feature.title.bn : feature.title.en}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-10 flex-1">
-                        {language === 'bn' ? feature.desc.bn : feature.desc.en}
-                      </p>
-
-                      {/* Action Button */}
-                      <div className="mt-auto">
-                        <button className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all duration-300 
-                          bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 text-gray-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 border border-gray-200 dark:border-white/5`}>
-                          {t("Explore Solution", "আরও জানুন")} 
-                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
-                        </button>
-                      </div>
-                    </div>
+                {/* Top Row: Category Badge & Stat */}
+                <div className="relative z-10 p-6 sm:p-8 flex items-center justify-between">
+                  <div className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 dark:bg-black/50 backdrop-blur-md border border-white/15 text-xs font-bold text-gray-200">
+                    <Icon className="w-4 h-4 text-brand-400" />
+                    <span>{pCategory}</span>
                   </div>
 
+                  <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-brand-500/20 text-brand-300 border border-brand-400/30 backdrop-blur-md">
+                    {pStat}
+                  </span>
                 </div>
 
-                {/* Empty space for the other half */}
-                <div className="hidden md:block md:w-1/2"></div>
+                {/* Body Content */}
+                <div className="relative z-10 p-6 sm:p-8 pt-0 mt-auto flex flex-col">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-3 tracking-tight group-hover:text-brand-300 transition-colors">
+                    {pTitle}
+                  </h3>
+
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-6">
+                    {pDesc}
+                  </p>
+
+                  {/* Sub-Capability Quick Pills */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {pillar.tags.map((tag, tIdx) => (
+                      <span 
+                        key={tIdx}
+                        className="px-3 py-1 rounded-xl text-xs font-medium bg-white/10 hover:bg-white/20 text-gray-200 border border-white/10 backdrop-blur-sm transition-colors"
+                      >
+                        {language === "bn" ? tag.bn : tag.en}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Direct Link Action */}
+                  <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                    <Link 
+                      href={pillar.href}
+                      className="inline-flex items-center gap-2 text-sm font-bold text-white group-hover:text-brand-300 transition-colors"
+                    >
+                      <span>{t("Explore Solutions", "বিস্তারিত সমাধান দেখুন")}</span>
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5 text-brand-400" />
+                    </Link>
+
+                    <Link 
+                      href={`/needs/new?category=${pillar.id}`}
+                      className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white border border-white/15 transition-all backdrop-blur-md"
+                    >
+                      {t("Post Requirement", "রিকোয়ারমেন্ট দিন")}
+                    </Link>
+                  </div>
+                </div>
               </div>
             );
           })}
         </div>
+
+        {/* Bottom Value Guarantee Highlights */}
+        <div className="rounded-3xl bg-gray-50 dark:bg-[#121216] border border-gray-200/80 dark:border-white/10 p-6 sm:p-8 lg:p-10 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-600 dark:text-brand-400 shrink-0 border border-brand-500/20">
+              <ShieldCheck className="w-6 h-6" />
+            </div>
+            <div>
+              <h4 className="text-base font-bold text-gray-900 dark:text-white mb-1.5">
+                {t("Single Accountability", "একক জবাবদিহিতা")}
+              </h4>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                {t(
+                  "You deal directly with BRIIZZ. We coordinate multiple suppliers and specialists so you get seamless delivery.",
+                  "একাধিক ভেন্ডর খোঁজার ঝামেলা নেই। BRIIZZ সম্পূর্ণ কোঅর্ডিনেশন ও সফল ডেলিভারি নিশ্চিত করে।"
+                )}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0 border border-indigo-500/20">
+              <Zap className="w-6 h-6" />
+            </div>
+            <div>
+              <h4 className="text-base font-bold text-gray-900 dark:text-white mb-1.5">
+                {t("Milestone Protection", "মাইলস্টোন ও পেমেন্ট নিরাপত্তা")}
+              </h4>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                {t(
+                  "Funds and transactions are secured. Payments are released only when quality standards are met.",
+                  "কাজের মান এবং ডেলিভারি সন্তোষজনক হলে তবেই পেমেন্ট কার্যকর হয়। আপনার বিনিয়োগ সম্পূর্ণ নিরাপদ।"
+                )}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-teal-500/10 flex items-center justify-center text-teal-600 dark:text-teal-400 shrink-0 border border-teal-500/20">
+              <Truck className="w-6 h-6" />
+            </div>
+            <div>
+              <h4 className="text-base font-bold text-gray-900 dark:text-white mb-1.5">
+                {t("64 Districts Execution", "৬৪ জেলায় কার্যকর বাস্তবায়ন")}
+              </h4>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                {t(
+                  "Whether in Dhaka or any remote district, our verified network delivers with consistent tier-1 quality.",
+                  "ঢাকা থেকে শুরু করে প্রত্যন্ত জেলা পর্যন্ত একই মানের পেশাদার সেবা ও সাপ্লাই সরবরাহ।"
+                )}
+              </p>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
   );

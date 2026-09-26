@@ -18,6 +18,7 @@ import FutureProofJourney from "@/components/FutureProofJourney";
 import HowItWorksPartner from "@/components/HowItWorksPartner";
 import SolutionsForEveryone from "@/components/SolutionsForEveryone";
 import UsefulInformation from "@/components/UsefulInformation";
+import TalkToUsCTA from "@/components/TalkToUsCTA";
 import Link from "next/link";
 
 export default function HomePage() {
@@ -78,6 +79,8 @@ export default function HomePage() {
       {/* 9. FAQ Section */}
       <FAQSection />
 
+      {/* Direct Communication / Talk to BRIIZZ Team CTA */}
+      <TalkToUsCTA />
 
       {/* Final Call to Action - Tell Us What You Need */}
       <NeedSomethingForm />

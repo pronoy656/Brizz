@@ -25,6 +25,9 @@ const solutionCategories = [
   {
     title: { en: "Wholesale & Supply", bn: "পাইকারি ও সাপ্লাই" },
     items: [
+      { en: "GPUs & PC Hardware", bn: "জিপিইউ ও কম্পিউটার হার্ডওয়্যার", href: "/solutions/wholesale/gpus-electronics" },
+      { en: "Pakistani Boutique Dresses", bn: "পাকিস্তানি ড্রেস পাইকারি", href: "/solutions/wholesale/clothing" },
+      { en: "China Factory Sourcing", bn: "চায়না সরাসরি আমদানি", href: "/solutions/wholesale/china-sourcing" },
       { en: "Raw Materials", bn: "কাঁচামাল", href: "/solutions/wholesale/raw-materials" },
       { en: "Packaging Solutions", bn: "প্যাকেজিং সমাধান", href: "/solutions/wholesale/packaging" },
       { en: "Machinery & Equipment", bn: "মেশিনারিজ ও ইকুইপমেন্ট", href: "/solutions/wholesale/machinery" },
