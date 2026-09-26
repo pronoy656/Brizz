@@ -249,98 +249,161 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className="lg:hidden p-2 text-gray-600 dark:text-gray-300"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Menu Toggle & Actions */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggleInline />
+            <button
+              aria-label="Toggle mobile menu"
+              className="p-2.5 rounded-xl text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors cursor-pointer"
+              onClick={() => setMobileOpen(!mobileOpen)}
+            >
+              {mobileOpen ? <X className="w-6 h-6 text-brand-600 dark:text-brand-400" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Full-Featured Mobile Drawer */}
       {mobileOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-[#121214] border-b border-gray-100 dark:border-white/10 shadow-sm animate-in fade-in slide-in-from-top-2 duration-200 h-screen overflow-y-auto pb-32">
-          <div className="flex flex-col p-4 space-y-2">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-[#0e0e12]/95 backdrop-blur-xl border-b border-gray-200 dark:border-white/10 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-300 max-h-[calc(100vh-80px)] overflow-y-auto pb-24">
+          <div className="p-4 sm:p-6 space-y-4">
             
-            <div className="flex items-center justify-between px-4 py-2 mb-2">
+            {/* Top Row: Language & Districts */}
+            <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-white/5 rounded-2xl border border-gray-100 dark:border-white/5">
               <div className="flex items-center gap-2">
                 <button 
-                  onClick={() => { setLanguage("en"); setMobileOpen(false); }}
-                  className={`text-sm ${language === "en" ? "font-bold text-brand-900 dark:text-white" : "text-gray-500"}`}
+                  onClick={() => { setLanguage("en"); }}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                    language === "en" 
+                      ? "bg-brand-600 text-white shadow-sm" 
+                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900"
+                  }`}
                 >EN</button>
-                <span className="text-gray-300">|</span>
                 <button 
-                  onClick={() => { setLanguage("bn"); setMobileOpen(false); }}
-                  className={`text-sm ${language === "bn" ? "font-bold text-brand-900 dark:text-white" : "text-gray-500"}`}
+                  onClick={() => { setLanguage("bn"); }}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                    language === "bn" 
+                      ? "bg-brand-600 text-white shadow-sm" 
+                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900"
+                  }`}
                 >বাংলা</button>
               </div>
-              <ThemeToggleInline />
+
+              <Link
+                href="/districts"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-1.5 text-xs font-bold text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/30 px-3 py-1.5 rounded-xl border border-brand-200 dark:border-brand-500/20"
+              >
+                <MapPin className="w-3.5 h-3.5" />
+                <span>{t("64 Districts", "৬৪ জেলা")}</span>
+              </Link>
             </div>
 
-            <Link
-              href="/"
-              className="px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5"
-              onClick={() => setMobileOpen(false)}
-            >
-              {t("Home", "হোম")}
-            </Link>
+            {/* Global Search in Mobile Drawer */}
+            <div className="w-full">
+              <GlobalSearch />
+            </div>
 
-            <Link
-              href="/solutions"
-              className="px-4 py-3 text-sm font-medium text-brand-700 dark:text-brand-400 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/10"
-              onClick={() => setMobileOpen(false)}
-            >
-              {t("Solutions (View All)", "সমাধান (সবগুলো দেখুন)")}
-            </Link>
-
-            {navLinks.map((link) => (
+            {/* Main Links */}
+            <div className="space-y-1">
               <Link
-                key={link.name}
-                href={link.href}
-                className="px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5"
+                href="/"
+                className="flex items-center justify-between px-4 py-3 text-sm font-bold text-gray-900 dark:text-white rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
-                {link.name}
+                <span>{t("Home", "হোম")}</span>
               </Link>
-            ))}
-            <div className="h-px bg-gray-100 dark:bg-white/10 my-2" />
-            <Link
-              href="/login"
-              className="px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5 flex items-center gap-2"
-              onClick={() => setMobileOpen(false)}
-            >
-              <User className="w-4 h-4" /> {t("Login", "লগইন")}
-            </Link>
-            <div className="p-4 bg-gray-50 dark:bg-white/5 rounded-xl mt-2 border border-gray-100 dark:border-white/5">
-              <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
-                {t("Get Started", "শুরু করুন")}
-              </p>
-              <div className="flex flex-col space-y-2">
+
+              {/* Solutions Explorer Link & Sub-Categories */}
+              <div className="border border-gray-100 dark:border-white/5 rounded-2xl overflow-hidden bg-gray-50/50 dark:bg-white/[0.02]">
                 <Link
-                  href="/needs/new"
-                  className="px-4 py-2.5 text-sm font-bold text-brand-900 dark:text-white bg-white dark:bg-[#18181b] border border-gray-200 dark:border-white/10 rounded-lg text-center shadow-sm hover:border-brand-500 transition-colors"
+                  href="/solutions"
+                  className="flex items-center justify-between px-4 py-3 text-sm font-bold text-brand-700 dark:text-brand-400 bg-brand-50/70 dark:bg-brand-900/20"
                   onClick={() => setMobileOpen(false)}
                 >
-                  {t("I need something", "আমার কিছু প্রয়োজন")}
+                  <span>{t("Explore Solutions Catalog", "সকল সমাধান ও ক্যাটালগ")}</span>
+                  <span className="text-xs bg-brand-600 text-white px-2 py-0.5 rounded-full">All</span>
+                </Link>
+
+                <div className="p-2 grid grid-cols-2 gap-1.5">
+                  <Link
+                    href="/solutions?category=wholesale"
+                    onClick={() => setMobileOpen(false)}
+                    className="p-2.5 rounded-xl bg-white dark:bg-white/5 text-xs font-semibold text-gray-700 dark:text-gray-200 hover:text-brand-600 border border-gray-100 dark:border-white/5 text-center"
+                  >
+                    📦 {t("Wholesale", "পাইকারি")}
+                  </Link>
+                  <Link
+                    href="/solutions?category=tech"
+                    onClick={() => setMobileOpen(false)}
+                    className="p-2.5 rounded-xl bg-white dark:bg-white/5 text-xs font-semibold text-gray-700 dark:text-gray-200 hover:text-brand-600 border border-gray-100 dark:border-white/5 text-center"
+                  >
+                    💻 {t("Tech & IT", "আইটি সমাধান")}
+                  </Link>
+                  <Link
+                    href="/solutions?category=real-estate"
+                    onClick={() => setMobileOpen(false)}
+                    className="p-2.5 rounded-xl bg-white dark:bg-white/5 text-xs font-semibold text-gray-700 dark:text-gray-200 hover:text-brand-600 border border-gray-100 dark:border-white/5 text-center"
+                  >
+                    🏢 {t("Real Estate", "রিয়েল এস্টেট")}
+                  </Link>
+                  <Link
+                    href="/solutions?category=business"
+                    onClick={() => setMobileOpen(false)}
+                    className="p-2.5 rounded-xl bg-white dark:bg-white/5 text-xs font-semibold text-gray-700 dark:text-gray-200 hover:text-brand-600 border border-gray-100 dark:border-white/5 text-center"
+                  >
+                    💼 {t("Business Setup", "বিজনেস ও লিগ্যাল")}
+                  </Link>
+                </div>
+              </div>
+
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="flex items-center justify-between px-4 py-3 text-sm font-semibold text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-colors"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <span>{link.name}</span>
+                </Link>
+              ))}
+
+              <Link
+                href="/login"
+                className="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-gray-800 dark:text-gray-200 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                <User className="w-4 h-4 text-brand-500" />
+                <span>{t("Login to Portal", "লগইন করুন")}</span>
+              </Link>
+            </div>
+
+            {/* Post Request Action Card */}
+            <div className="p-4 bg-gradient-to-br from-brand-900 to-indigo-950 text-white rounded-2xl shadow-lg border border-brand-800/40">
+              <p className="text-xs font-bold text-brand-300 uppercase tracking-wider mb-2">
+                {t("Ready to find a solution?", "আপনার কি কোনো সমাধান প্রয়োজন?")}
+              </p>
+              <p className="text-xs text-gray-300 mb-4 leading-relaxed">
+                {t("Post your requirement and connect with verified partners nationwide.", "আপনার রিকোয়ারমেন্ট সাবমিট করে দ্রুততম সময়ে সমাধান নিন।")}
+              </p>
+              <div className="flex flex-col gap-2">
+                <Link
+                  href="/needs/new"
+                  className="w-full py-2.5 bg-white text-brand-950 hover:bg-gray-100 rounded-xl font-bold text-xs text-center shadow-md transition-transform active:scale-[0.98]"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {t("Post a Requirement", "কাস্টম রিকোয়ারমেন্ট দিন")}
                 </Link>
                 <Link
                   href="/providers/join"
-                  className="px-4 py-2.5 text-sm font-bold text-brand-900 dark:text-white bg-white dark:bg-[#18181b] border border-gray-200 dark:border-white/10 rounded-lg text-center shadow-sm hover:border-brand-500 transition-colors"
+                  className="w-full py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl font-semibold text-xs text-center border border-white/10 transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
-                  {t("I can provide something", "আমি কিছু দিতে পারবো")}
-                </Link>
-                <Link
-                  href="/network/join"
-                  className="px-4 py-2.5 text-sm font-bold text-brand-900 dark:text-white bg-white dark:bg-[#18181b] border border-gray-200 dark:border-white/10 rounded-lg text-center shadow-sm hover:border-brand-500 transition-colors"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {t("Join the network", "নেটওয়ার্কে যুক্ত হোন")}
+                  {t("Join as Provider", "প্রোভাইডার হিসেবে যুক্ত হোন")}
                 </Link>
               </div>
             </div>
+
           </div>
         </div>
       )}

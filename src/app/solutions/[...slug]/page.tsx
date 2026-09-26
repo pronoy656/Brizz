@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
@@ -20,13 +20,15 @@ import {
   Briefcase, 
   Scale, 
   Megaphone, 
-  Users,
-  ShieldCheck,
-  Sparkles,
-  Zap,
-  Cpu,
-  ShoppingBag,
-  Truck
+  Users, 
+  ShieldCheck, 
+  Sparkles, 
+  Zap, 
+  Cpu, 
+  ShoppingBag, 
+  Truck,
+  Filter,
+  ChevronDown
 } from "lucide-react";
 
 // Icon mapper
@@ -709,6 +711,8 @@ export default function SolutionDetailPage() {
   const description = language === 'bn' ? solution.bnDesc : solution.desc;
   const theIcon = IconMap[solution.icon as keyof typeof IconMap] || IconMap.Box;
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const sidebarCategories = [
     {
       id: "wholesale",
@@ -809,8 +813,28 @@ export default function SolutionDetailPage() {
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
+            {/* Mobile Category Toggle Button */}
+            <div className="lg:hidden col-span-1 -mb-2">
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="w-full flex items-center justify-between p-4 bg-white dark:bg-[#121216] border border-gray-200 dark:border-white/10 rounded-2xl shadow-sm text-sm font-bold text-gray-900 dark:text-white cursor-pointer"
+              >
+                <div className="flex items-center gap-2.5">
+                  <Filter className="w-4 h-4 text-brand-600 dark:text-brand-400" />
+                  <span>{t("Browse Other Solutions", "অন্যান্য ক্যাটাগরি ও সমাধান")}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 font-bold px-2.5 py-0.5 rounded-full border border-brand-200 dark:border-brand-500/20">
+                    {sidebarCategories.find(c => c.id === category)?.label[language === 'bn' ? 'bn' : 'en'] || t("Menu", "মেনু")}
+                  </span>
+                  <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform duration-300 ${mobileMenuOpen ? 'rotate-180' : ''}`} />
+                </div>
+              </button>
+            </div>
+
             {/* LEFT SIDEBAR: Solution Categories & Subcategories Tree */}
-            <div className="lg:col-span-3 bg-white dark:bg-[#121216] border border-gray-200 dark:border-white/10 rounded-3xl p-5 shadow-sm sticky top-28">
+            <div className={`lg:col-span-3 bg-white dark:bg-[#121216] border border-gray-200 dark:border-white/10 rounded-3xl p-5 shadow-sm lg:sticky top-28 ${mobileMenuOpen ? 'block animate-in fade-in duration-200' : 'hidden lg:block'}`}>
               
               <div className="flex items-center justify-between pb-3.5 border-b border-gray-100 dark:border-white/10 mb-4">
                 <div className="text-xs font-bold text-gray-900 dark:text-white uppercase tracking-wider">
