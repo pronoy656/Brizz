@@ -16,6 +16,7 @@ import TrustedBy from "@/components/TrustedBy";
 import Testimonials from "@/components/Testimonials";
 import FutureProofJourney from "@/components/FutureProofJourney";
 import HowItWorksPartner from "@/components/HowItWorksPartner";
+import ExpertiseShowcase from "@/components/ExpertiseShowcase";
 import SolutionsForEveryone from "@/components/SolutionsForEveryone";
 import UsefulInformation from "@/components/UsefulInformation";
 import TalkToUsCTA from "@/components/TalkToUsCTA";
@@ -27,20 +28,11 @@ export default function HomePage() {
       {/* 1. Hero */}
       <Hero />
 
-
-
       {/* 1.2 Solutions For Everyone */}
       <SolutionsForEveryone />
 
       {/* 1.5 Trusted By Social Proof */}
       <TrustedBy />
-
-      {/* 2. Trust / Social Proof */}
-      {/* <TrustSection /> */}
-
-      {/* 6. Future-Proof Journey */}
-      {/* <FutureProofJourney /> */}
-
 
       {/* 4. How It Works (The clear path) */}
       <HowItWorks />
@@ -65,6 +57,9 @@ export default function HomePage() {
       {/* 7. Become a Partner / Provider */}
       <BecomePartner />
 
+
+      {/* Verified Expertise & Partner Profiles Showcase */}
+      <ExpertiseShowcase />
 
       {/* 1.1 One Stop Solution */}
       <OneStopSolution />

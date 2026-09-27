@@ -76,7 +76,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: t("Network", "নেটওয়ার্ক"), href: "/network" },
-    { name: t("Profile", "প্রোফাইল"), href: "/profile" },
+    { name: t("Expertise", "এক্সপার্টাইজ"), href: "/expertise" },
   ];
 
   return (

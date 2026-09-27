@@ -64,15 +64,15 @@ export default function GlobalSearch() {
   };
 
   return (
-    <div className="relative w-full lg:min-w-[280px]" ref={wrapperRef}>
+    <div className="relative w-full lg:w-[340px] xl:w-[420px] transition-all duration-300" ref={wrapperRef}>
       <form onSubmit={handleSearch} className="relative group">
         <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
           <Search className="h-4 w-4 text-gray-400 group-focus-within:text-brand-500 transition-colors" />
         </div>
         <input
           type="text"
-          className="block w-full pl-10 pr-10 py-2.5 border border-gray-200 dark:border-white/10 rounded-full leading-5 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:bg-white dark:focus:bg-[#121214] focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all text-sm font-medium shadow-sm"
-          placeholder={t("Search solutions (e.g. CCTV, Apps)", "সার্চ করুন (যেমন: সিসিটিভি, অ্যাপস)")}
+          className="block w-full pl-10 pr-10 py-2.5 border border-gray-200 dark:border-white/10 rounded-full leading-5 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:bg-white dark:focus:bg-[#121214] focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500 transition-all text-sm font-medium shadow-sm"
+          placeholder={t("Search for any solution", "যেকোনো সমাধান খুঁজুন...")}
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
@@ -96,7 +96,7 @@ export default function GlobalSearch() {
 
       {/* Dropdown Suggestions */}
       {isOpen && query.length > 0 && (
-        <div className="absolute top-full mt-3 w-full lg:w-[400px] right-0 bg-white dark:bg-[#18181b] rounded-2xl shadow-2xl border border-gray-100 dark:border-white/10 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="absolute top-full mt-3 w-full lg:w-[420px] xl:w-[460px] right-0 bg-white dark:bg-[#18181b] rounded-2xl shadow-2xl border border-gray-100 dark:border-white/10 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="p-3 bg-gray-50 dark:bg-white/5 border-b border-gray-100 dark:border-white/10">
             <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
               {t("Suggestions for", "সাজেশনস")} "{query}"
