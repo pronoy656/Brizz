@@ -83,7 +83,7 @@ export default function ProviderPreview() {
   const [selectedCategory, setSelectedCategory] = useState<typeof NETWORK_CAPABILITIES[0] | null>(null);
 
   return (
-    <section id="elite-network" className="py-32 bg-gray-50 dark:bg-[#0a0a0a] relative overflow-hidden transition-colors duration-300">
+    <section className="py-32 bg-gray-50 dark:bg-[#0a0a0a] relative overflow-hidden transition-colors duration-300">
       
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-500/5 dark:bg-brand-500/10 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3"></div>

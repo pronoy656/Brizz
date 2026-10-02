@@ -34,11 +34,9 @@ export default function HomePage() {
       {/* 1.5 Trusted By Social Proof */}
       <TrustedBy />
 
-      {/* 4. How It Works (The clear path) */}
-      <HowItWorks />
-
-
-
+      {/* 4. How It Works - You don't search for providers. We bring them to you. */}
+      {/* <HowItWorks /> */}
+      <HowItWorksPartner />
 
       {/* 64 Districts Map Section */}
       <DistrictsMap />
@@ -48,11 +46,6 @@ export default function HomePage() {
 
       {/* 8.5 Useful Information / Consultation */}
       <UsefulInformation />
-
-
-      {/* 7.5 How Partnering Works */}
-      <HowItWorksPartner />
-
 
       {/* 7. Become a Partner / Provider */}
       <BecomePartner />

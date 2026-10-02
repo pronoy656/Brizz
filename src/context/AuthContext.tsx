@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-export type UserRole = "partner" | "admin" | "owner";
+export type UserRole = "user" | "partner" | "admin" | "owner";
 
 export interface AuthUser {
   id: string;
@@ -42,7 +42,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = (selectedRole: UserRole, customEmail?: string) => {
     let mockUser: AuthUser;
 
-    if (selectedRole === "partner") {
+    if (selectedRole === "user") {
+      mockUser = {
+        id: "usr-101",
+        name: "Tanvir Ahmed",
+        email: customEmail || "tanvir@acmebiz.com",
+        role: "user",
+        title: "Verified Business Buyer · Acme Group",
+        avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80",
+      };
+    } else if (selectedRole === "partner") {
       mockUser = {
         id: "prt-101",
         name: "Apex IT Solutions & Cloud",
@@ -75,7 +84,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("brizz_auth_user", JSON.stringify(mockUser));
 
     // Redirect to specific dashboard
-    if (selectedRole === "partner") {
+    if (selectedRole === "user") {
+      router.push("/dashboard");
+    } else if (selectedRole === "partner") {
       router.push("/partners/dashboard");
     } else {
       router.push(`/dashboard/${selectedRole}`);

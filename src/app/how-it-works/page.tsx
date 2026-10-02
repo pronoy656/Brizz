@@ -39,15 +39,15 @@ export default function HowItWorksPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white pt-24 pb-12">
+    <div className="min-h-screen bg-white dark:bg-[#07070a] pt-0 pb-16 transition-colors">
       {/* Hero Section */}
-      <section className="py-20 bg-gray-50 border-b border-gray-100">
+      <section className="pt-8 sm:pt-12 pb-12 sm:pb-16 bg-gray-50 dark:bg-[#0b101e] border-b border-gray-100 dark:border-white/10">
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-4xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
             You Tell Us What You Need.<br />
-            <span className="text-brand-800">We Find the Way.</span>
+            <span className="text-brand-800 dark:text-blue-400">We Find the Way.</span>
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Our process is designed to remove the friction of searching, vetting, and managing multiple vendors. Here is how BRIIZZ orchestrates the perfect solution.
           </p>
         </div>

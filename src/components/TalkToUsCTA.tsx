@@ -14,6 +14,7 @@ import {
   UserCheck
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { BRIZZ_SOCIAL_LINKS } from "@/lib/data";
 
 export default function TalkToUsCTA() {
   const { t, language } = useLanguage();
@@ -126,7 +127,7 @@ export default function TalkToUsCTA() {
                 <div className="space-y-3 mt-auto">
                   {/* WhatsApp Direct */}
                   <a
-                    href="https://wa.me/8801700000000?text=Hello%20BRIIZZ%20Team,%20I%20would%20like%20to%20talk%20about%20a%20requirement."
+                    href={`${BRIZZ_SOCIAL_LINKS.whatsappUrl}?text=${encodeURIComponent(t("Hello BRIIZZ Team, I would like to talk about a requirement.", "হ্যালো BRIIZZ টিম, আমার একটি রিকোয়ারমেন্ট নিয়ে আলোচনা করতে চাই।"))}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-between px-5 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl font-bold text-sm transition-all duration-300 shadow-lg shadow-emerald-600/20 group hover:scale-[1.02]"
@@ -140,14 +141,14 @@ export default function TalkToUsCTA() {
 
                   {/* Direct Phone Call */}
                   <a
-                    href="tel:+8801700000000"
+                    href={`tel:+${BRIZZ_SOCIAL_LINKS.whatsappInternational}`}
                     className="w-full flex items-center justify-between px-5 py-3.5 bg-white/10 hover:bg-white/15 text-white border border-white/15 rounded-2xl font-bold text-sm transition-all duration-300 backdrop-blur-md group hover:scale-[1.02]"
                   >
                     <div className="flex items-center gap-3">
                       <PhoneCall className="w-5 h-5 text-brand-400" />
                       <span>{t("Call Central Hotline", "সরাসরি হটলাইনে কল করুন")}</span>
                     </div>
-                    <span className="text-xs text-brand-300 font-mono">+880 1800-BRIIZZ</span>
+                    <span className="text-xs text-brand-300 font-mono">+880 {BRIZZ_SOCIAL_LINKS.whatsappNumber}</span>
                   </a>
 
                   {/* Schedule Meeting */}

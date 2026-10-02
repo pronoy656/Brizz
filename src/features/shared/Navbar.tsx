@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Search, MapPin, Sun, Moon, UserRound, Menu, X, ChevronRight } from "lucide-react";
+import { Search, MapPin, Sun, Moon, Menu, X, ChevronRight } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -58,7 +58,7 @@ const navLinks = [
 export function BriizzLogo({ className = "" }: { className?: string }) {
   return (
     <span className={`flex items-center gap-2 ${className}`}>
-      <svg viewBox="0 0 40 40" className="w-9 h-9 shrink-0" aria-hidden="true">
+      <svg viewBox="0 0 40 40" className="w-8 h-8 shrink-0" aria-hidden="true">
         <defs>
           <linearGradient id="briizz-logo-a" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#3b82f6" />
@@ -73,7 +73,7 @@ export function BriizzLogo({ className = "" }: { className?: string }) {
         <path d="M6 18 L26 29 L6 38 Z" fill="url(#briizz-logo-b)" opacity="0.9" />
         <path d="M18 10 L36 21 L18 32 L24 21 Z" fill="#1d4ed8" opacity="0.85" />
       </svg>
-      <span className="text-[30px] leading-none font-extrabold tracking-tight text-[#0b1b4d] dark:text-white">
+      <span className="text-[26px] leading-none font-extrabold tracking-tight text-[#0b1b4d] dark:text-white">
         Briiz<span className="text-blue-600 dark:text-blue-400">Z</span>
       </span>
     </span>
@@ -117,22 +117,22 @@ function SearchBar({ onSubmitted }: { onSubmitted?: () => void }) {
   return (
     <form
       onSubmit={submit}
-      className="relative flex items-center w-full h-[58px] rounded-full border border-blue-100 dark:border-white/10 bg-white/80 dark:bg-white/5 px-5 shadow-[0_2px_12px_rgba(37,99,235,0.06)] focus-within:border-blue-400 focus-within:ring-4 focus-within:ring-blue-100 dark:focus-within:ring-blue-500/20 transition"
+      className="relative flex items-center w-full h-[46px] rounded-xl border border-blue-100 dark:border-white/10 bg-white/80 dark:bg-white/5 px-4 sm:px-5 shadow-[0_2px_10px_rgba(37,99,235,0.06)] focus-within:border-blue-400 focus-within:ring-4 focus-within:ring-blue-100 dark:focus-within:ring-blue-500/20 transition"
     >
-      <Search className="w-5 h-5 text-[#0b1b4d] dark:text-gray-300 shrink-0" />
-      <div className="relative flex-1 ml-4 h-full">
+      <Search className="w-4 h-4 text-[#0b1b4d] dark:text-gray-300 shrink-0" />
+      <div className="relative flex-1 ml-3 h-full">
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           aria-label={t("What do you need?", "আপনার কী প্রয়োজন?")}
-          className="absolute inset-0 w-full bg-transparent outline-none text-[15px] text-gray-900 dark:text-white"
+          className="absolute inset-0 w-full bg-transparent outline-none text-[14px] text-gray-900 dark:text-white"
         />
         {!query && (
           <div className="pointer-events-none absolute inset-0 flex flex-col justify-center leading-tight">
-            <span className="text-[15px] text-gray-600 dark:text-gray-300">
+            <span className="text-[13px] font-medium text-gray-600 dark:text-gray-300">
               {t("What do you need?", "আপনার কী প্রয়োজন?")}
             </span>
-            <span className="text-xs text-gray-400 mt-0.5 truncate">
+            <span className="text-[11px] text-gray-400 truncate">
               {t("Search services, solutions, providers...", "সার্ভিস, সমাধান, প্রোভাইডার খুঁজুন...")}
             </span>
           </div>
@@ -171,39 +171,51 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-white/95 dark:bg-[#070b18]/95 backdrop-blur-md">
       {/* Row 1: brand, location, search, utilities */}
       <div className="border-b border-gray-100 dark:border-white/10">
-        <div className="mx-auto max-w-[1536px] px-4 lg:px-10 h-[72px] lg:h-[104px] flex items-center gap-4 xl:gap-8">
-          <Link href="/" aria-label="BriizZ home" className="shrink-0">
+        <div className="mx-auto max-w-[1536px] px-4 lg:px-8 h-[62px] lg:h-[72px] flex items-center gap-4 xl:gap-6">
+          <Link
+            href="/"
+            aria-label="BriizZ home"
+            className="shrink-0"
+            onClick={(e) => {
+              setMobileOpen(false);
+              setCategoriesOpen(false);
+              if (pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
             <BriizzLogo />
           </Link>
 
           <Link
             href="/districts"
-            className="hidden lg:flex items-center gap-3 pl-6 border-l border-gray-200 dark:border-white/10 shrink-0"
+            className="hidden lg:flex items-center gap-2.5 pl-5 border-l border-gray-200 dark:border-white/10 shrink-0 hover:opacity-85 transition-opacity"
           >
-            <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+            <MapPin className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
             <span className="leading-tight">
-              <span className="block text-[15px] font-semibold text-[#0b1b4d] dark:text-white">
-                {t("Network", "নেটওয়ার্ক")}
+              <span className="block text-sm font-bold text-[#0b1b4d] dark:text-white">
+                {t("One Network", "এক নেটওয়ার্ক")}
               </span>
-              <span className="block text-sm text-gray-500 dark:text-gray-400">
-                {t("64 District", "৬৪ জেলা")}
+              <span className="block text-xs font-medium text-gray-500 dark:text-gray-400">
+                {t("64 Districts", "৬৪ জেলা")}
               </span>
             </span>
           </Link>
 
-          <div className="hidden lg:block flex-1 max-w-[640px] mx-auto">
+          <div className="hidden lg:block flex-1 max-w-[800px] xl:max-w-[880px] mx-auto">
             <SearchBar />
           </div>
 
-          <div className="hidden lg:flex items-center gap-4 xl:gap-6 shrink-0 ml-auto">
-            <div className="flex items-center gap-3 text-[15px]">
+          <div className="hidden lg:flex items-center gap-3 xl:gap-5 shrink-0 ml-auto">
+            <div className="flex items-center gap-2.5 text-sm">
               <button
                 onClick={() => setLanguage("en")}
                 className={language === "en" ? "font-bold text-[#0b1b4d] dark:text-white" : "text-gray-500 hover:text-[#0b1b4d] dark:hover:text-white"}
               >
                 EN
               </button>
-              <span className="h-5 w-px bg-gray-300 dark:bg-white/20" />
+              <span className="h-4 w-px bg-gray-300 dark:bg-white/20" />
               <button
                 onClick={() => setLanguage("bn")}
                 className={language === "bn" ? "font-bold text-[#0b1b4d] dark:text-white" : "text-gray-500 hover:text-[#0b1b4d] dark:hover:text-white"}
@@ -215,14 +227,10 @@ export default function Navbar() {
             <ThemeSwitch />
 
             <Link
-              href="/partners"
-              className="px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-[15px] shadow-[0_8px_20px_rgba(37,99,235,0.3)] transition-colors whitespace-nowrap"
+              href="/login"
+              className="px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-[0_4px_16px_rgba(37,99,235,0.25)] transition-colors whitespace-nowrap"
             >
               {t("Join BriizZ", "BriizZ-এ যোগ দিন")}
-            </Link>
-
-            <Link href="/login" aria-label={t("Login", "লগইন")} className="text-[#0b1b4d] dark:text-white hover:text-blue-600">
-              <UserRound className="w-7 h-7" strokeWidth={1.75} />
             </Link>
           </div>
 
@@ -325,7 +333,7 @@ export default function Navbar() {
             <Link href="/districts" className="flex items-center gap-3 p-3 rounded-2xl bg-blue-50/70 dark:bg-white/5">
               <MapPin className="w-5 h-5 text-blue-600" />
               <span className="text-sm font-semibold text-[#0b1b4d] dark:text-white">
-                {t("Network · 64 District", "নেটওয়ার্ক · ৬৪ জেলা")}
+                {t("One Network, 64 Districts", "এক নেটওয়ার্ক, ৬৪ জেলা")}
               </span>
             </Link>
 
@@ -344,11 +352,12 @@ export default function Navbar() {
               ))}
             </nav>
 
-            <div className="grid grid-cols-2 gap-3 pt-2">
-              <Link href="/login" className="py-3 text-center rounded-full border border-blue-200 dark:border-white/15 text-[#0b1b4d] dark:text-white font-semibold text-sm">
-                {t("Login", "লগইন")}
-              </Link>
-              <Link href="/partners" className="py-3 text-center rounded-full bg-blue-600 text-white font-semibold text-sm">
+            <div className="pt-2">
+              <Link
+                href="/login"
+                onClick={() => setMobileOpen(false)}
+                className="block w-full py-3 text-center rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md"
+              >
                 {t("Join BriizZ", "BriizZ-এ যোগ দিন")}
               </Link>
             </div>

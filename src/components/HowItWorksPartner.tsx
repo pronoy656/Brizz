@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { IdCard, BadgeCheck, Search, Inbox, Package, Trophy, type LucideIcon } from "lucide-react";
+import { FileText, ScanSearch, Search, Users, ShieldCheck, CheckCircle, type LucideIcon } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 type Step = {
@@ -13,51 +13,51 @@ type Step = {
 
 const steps: Step[] = [
   {
-    icon: IdCard,
-    title: { en: "Create Your Profile", bn: "প্রোফাইল তৈরি করুন" },
+    icon: FileText,
+    title: { en: "Tell Us What You Need", bn: "আপনার প্রয়োজন জানান" },
     desc: {
-      en: "Submit your business details, capabilities, and past work to our network.",
-      bn: "আপনার ব্যবসার তথ্য, সক্ষমতা এবং আগের কাজ আমাদের নেটওয়ার্কে জমা দিন।",
+      en: "Fill out a simple form explaining what you want to achieve. No technical jargon required.",
+      bn: "সহজ একটি ফর্ম পূরণ করে আপনার লক্ষ্য জানান। কোনো জটিল বা টেকনিক্যাল তথ্যের প্রয়োজন নেই।",
     },
   },
   {
-    icon: BadgeCheck,
-    title: { en: "Get Verified", bn: "ভেরিফাইড হোন" },
+    icon: ScanSearch,
+    title: { en: "We Understand Your Requirement", bn: "আমরা আপনার চাহিদা বুঝি" },
     desc: {
-      en: "Our team vets your credentials to give you the verified BRIIZZ badge of trust.",
-      bn: "আমাদের টিম আপনার তথ্য যাচাই করে আপনাকে BRIIZZ-এর ভেরিফাইড ব্যাজ দেবে।",
+      en: "Our team reviews your request to ensure we know exactly what will solve your problem.",
+      bn: "আমাদের টিম আপনার রিকোয়ারমেন্ট পর্যালোচনা করে সঠিক সমাধান চিহ্নিত করে।",
     },
   },
   {
     icon: Search,
-    title: { en: "We Find The Clients", bn: "ক্লায়েন্ট খুঁজে দিই আমরা" },
+    title: { en: "We Search the Network", bn: "আমরা নেটওয়ার্কে খুঁজি" },
     desc: {
-      en: "We actively source and aggregate high-intent users looking for your exact services.",
-      bn: "আপনার সার্ভিস খুঁজছেন এমন আগ্রহী ক্লায়েন্টদের আমরা নিজেরাই খুঁজে বের করি।",
+      en: "We look through our verified database of providers and partners to find the perfect match.",
+      bn: "আমাদের ভেরিফাইড প্রোভাইডার ও পার্টনার ডাটাবেস থেকে উপযুক্ত পার্টনার খুঁজে বের করি।",
     },
   },
   {
-    icon: Inbox,
-    title: { en: "Receive Matched Leads", bn: "ম্যাচড লিড পান" },
+    icon: Users,
+    title: { en: "We Connect the Right People", bn: "সঠিক মানুষের সাথে সংযোগ" },
     desc: {
-      en: "Get direct introductions for projects that match your expertise. No bidding wars.",
-      bn: "আপনার দক্ষতার সাথে মেলে এমন প্রজেক্টে সরাসরি পরিচয় পান। কোনো বিডিং যুদ্ধ নেই।",
+      en: "You get introduced to the exact specialists or suppliers who can deliver the solution.",
+      bn: "আপনার কাঙ্ক্ষিত সমাধানের জন্য যোগ্য বিশেষজ্ঞ বা সাপ্লায়ারের সাথে সরাসরি যুক্ত করিয়ে দেওয়া হয়।",
     },
   },
   {
-    icon: Package,
-    title: { en: "Deliver the Solution", bn: "সমাধান ডেলিভারি দিন" },
+    icon: ShieldCheck,
+    title: { en: "We Coordinate the Opportunity", bn: "আমরা সমন্বয় রক্ষা করি" },
     desc: {
-      en: "You provide your product or service to the client, backed by our secure coordination platform.",
-      bn: "আমাদের নিরাপদ কো-অর্ডিনেশন প্ল্যাটফর্মের সহায়তায় ক্লায়েন্টকে আপনার পণ্য বা সার্ভিস দিন।",
+      en: "BRIIZZ stays in the loop, ensuring terms, quality, and deliverables are perfectly aligned.",
+      bn: "কাজের শর্ত, মান এবং সঠিক ডেলিভারি নিশ্চিত করতে BRIIZZ পুরো প্রক্রিয়ার সাথে যুক্ত থাকে।",
     },
   },
   {
-    icon: Trophy,
-    title: { en: "Grow Your Business", bn: "ব্যবসা বড় করুন" },
+    icon: CheckCircle,
+    title: { en: "Your Solution Gets Delivered", bn: "সমাধান পৌঁছে যায় আপনার কাছে" },
     desc: {
-      en: "Build your reputation, receive payments securely, and scale your operations with us.",
-      bn: "সুনাম গড়ুন, নিরাপদে পেমেন্ট নিন এবং আমাদের সাথে আপনার ব্যবসা বাড়ান।",
+      en: "The project is completed successfully, securely, and stress-free.",
+      bn: "ঝামেলামুক্ত, নিরাপদ ও সফলভাবে আপনার প্রজেক্টটি সম্পন্ন ও ডেলিভারি হয়।",
     },
   },
 ];
@@ -189,17 +189,17 @@ export default function HowItWorksPartner() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-sm font-bold tracking-[0.2em] uppercase text-brand-700 dark:text-brand-400 mb-4">
-            {t("How Partnering Works", "পার্টনারশিপ কীভাবে কাজ করে")}
+            {t("How The Platform Works", "প্ল্যাটফর্মটি যেভাবে কাজ করে")}
           </h2>
           <h3 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-            {t("You don't hunt for clients.", "আপনাকে ক্লায়েন্ট খুঁজতে হবে না।")}
+            {t("You don't search for providers.", "আপনাকে প্রোভাইডার খুঁজতে হবে না।")}
             <br />
-            <span className="text-brand-700 dark:text-brand-400">{t("We deliver them to you.", "আমরাই পৌঁছে দেব।")}</span>
+            <span className="text-brand-700 dark:text-brand-400">{t("We bring them to you.", "আমরাই পৌঁছে দেব।")}</span>
           </h3>
           <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
             {t(
-              "Finding the right client used to mean spending thousands on marketing, bidding on cold leads, and endless negotiating. BRIIZZ acts as your dedicated growth engine. You verify your business, and our intelligent system matches you with high-intent, pre-qualified users who need exactly what you offer.",
-              "সঠিক ক্লায়েন্ট পেতে আগে মার্কেটিংয়ে হাজার টাকা খরচ, ঠান্ডা লিডে বিডিং আর অবিরাম দরকষাকষি করতে হতো। BRIIZZ আপনার গ্রোথ ইঞ্জিন হিসেবে কাজ করে। আপনি ব্যবসা ভেরিফাই করুন, আমাদের সিস্টেম আপনাকে এমন ক্লায়েন্টের সাথে মেলাবে যাদের ঠিক আপনার সার্ভিসই দরকার।"
+              "Finding the right provider used to mean weeks of searching, vetting, and negotiating. BRIIZZ acts as your trusted concierge. You submit a need, and our intelligent system handles the rest.",
+              "সঠিক প্রোভাইডার পেতে আগে দিনের পর দিন খোঁজাখুঁজি, যাচাই আর দরকষাকষি করতে হতো। BRIIZZ আপনার বিশ্বস্ত কনসিয়ার্জ হিসেবে কাজ করে। শুধু আপনার রিকোয়ারমেন্ট জানান, বাকি কাজ করবে আমাদের ইন্টেলিজেন্ট সিস্টেম।"
             )}
           </p>
         </div>

@@ -540,10 +540,10 @@ function SolutionsCatalogContent() {
   }, [selectedCategory, selectedSubCategory, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-[#070709] transition-colors duration-300 pt-28 pb-24">
+    <div className="min-h-screen bg-gray-50 dark:bg-[#070709] transition-colors duration-300 pt-0 pb-20">
       
       {/* Page Header */}
-      <div className="bg-white dark:bg-[#0c0c10] border-b border-gray-200 dark:border-white/5 py-10 sm:py-12 mb-8 relative overflow-hidden">
+      <div className="bg-white dark:bg-[#0c0c10] border-b border-gray-200 dark:border-white/5 pt-6 sm:pt-8 pb-8 sm:pb-10 mb-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-500/10 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-7xl">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">

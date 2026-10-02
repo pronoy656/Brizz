@@ -3,13 +3,14 @@
 import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { BRIZZ_SOCIAL_LINKS } from "@/lib/data";
 
 export default function WhatsAppFloatingButton() {
   const { t } = useLanguage();
   const [showGreeting, setShowGreeting] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
 
-  const phoneNumber = "8801700000000";
+  const phoneNumber = BRIZZ_SOCIAL_LINKS.whatsappInternational;
   const defaultMessage = encodeURIComponent(
     t(
       "Hello BRIIZZ Team, I would like to inquire about your services.",

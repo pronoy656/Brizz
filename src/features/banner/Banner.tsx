@@ -305,21 +305,24 @@ export default function Banner() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <span className="inline-block px-4 py-2 rounded-md bg-blue-100/70 dark:bg-blue-500/10 text-[13px] font-semibold tracking-[0.18em] text-[#1e3a8a] dark:text-blue-300">
-            {t("THE BRIIZZ ECOSYSTEM", "BRIIZZ ইকোসিস্টেম")}
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/80 dark:bg-blue-500/10 text-[12px] sm:text-[13px] font-bold tracking-[0.15em] text-[#1e3a8a] dark:text-blue-300 uppercase border border-blue-200/60 dark:border-blue-500/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
+            <span>{t("YOUR NETWORK. YOUR POSSIBILITIES.", "আপনার নেটওয়ার্ক। আপনার সম্ভাবনা।")}</span>
           </span>
 
-          <h1 className="mt-8 font-extrabold tracking-[-0.035em] leading-[1.05] text-[44px] sm:text-6xl xl:text-[76px]">
-            <span className="block text-[#0b1b4d] dark:text-white">{t("One Platform.", "একটি প্ল্যাটফর্ম।")}</span>
-            <span className="block bg-gradient-to-r from-blue-600 via-blue-600 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-cyan-300">
-              {t("Every Solution.", "সব সমাধান।")}
+          <h1 className="mt-6 font-extrabold tracking-[-0.035em] leading-[1.12] text-[24px] sm:text-[36px] md:text-[42px] lg:text-[34px] xl:text-[46px] 2xl:text-[52px]">
+            <span className="block whitespace-nowrap text-[#0b1b4d] dark:text-white">
+              {t("The One-Stop Solution", "The One-Stop Solution")}
+            </span>
+            <span className="block bg-gradient-to-r from-blue-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-cyan-300">
+              {t("for the right people & providers.", "for the right people & providers.")}
             </span>
           </h1>
 
-          <p className="mt-8 max-w-[460px] text-lg sm:text-xl leading-relaxed text-[#3b4766] dark:text-gray-300">
+          <p className="mt-6 max-w-[500px] text-base sm:text-lg leading-relaxed text-[#3b4766] dark:text-gray-300">
             {t(
-              "Tell us what you need. BriizZ connects you with the right people, expertise, and solutions to make it happen.",
-              "আপনার কী প্রয়োজন বলুন। BriizZ আপনাকে সঠিক মানুষ, দক্ষতা ও সমাধানের সাথে যুক্ত করে।"
+              "BRIIZZ connects you with trusted professionals, verified providers and real opportunities — helping you move forward, faster.",
+              "BRIIZZ আপনাকে বিশ্বস্ত প্রফেশনাল, ভেরিফায়েড প্রোভাইডার এবং সত্যিকারের সুযোগের সাথে যুক্ত করে — যাতে আপনি এগিয়ে যেতে পারেন দ্রুত ও নিশ্চিন্তে।"
             )}
           </p>
 

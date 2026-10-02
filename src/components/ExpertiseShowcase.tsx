@@ -224,31 +224,6 @@ export default function ExpertiseShowcase() {
           ))}
         </div>
 
-        {/* Minimalist Trust Assurance Footer */}
-        <div className="p-6 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-200/70 dark:border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <div>
-              <h4 className="text-sm font-extrabold text-slate-900 dark:text-white">
-                {t("100% Vetted Quality & Escrow Guarantee", "১০০% যাচাইকৃত কোয়ালিটি ও এসক্রো গ্যারান্টি")}
-              </h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                {t("No random contractors. Real track records and milestone-based secure release.", "কোনো অনিশ্চয়তা নেই। প্রতিটি কাজ মাইলস্টোন এবং কোয়ালিটি গ্যারান্টিতে সম্পন্ন হয়।")}
-              </p>
-            </div>
-          </div>
-
-          <Link
-            href="/expertise"
-            className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1 shrink-0"
-          >
-            <span>{t("Browse All Verified Categories (500+)", "সকল ভেরিফায়েড ক্যাটাগরি দেখুন (৫০০+)")}</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
-
       </div>
     </section>
   );

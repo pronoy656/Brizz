@@ -6,16 +6,16 @@ import { ArrowRight, Search, Users, Activity } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-white pt-24 pb-12">
+    <div className="min-h-screen bg-white dark:bg-[#07070a] pt-0 pb-16 transition-colors">
       
       {/* Hero */}
-      <section className="py-24 bg-gray-50 border-b border-gray-100">
+      <section className="pt-8 sm:pt-12 pb-12 sm:pb-16 bg-gray-50 dark:bg-[#0b101e] border-b border-gray-100 dark:border-white/10">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
-          <span className="text-sm font-bold tracking-widest uppercase text-brand-800 mb-4 block">What is BRIIZZ?</span>
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-8">
+          <span className="text-sm font-bold tracking-widest uppercase text-brand-800 dark:text-blue-400 mb-3 block">What is BRIIZZ?</span>
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
             Connecting what you need <br /> with who can provide it.
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             People know what they need, but they often don't know who can provide it or where to find the right person. That is why we built BRIIZZ.
           </p>
         </div>
