@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Hero from "@/components/Hero";
 import OneStopSolution from "@/components/OneStopSolution";
 import OneStopSolutionV2 from "@/components/OneStopSolutionV2";
 import OneStopSolutionV3 from "@/components/OneStopSolutionV3";
@@ -24,12 +23,14 @@ import SolutionsForEveryone from "@/components/SolutionsForEveryone";
 import UsefulInformation from "@/components/UsefulInformation";
 import TalkToUsCTA from "@/components/TalkToUsCTA";
 import Link from "next/link";
+import Banner from "@/features/banner/Banner";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
       {/* 1. Hero */}
-      <Hero />
+      {/* <Hero /> */}
+      <Banner />
 
       {/* 1.2 Solutions For Everyone */}
       <SolutionsForEveryone />
