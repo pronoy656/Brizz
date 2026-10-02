@@ -1,18 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import {
   Sparkles,
-  ArrowRight,
-  ArrowUpRight,
-  ShieldCheck,
-  CheckCircle2,
-  Repeat,
-  Radio,
-  Activity,
   Package,
   Factory,
   Building2,
@@ -35,7 +27,6 @@ interface TransitRoute {
   side: "left" | "right";
   y: number; // Y position in 600px grid
   link: string;
-  features: { en: string; bn: string }[];
 }
 
 const LEFT_ROUTES: TransitRoute[] = [
@@ -51,12 +42,7 @@ const LEFT_ROUTES: TransitRoute[] = [
     color: "#0ea5e9", // Sky
     side: "left",
     y: 80,
-    link: "/solutions?category=wholesale",
-    features: [
-      { en: "Direct China / Global Sourcing", bn: "চীন ও আন্তর্জাতিক সরাসরি সোর্সিং" },
-      { en: "Industrial Hardware & Textiles", bn: "ইন্ডাস্ট্রিয়াল কাঁচামাল ও ফেব্রিক" },
-      { en: "Custom Packaging & Pallets", bn: "কাস্টম প্যাকেজিং ও ওয়্যারহাউজিং" }
-    ]
+    link: "/solutions?category=wholesale"
   },
   {
     id: "suppliers",
@@ -70,12 +56,7 @@ const LEFT_ROUTES: TransitRoute[] = [
     color: "#3b82f6", // Blue
     side: "left",
     y: 220,
-    link: "/solutions?category=wholesale",
-    features: [
-      { en: "Rigorous Due Diligence", bn: "কঠোর ব্যাকগ্রাউন্ড ভেরিফিকেশন" },
-      { en: "Tier-1 Trade Agreements", bn: "টপ-টিয়ার চুক্তি ও গ্যারান্টি" },
-      { en: "Dedicated Account Coordinator", bn: "ডেডিকেটেড অ্যাকাউন্ট ম্যানেজার" }
-    ]
+    link: "/solutions?category=wholesale"
   },
   {
     id: "workspace",
@@ -89,12 +70,7 @@ const LEFT_ROUTES: TransitRoute[] = [
     color: "#f59e0b", // Amber
     side: "left",
     y: 360,
-    link: "/solutions?category=real-estate",
-    features: [
-      { en: "Verified Commercial Leases", bn: "বাণিজ্যিক স্পেস সোর্সিং" },
-      { en: "Architectural Interior Fitouts", bn: "টার্নকি ইন্টেরিয়র ডেকোরেশন" },
-      { en: "Ergonomic Workstations", bn: "এক্সিকিউটিভ ফার্নিচার ও লাইটিং" }
-    ]
+    link: "/solutions?category=real-estate"
   },
   {
     id: "support",
@@ -108,12 +84,7 @@ const LEFT_ROUTES: TransitRoute[] = [
     color: "#10b981", // Emerald
     side: "left",
     y: 500,
-    link: "/solutions?category=business",
-    features: [
-      { en: "RJSC, TIN/BIN & Licenses", bn: "আরজেএসসি, ট্রেড লাইসেন্স ও ট্যাক্স" },
-      { en: "Ongoing VAT & Audit Filing", bn: "ভ্যাট রিটার্ন ও বার্ষিক অডিট" },
-      { en: "Sales & Executive Recruiting", bn: "দক্ষ জনবল ও সেলস টিম নিয়োগ" }
-    ]
+    link: "/solutions?category=business"
   }
 ];
 
@@ -130,12 +101,7 @@ const RIGHT_ROUTES: TransitRoute[] = [
     color: "#8b5cf6", // Purple
     side: "right",
     y: 120,
-    link: "/solutions?category=tech",
-    features: [
-      { en: "Custom Next.js & React Apps", bn: "কাস্টম নেক্সটজেএস ও ওয়েব পোর্টাল" },
-      { en: "Instant Payment Gateway Setup", bn: "পেমেন্ট গেটওয়ে ইন্টিগ্রেশন" },
-      { en: "iOS & Android Cross-Platform", bn: "আইওএস ও অ্যান্ড্রয়েড অ্যাপ" }
-    ]
+    link: "/solutions?category=tech"
   },
   {
     id: "digital",
@@ -149,12 +115,7 @@ const RIGHT_ROUTES: TransitRoute[] = [
     color: "#06b6d4", // Cyan
     side: "right",
     y: 290,
-    link: "/solutions?category=tech",
-    features: [
-      { en: "Multi-Store Inventory & Billing", bn: "মাল্টি-ব্রাঞ্চ স্টক ও বিলিং" },
-      { en: "POS Hardware & Barcode Scanners", bn: "পিওএস টার্মিনাল সেটআপ" },
-      { en: "Automated Financial Analytics", bn: "লাইভ ফিনান্সিয়াল অ্যানালিটিক্স" }
-    ]
+    link: "/solutions?category=tech"
   },
   {
     id: "growth",
@@ -168,12 +129,7 @@ const RIGHT_ROUTES: TransitRoute[] = [
     color: "#ec4899", // Pink
     side: "right",
     y: 460,
-    link: "/solutions?category=business",
-    features: [
-      { en: "High-Converting Ad Campaigns", bn: "টার্গেটেড বিজ্ঞাপন ও বিক্রয় বৃদ্ধি" },
-      { en: "4K Product Media & Video Reels", bn: "প্রোডাক্ট ফটোগ্রাফি ও ভিডিও" },
-      { en: "64-District Distribution Plan", bn: "দেশব্যাপী ডিস্ট্রিবিউশন প্ল্যান" }
-    ]
+    link: "/solutions?category=business"
   }
 ];
 
@@ -187,7 +143,6 @@ export default function OneStopSolutionV3() {
   const { t, language } = useLanguage();
   const [activeRouteId, setActiveRouteId] = useState<string>("products");
   const [hoveredRouteId, setHoveredRouteId] = useState<string | null>(null);
-  const [flowDirection, setFlowDirection] = useState<"converge" | "deliver">("converge");
 
   const effectiveActiveId = hoveredRouteId || activeRouteId;
   const activeRoute = ALL_ROUTES.find((r) => r.id === effectiveActiveId) || ALL_ROUTES[0];
@@ -197,13 +152,6 @@ export default function OneStopSolutionV3() {
       
       {/* Background Precision Transit Grid */}
       <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:36px_36px] opacity-60 dark:opacity-40 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] bg-brand-500/5 dark:bg-brand-500/10 rounded-full blur-[180px] pointer-events-none" />
-
-      {/* Dynamic Ambient Glow Flash */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] rounded-full blur-[150px] transition-all duration-700 pointer-events-none opacity-15 dark:opacity-25"
-        style={{ backgroundColor: activeRoute.color }}
-      />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-7xl">
         
@@ -230,9 +178,6 @@ export default function OneStopSolutionV3() {
             {t("Your Ultimate", "আপনার পূর্ণাঙ্গ")}{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-700 via-indigo-600 to-teal-600 dark:from-brand-400 dark:via-teal-300 dark:to-indigo-300">
               {t("One-Stop Solution", "ওয়ান-স্টপ সমাধান")}
-            </span>{" "}
-            <span className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-400 dark:text-gray-500 font-mono">
-              ({t("Version 3", "ভার্সন ৩")})
             </span>
           </motion.h2>
 
@@ -244,40 +189,12 @@ export default function OneStopSolutionV3() {
             className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-normal max-w-2xl mx-auto"
           >
             {t(
-              "A business owner should not need to visit dozens of fragmented vendors. Different business needs converge into one central destination: BRIIZZ.",
-              "আলাদা আলাদা ডজনখানেক ভেন্ডরের পেছনে ছোটাছুটি করার দিন শেষ। ব্যবসার সকল প্রয়োজন এসে মিলেছে এক বিশ্বস্ত সেন্ট্রাল ঠিকানায়: BRIIZZ।"
+              "You bring the idea. We connect everything you need to build, launch and grow your business.",
+              "আপনি নিয়ে আসুন আপনার আইডিয়া। ব্যবসা গড়া, শুরু করা ও বড় করার প্রতিটি ধাপ যুক্ত করবে BRIIZZ।"
             )}
           </motion.p>
         </div>
 
-        {/* Direction Flow Toggle Pill (Convergence vs Delivery) */}
-        <div className="flex items-center justify-center mb-8">
-          <div className="p-1 rounded-2xl bg-white dark:bg-white/5 border border-gray-200/80 dark:border-white/10 flex items-center shadow-sm backdrop-blur-md">
-            <button
-              onClick={() => setFlowDirection("converge")}
-              className={`flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-                flowDirection === "converge"
-                  ? "bg-gray-900 dark:bg-white text-white dark:text-gray-950 shadow-md"
-                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-              }`}
-            >
-              <Radio className={`w-3.5 h-3.5 ${flowDirection === "converge" ? "text-brand-400 dark:text-brand-600" : ""}`} />
-              <span>{t("1. Needs Converge into BRIIZZ", "১. চাহিদাগুলো যুক্ত হয় BRIIZZ-এ")}</span>
-            </button>
-
-            <button
-              onClick={() => setFlowDirection("deliver")}
-              className={`flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-                flowDirection === "deliver"
-                  ? "bg-gray-900 dark:bg-white text-white dark:text-gray-950 shadow-md"
-                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-              }`}
-            >
-              <Repeat className={`w-3.5 h-3.5 ${flowDirection === "deliver" ? "text-brand-400 dark:text-brand-600" : ""}`} />
-              <span>{t("2. BRIIZZ Delivers Solutions Back", "২. BRIIZZ সমাধান পৌঁছে দেয়")}</span>
-            </button>
-          </div>
-        </div>
 
         {/* ========================================================================= */}
         {/* DESKTOP 3-COLUMN PERFECTLY BALANCED TRANSIT NEXUS (lg+ screens) */}
@@ -360,8 +277,8 @@ export default function OneStopSolutionV3() {
                   >
                     <animate
                       attributeName="stroke-dashoffset"
-                      from={flowDirection === "converge" ? "300" : "0"}
-                      to={flowDirection === "converge" ? "0" : "300"}
+                      from="300"
+                      to="0"
                       dur={isSelected ? "1.2s" : "3.2s"}
                       repeatCount="indefinite"
                     />
@@ -418,8 +335,8 @@ export default function OneStopSolutionV3() {
                   >
                     <animate
                       attributeName="stroke-dashoffset"
-                      from={flowDirection === "converge" ? "300" : "0"}
-                      to={flowDirection === "converge" ? "0" : "300"}
+                      from="300"
+                      to="0"
                       dur={isSelected ? "1.2s" : "3.2s"}
                       repeatCount="indefinite"
                     />
@@ -591,109 +508,7 @@ export default function OneStopSolutionV3() {
 
         </div>
 
-        {/* ========================================================================= */}
-        {/* INTERACTIVE LIVE HUD TELEMETRY DRAWER (Desktop & Mobile) */}
-        {/* ========================================================================= */}
-        <motion.div
-          key={activeRoute.id}
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
-          className="mt-6 p-6 sm:p-8 rounded-3xl bg-white dark:bg-gray-900/90 border border-gray-200/90 dark:border-white/10 shadow-xl relative overflow-hidden text-left"
-        >
-          <div
-            className="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl opacity-15 pointer-events-none"
-            style={{ backgroundColor: activeRoute.color }}
-          />
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-            
-            {/* Route Status Summary */}
-            <div className="md:col-span-4 flex items-start gap-4">
-              <div
-                className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shrink-0 shadow-md font-bold"
-                style={{ backgroundColor: activeRoute.color }}
-              >
-                {React.createElement(activeRoute.icon, { className: "w-6 h-6" })}
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs font-mono font-bold text-gray-400 uppercase tracking-wider">
-                    {language === "bn" ? activeRoute.category.bn : activeRoute.category.en}
-                  </span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                    LIVE
-                  </span>
-                </div>
-                <h3 className="text-xl font-black text-gray-900 dark:text-white">
-                  {language === "bn" ? activeRoute.name.bn : activeRoute.name.en}
-                </h3>
-              </div>
-            </div>
-
-            {/* Core Capability Badges */}
-            <div className="md:col-span-5 flex flex-wrap gap-2">
-              {activeRoute.features.map((feat, fIdx) => (
-                <div
-                  key={fIdx}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200/80 dark:border-white/10 text-xs text-gray-700 dark:text-gray-300 font-medium"
-                >
-                  <CheckCircle2 className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400 shrink-0" />
-                  <span>{language === "bn" ? feat.bn : feat.en}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Action Trigger */}
-            <div className="md:col-span-3 flex md:justify-end">
-              <Link
-                href={`/needs/new?stream=${activeRoute.id}`}
-                className="w-full md:w-auto px-6 py-3 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-950 font-black text-xs sm:text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2 group"
-              >
-                <span>{t("Launch Stream via BRIIZZ", "BRIIZZ দিয়ে শুরু করুন")}</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-
-          </div>
-        </motion.div>
-
-        {/* ========================================================================= */}
-        {/* CLOSING CONVERGENCE STATEMENT */}
-        {/* ========================================================================= */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-16 lg:mt-20 pt-10 border-t border-gray-200 dark:border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
-        >
-          <div>
-            <span className="text-xs font-mono tracking-widest text-brand-600 dark:text-brand-400 uppercase font-semibold block mb-1">
-              {t("EVERYTHING YOUR BUSINESS NEEDS.", "ব্যবসার প্রতিটি প্রয়োজন।")}
-            </span>
-            <h4 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white">
-              {t("Connected through one place.", "একক সেন্ট্রাল গন্তব্যে যুক্ত।")}
-            </h4>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/needs/new"
-              className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-teal-500 dark:from-brand-500 dark:to-teal-400 text-white dark:text-gray-950 font-black text-sm hover:brightness-110 transition-all shadow-lg shadow-brand-500/20 flex items-center gap-2 group"
-            >
-              <span>{t("Post Your Business Need", "আপনার রিকোয়ারমেন্ট দিন")}</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-
-            <Link
-              href="/solutions"
-              className="px-6 py-3.5 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-white/5 dark:hover:bg-white/10 text-gray-800 dark:text-white font-bold text-sm border border-gray-200 dark:border-white/10 transition-all"
-            >
-              <span>{t("Explore Solutions", "সমাধানসমূহ দেখুন")}</span>
-            </Link>
-          </div>
-        </motion.div>
 
       </div>
     </section>
