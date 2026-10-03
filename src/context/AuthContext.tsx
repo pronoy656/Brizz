@@ -89,7 +89,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } else if (selectedRole === "partner") {
       router.push("/partners/dashboard");
     } else {
-      router.push(`/dashboard/${selectedRole}`);
+      // Admin dashboard is commented out; redirect safely to client dashboard
+      router.push("/dashboard");
     }
   };
 

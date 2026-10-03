@@ -3,7 +3,6 @@
 import React from "react";
 import OneStopSolutionV3 from "@/components/OneStopSolutionV3";
 
-import NeedSomethingForm from "@/components/NeedSomethingForm";
 import HowItWorks from "@/components/HowItWorks";
 import DistrictsMap from "@/components/DistrictsMap";
 
@@ -66,9 +65,6 @@ export default function HomePage() {
 
       {/* Direct Communication / Talk to BRIIZZ Team CTA */}
       <TalkToUsCTA />
-
-      {/* Final Call to Action - Tell Us What You Need */}
-      <NeedSomethingForm />
     </div>
   );
 }

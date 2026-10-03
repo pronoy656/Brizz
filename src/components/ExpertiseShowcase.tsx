@@ -26,9 +26,11 @@ const EXPERT_PARTNERS = [
     domain: "Web, Cloud & App Engineering",
     domainBn: "ওয়েব, ক্লাউড ও অ্যাপ ইঞ্জিনিয়ারিং",
     rating: "4.8",
+    ratingBn: "৪.৮",
     projects: "27+ Delivered",
     projectsBn: "২৭+ ডেলিভার্ড",
     location: "Dhaka",
+    locationBn: "ঢাকা",
     heroImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&auto=format&fit=crop&q=80",
     keyDeliverable: "Enterprise Next.js SaaS & Mobile App",
     keyDeliverableBn: "এন্টারপ্রাইজ নেক্সট জেএস ও মোবাইল অ্যাপ",
@@ -43,9 +45,11 @@ const EXPERT_PARTNERS = [
     domain: "Hardware & Office Infrastructure",
     domainBn: "হার্ডওয়্যার ও অফিস ইনফ্রাস্ট্রাকচার",
     rating: "4.9",
+    ratingBn: "৪.৯",
     projects: "65+ Delivered",
     projectsBn: "৬৫+ ডেলিভার্ড",
     location: "Dhaka",
+    locationBn: "ঢাকা",
     heroImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=700&auto=format&fit=crop&q=80",
     keyDeliverable: "Multi-Floor MikroTik Wi-Fi & IP CCTV",
     keyDeliverableBn: "মাল্টি-ফ্লোর মাইক্রোটিক ওয়াইফাই ও সিসিটিভি",
@@ -60,9 +64,11 @@ const EXPERT_PARTNERS = [
     domain: "Creative Brand & 4K Cinema",
     domainBn: "ক্রিয়েটিভ ব্র্যান্ডিং ও ৪কে ভিডিও",
     rating: "4.9",
+    ratingBn: "৪.৯",
     projects: "38+ Delivered",
     projectsBn: "৩৮+ ডেলিভার্ড",
     location: "Chattogram",
+    locationBn: "চট্টগ্রাম",
     heroImage: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=700&auto=format&fit=crop&q=80",
     keyDeliverable: "Cinematic Brand Film & Visual Identity",
     keyDeliverableBn: "সিনেমাটিক ব্র্যান্ড ফিল্ম ও ভিজ্যুয়াল আইডেন্টিটি",
@@ -81,13 +87,13 @@ export default function ExpertiseShowcase() {
     : EXPERT_PARTNERS.filter(p => p.id === activeCategory);
 
   return (
-    <section id="expertise-network" className="py-24 bg-gradient-to-b from-white via-slate-50 to-white dark:from-[#080b12] dark:via-[#0c101b] dark:to-[#080b12] relative overflow-hidden transition-colors duration-300">
+    <section id="expertise-network" className="py-16 sm:py-24 bg-gradient-to-b from-white via-slate-50 to-white dark:from-[#080b12] dark:via-[#0c101b] dark:to-[#080b12] relative overflow-hidden transition-colors duration-300">
       
       {/* Subtle Ambient Background Gradients */}
       <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none -translate-y-1/2"></div>
       <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-indigo-500/5 dark:bg-indigo-500/10 rounded-full blur-[140px] pointer-events-none translate-y-1/2"></div>
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl space-y-12">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl space-y-8 sm:space-y-12">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 pb-2">
@@ -97,7 +103,7 @@ export default function ExpertiseShowcase() {
               <span>{t("Verified Partner Ecosystem", "ভেরিফায়েড পার্টনার ইকোসিস্টেম")}</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
               {t("Our Core Expertise & Verified Profiles", "আমাদের স্পেশালাইজড এক্সপার্টাইজ ও ভেরিফায়েড পার্টনার")}
             </h2>
 
@@ -109,10 +115,10 @@ export default function ExpertiseShowcase() {
             </p>
           </div>
 
-          <div className="shrink-0">
+          <div className="shrink-0 w-full md:w-auto">
             <Link
               href="/expertise"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-200 text-white dark:text-slate-950 font-extrabold text-sm shadow-xl shadow-slate-900/10 dark:shadow-none transition-all hover:scale-[1.02]"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl sm:rounded-2xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-200 text-white dark:text-slate-950 font-extrabold text-sm shadow-xl shadow-slate-900/10 dark:shadow-none transition-all hover:scale-[1.02] w-full md:w-auto"
             >
               <span>{t("Explore Partner Directory", "পার্টনার ডিরেক্টরি দেখুন")}</span>
               <ArrowRight className="w-4 h-4 text-emerald-400 dark:text-emerald-600" />
@@ -121,11 +127,11 @@ export default function ExpertiseShowcase() {
         </div>
 
         {/* 3 Spacious, High-Impact Spotlight Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {displayedList.map((partner) => (
             <div
               key={partner.id}
-              className="group relative bg-white dark:bg-[#111622] rounded-[2rem] border border-slate-200/80 dark:border-white/10 p-6 shadow-[0_10px_35px_rgba(0,0,0,0.05)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.3)] hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
+              className="group relative bg-white dark:bg-[#111622] rounded-2xl sm:rounded-[2rem] border border-slate-200/80 dark:border-white/10 p-5 sm:p-6 shadow-[0_10px_35px_rgba(0,0,0,0.05)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.3)] hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
             >
               {/* Hover Glow Edge */}
               <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${partner.accentGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
@@ -177,7 +183,7 @@ export default function ExpertiseShowcase() {
                 <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-100 dark:border-white/5 text-xs font-bold text-slate-700 dark:text-slate-300">
                   <div className="flex items-center gap-1 text-amber-500 font-black">
                     <Star className="w-3.5 h-3.5 fill-amber-400" />
-                    <span>{partner.rating}</span>
+                    <span>{language === "bn" ? partner.ratingBn : partner.rating}</span>
                   </div>
                   <span className="text-slate-300 dark:text-slate-700">|</span>
                   <div className="text-slate-600 dark:text-slate-300">
@@ -186,7 +192,7 @@ export default function ExpertiseShowcase() {
                   <span className="text-slate-300 dark:text-slate-700">|</span>
                   <div className="flex items-center gap-1 text-slate-500 dark:text-slate-400">
                     <MapPin className="w-3 h-3 text-rose-500" />
-                    <span>{partner.location}</span>
+                    <span>{language === "bn" ? partner.locationBn : partner.location}</span>
                   </div>
                 </div>
 

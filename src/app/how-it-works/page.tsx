@@ -156,7 +156,18 @@ export default function HowItWorksPage() {
             </div>
           </div>
 
-          <div className="mt-20">
+          <div id="providers" className="mt-16 pt-12 border-t border-gray-100 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6 p-6 sm:p-8 rounded-3xl bg-gray-50 dark:bg-white/5 text-left">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">For Partners & Providers</span>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mt-1">Want to grow your business with BRIIZZ?</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 max-w-xl">Learn how we take your business from zero to future with China sourcing, custom web/apps, and nationwide traffic.</p>
+            </div>
+            <Link href="/partners/how-it-works" className="btn-primary shrink-0 flex items-center gap-2">
+              Explore Partner Process <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="mt-12">
             <Link href="/needs/new" className="btn-primary">
               Experience It Yourself
             </Link>

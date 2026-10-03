@@ -13,19 +13,19 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("dark");
+  const [theme, setThemeState] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     const saved = localStorage.getItem("brizz_theme") as Theme;
-    if (saved === "light" || saved === "dark") {
-      setThemeState(saved);
-      document.documentElement.classList.toggle("dark", saved === "dark");
-    } else {
-      // Default to dark theme for premium tech look
+    if (saved === "dark") {
       setThemeState("dark");
       document.documentElement.classList.add("dark");
+    } else {
+      // By default website stays in white/light theme initially
+      setThemeState("light");
+      document.documentElement.classList.remove("dark");
     }
   }, []);
 

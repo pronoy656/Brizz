@@ -30,16 +30,16 @@ export default function WhatsAppFloatingButton() {
   }, [isDismissed]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2.5">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-2.5 max-w-[calc(100vw-2rem)]">
       
-      {/* Clean Minimal Greeting Bubble */}
+      {/* Clean Minimal Greeting Bubble (Hidden on mobile to avoid blocking scrolling) */}
       {showGreeting && !isDismissed && (
-        <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 bg-white dark:bg-[#18181b] px-4 py-2.5 rounded-2xl shadow-xl border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-100 flex items-center gap-3">
+        <div className="hidden sm:flex animate-in fade-in slide-in-from-bottom-2 duration-300 bg-white dark:bg-[#18181b] px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl shadow-xl border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-100 items-center gap-2.5 sm:gap-3 max-w-full">
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium hover:text-[#25D366] transition-colors whitespace-nowrap cursor-pointer"
+            className="text-xs sm:text-sm font-medium hover:text-[#25D366] transition-colors whitespace-nowrap cursor-pointer truncate"
           >
             {t("Hi, how can I help you?", "হাই, কীভাবে সাহায্য করতে পারি?")}
           </a>
@@ -50,7 +50,7 @@ export default function WhatsAppFloatingButton() {
               setShowGreeting(false);
               setIsDismissed(true);
             }}
-            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-0.5 rounded-full transition-colors cursor-pointer"
+            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-0.5 rounded-full transition-colors cursor-pointer shrink-0"
             aria-label="Close"
           >
             <X className="w-3.5 h-3.5" />
@@ -63,7 +63,7 @@ export default function WhatsAppFloatingButton() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+        className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
         aria-label="WhatsApp"
         title="WhatsApp"
       >

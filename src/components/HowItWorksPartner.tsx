@@ -184,19 +184,19 @@ export default function HowItWorksPartner() {
   const paths = boxes.slice(0, -1).map((b, i) => connectorPath(b, boxes[i + 1], i % 2 === 0));
 
   return (
-    <section className="py-24 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/10 transition-colors duration-300 overflow-hidden">
+    <section className="py-16 sm:py-24 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/10 transition-colors duration-300 overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-sm font-bold tracking-[0.2em] uppercase text-brand-700 dark:text-brand-400 mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
+          <h2 className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-brand-700 dark:text-brand-400 mb-3 sm:mb-4">
             {t("How The Platform Works", "প্ল্যাটফর্মটি যেভাবে কাজ করে")}
           </h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+          <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 leading-tight">
             {t("You don't search for providers.", "আপনাকে প্রোভাইডার খুঁজতে হবে না।")}
             <br />
             <span className="text-brand-700 dark:text-brand-400">{t("We bring them to you.", "আমরাই পৌঁছে দেব।")}</span>
           </h3>
-          <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p className="text-sm sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
             {t(
               "Finding the right provider used to mean weeks of searching, vetting, and negotiating. BRIIZZ acts as your trusted concierge. You submit a need, and our intelligent system handles the rest.",
               "সঠিক প্রোভাইডার পেতে আগে দিনের পর দিন খোঁজাখুঁজি, যাচাই আর দরকষাকষি করতে হতো। BRIIZZ আপনার বিশ্বস্ত কনসিয়ার্জ হিসেবে কাজ করে। শুধু আপনার রিকোয়ারমেন্ট জানান, বাকি কাজ করবে আমাদের ইন্টেলিজেন্ট সিস্টেম।"
@@ -249,15 +249,26 @@ export default function HowItWorksPartner() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className={`relative z-10 w-full md:w-[51%] ${i === 0 ? "mt-10" : "mt-16"} ${i % 2 === 1 ? "md:ml-[49%]" : ""}`}
+                className={`relative z-10 w-full md:w-[51%] ${i === 0 ? "mt-10" : "mt-14 sm:mt-16"} ${i % 2 === 1 ? "md:ml-[49%]" : ""}`}
               >
                 <div
-                  className={`relative overflow-hidden rounded-[20px] px-7 sm:px-12 pt-16 pb-9 transition-all duration-500 ${
+                  className={`relative overflow-hidden rounded-[20px] px-6 sm:px-10 md:px-12 pt-14 sm:pt-16 pb-7 sm:pb-9 transition-all duration-500 ${
                     isActive
                       ? "bg-brand-700 shadow-[0_20px_50px_rgba(109,40,217,0.35)]"
                       : "bg-[#f5f5f5] dark:bg-white/5"
                   }`}
                 >
+                  {/* Step counter pill on top right */}
+                  <span
+                    className={`absolute top-4 right-5 text-xs font-mono font-bold px-2.5 py-1 rounded-full ${
+                      isActive
+                        ? "bg-white/20 text-white"
+                        : "bg-gray-200/80 dark:bg-white/10 text-gray-500 dark:text-gray-400"
+                    }`}
+                  >
+                    {language === "bn" ? `০${["১", "২", "৩", "৪", "৫", "৬"][i]}` : `0${i + 1}`}
+                  </span>
+
                   {/* lavender sheen on the active card */}
                   <div
                     className={`pointer-events-none absolute inset-0 bg-[linear-gradient(225deg,rgba(255,255,255,0.7)_0%,rgba(255,255,255,0.18)_22%,transparent_42%)] transition-opacity duration-500 ${
@@ -265,7 +276,7 @@ export default function HowItWorksPartner() {
                     }`}
                   />
                   <h4
-                    className={`relative text-2xl sm:text-[28px] font-bold mb-3 transition-colors duration-500 ${
+                    className={`relative text-xl sm:text-2xl md:text-[28px] font-bold mb-2.5 sm:mb-3 transition-colors duration-500 ${
                       isActive ? "text-white" : "text-gray-900 dark:text-white"
                     }`}
                   >

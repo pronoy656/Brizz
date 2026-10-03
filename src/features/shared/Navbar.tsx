@@ -235,16 +235,26 @@ export default function Navbar() {
           </div>
 
           {/* Mobile actions */}
-          <div className="flex lg:hidden items-center gap-1 ml-auto">
-            <Link href="/search" aria-label="Search" className="p-2 text-[#0b1b4d] dark:text-white">
-              <Search className="w-5 h-5" />
+          <div className="flex lg:hidden items-center gap-2 ml-auto">
+            <button
+              onClick={() => setLanguage(language === "en" ? "bn" : "en")}
+              className="px-2.5 py-1 rounded-full text-xs font-bold border border-blue-200/80 dark:border-white/15 bg-blue-50/70 dark:bg-white/5 text-[#0b1b4d] dark:text-white hover:bg-blue-100/70 transition-colors shadow-xs"
+            >
+              {language === "en" ? "বাংলা" : "EN"}
+            </button>
+            <Link
+              href="/search"
+              aria-label="Search"
+              className="w-9 h-9 rounded-full flex items-center justify-center border border-gray-200/80 dark:border-white/10 bg-white dark:bg-white/5 text-[#0b1b4d] dark:text-white shadow-sm"
+            >
+              <Search className="w-4 h-4" />
             </Link>
             <button
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Toggle menu"
-              className="p-2 text-[#0b1b4d] dark:text-white"
+              className="w-9 h-9 rounded-full flex items-center justify-center border border-gray-200/80 dark:border-white/10 bg-white dark:bg-white/5 text-[#0b1b4d] dark:text-white shadow-sm"
             >
-              {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -313,37 +323,68 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       {mobileOpen && (
-        <div className="lg:hidden absolute left-0 right-0 top-full max-h-[calc(100vh-72px)] overflow-y-auto bg-white dark:bg-[#070b18] border-b border-gray-100 dark:border-white/10 shadow-2xl">
+        <div className="lg:hidden absolute left-0 right-0 top-full max-h-[calc(100vh-72px)] overflow-y-auto bg-white/95 dark:bg-[#070b18]/95 backdrop-blur-2xl border-b border-gray-100 dark:border-white/10 shadow-2xl">
           <div className="p-4 space-y-4">
             <SearchBar onSubmitted={() => setMobileOpen(false)} />
 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3 text-sm">
-                <button onClick={() => setLanguage("en")} className={language === "en" ? "font-bold text-[#0b1b4d] dark:text-white" : "text-gray-500"}>
+            <div className="flex items-center justify-between py-1">
+              <div className="flex items-center gap-2.5">
+                <span className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t("Theme", "থিম")}</span>
+                <ThemeSwitch />
+              </div>
+              <div className="flex items-center gap-1.5 p-1 rounded-full bg-gray-100 dark:bg-white/10 border border-gray-200/60 dark:border-white/10">
+                <button
+                  onClick={() => setLanguage("en")}
+                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
+                    language === "en"
+                      ? "bg-white dark:bg-[#18181b] text-blue-600 dark:text-white shadow-sm"
+                      : "text-gray-500 dark:text-gray-400"
+                  }`}
+                >
                   EN
                 </button>
-                <span className="h-4 w-px bg-gray-300 dark:bg-white/20" />
-                <button onClick={() => setLanguage("bn")} className={language === "bn" ? "font-bold text-[#0b1b4d] dark:text-white" : "text-gray-500"}>
+                <button
+                  onClick={() => setLanguage("bn")}
+                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
+                    language === "bn"
+                      ? "bg-white dark:bg-[#18181b] text-blue-600 dark:text-white shadow-sm"
+                      : "text-gray-500 dark:text-gray-400"
+                  }`}
+                >
                   বাংলা
                 </button>
               </div>
-              <ThemeSwitch />
             </div>
 
-            <Link href="/districts" className="flex items-center gap-3 p-3 rounded-2xl bg-blue-50/70 dark:bg-white/5">
-              <MapPin className="w-5 h-5 text-blue-600" />
-              <span className="text-sm font-semibold text-[#0b1b4d] dark:text-white">
-                {t("One Network, 64 Districts", "এক নেটওয়ার্ক, ৬৪ জেলা")}
-              </span>
+            <Link
+              href="/districts"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-blue-50/80 to-indigo-50/80 dark:from-white/5 dark:to-white/5 border border-blue-100/80 dark:border-white/10 shadow-xs"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="block text-sm font-bold text-[#0b1b4d] dark:text-white">
+                    {t("One Network, 64 Districts", "এক নেটওয়ার্ক, ৬৪ জেলা")}
+                  </span>
+                  <span className="block text-[11px] text-gray-500 dark:text-gray-400">
+                    {t("Nationwide Verified Ecosystem", "দেশব্যাপী ভেরিফায়েড ইকোসিস্টেম")}
+                  </span>
+                </div>
+              </div>
+              <ChevronRight className="w-4 h-4 text-blue-600" />
             </Link>
 
-            <nav className="divide-y divide-gray-100 dark:divide-white/10">
+            <nav className="divide-y divide-gray-100 dark:divide-white/10 pt-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`flex items-center justify-between py-3 text-[15px] ${
-                    isActive(link.href) ? "text-blue-600 font-semibold" : "text-[#1e2a4a] dark:text-gray-200"
+                  onClick={() => setMobileOpen(false)}
+                  className={`flex items-center justify-between py-3 text-[15px] font-medium transition-colors ${
+                    isActive(link.href) ? "text-blue-600 dark:text-blue-400 font-bold" : "text-[#1e2a4a] dark:text-gray-200"
                   }`}
                 >
                   {label(link)}
@@ -356,7 +397,7 @@ export default function Navbar() {
               <Link
                 href="/login"
                 onClick={() => setMobileOpen(false)}
-                className="block w-full py-3 text-center rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md"
+                className="block w-full py-3.5 text-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-sm shadow-[0_4px_16px_rgba(37,99,235,0.3)] transition-all"
               >
                 {t("Join BriizZ", "BriizZ-এ যোগ দিন")}
               </Link>

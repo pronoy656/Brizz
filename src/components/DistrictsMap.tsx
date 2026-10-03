@@ -95,10 +95,39 @@ const DIVISIONS = [
   }
 ];
 
+const DISTRICT_BN_MAP: Record<string, string> = {
+  // Rangpur
+  "Rangpur": "রংপুর", "Dinajpur": "দিনাজপুর", "Gaibandha": "গাইবান্ধা", "Kurigram": "কুড়িগ্রাম", "Lalmonirhat": "লালমনিরহাট", "Nilphamari": "নীলফামারী", "Panchagarh": "পঞ্চগড়", "Thakurgaon": "ঠাকুরগাঁও",
+  // Mymensingh
+  "Mymensingh": "ময়মনসিংহ", "Jamalpur": "জামালপুর", "Netrokona": "নেত্রকোণা", "Sherpur": "শেরপুর",
+  // Sylhet
+  "Habiganj": "হবিগঞ্জ", "Moulvibazar": "মৌলভীবাজার", "Sunamganj": "সুনামগঞ্জ", "Sylhet": "সিলেট",
+  // Rajshahi
+  "Sirajganj": "সিরাজগঞ্জ", "Pabna": "পাবনা", "Bogra": "বগুড়া", "Bogura": "বগুড়া", "Rajshahi": "রাজশাহী", "Natore": "নাটোর", "Joypurhat": "জয়পুরহাট", "Chapainawabganj": "চাঁপাইনবাবগঞ্জ", "Naogaon": "নওগাঁ",
+  // Dhaka
+  "Dhaka": "ঢাকা", "Gazipur": "গাজীপুর", "Kishoreganj": "কিশোরগঞ্জ", "Manikganj": "মানিকগঞ্জ", "Munshiganj": "মুন্সীগঞ্জ", "Narayanganj": "নারায়ণগঞ্জ", "Narsingdi": "নরসিংদী", "Tangail": "টাঙ্গাইল", "Faridpur": "ফরিদপুর", "Gopalgang": "গোপালগঞ্জ", "Gopalganj": "গোপালগঞ্জ", "Madaripur": "মাদারীপুর", "Rajbari": "রাজবাড়ী", "Shariatpur": "শরীয়তপুর",
+  // Khulna
+  "Khulna": "খুলনা", "Bagerhat": "বাগেরহাট", "Chuadanga": "চুয়াডাঙ্গা", "Jessore": "যশোর", "Jashore": "যশোর", "Jhenaidah": "ঝিনাইদহ", "Kushtia": "কুষ্টিয়া", "Magura": "মাগুরা", "Meherpur": "মেহেরপুর", "Narail": "নড়াইল", "Satkhira": "সাতক্ষীরা",
+  // Barishal
+  "Barishal": "বরিশাল", "Barguna": "বরগুনা", "Bhola": "ভোলা", "Jhalokati": "ঝালকাঠি", "Patuakhali": "পটুয়াখালী", "Pirojpur": "পিরোজপুর",
+  // Chittagong
+  "Brahmanbaria": "ব্রাহ্মণবাড়িয়া", "Comilla": "কুমিল্লা", "Chandpur": "চাঁদপুর", "Lakshmipur": "লক্ষ্মীপুর", "Noakhali": "নোয়াখালী", "Feni": "ফেনী", "Khagrachhari": "খাগড়াছড়ি", "Khagrachari": "খাগড়াছড়ি", "Rangamati": "রাঙ্গামাটি", "Bandarban": "বান্দরবান", "Chittagong": "চট্টগ্রাম", "Chattogram": "চট্টগ্রাম", "Cox's Bazar": "কক্সবাজার"
+};
+
+const BN_DIGITS: Record<string, string> = {
+  "0": "০", "1": "১", "2": "২", "3": "৩", "4": "৪", "5": "৫", "6": "৬", "7": "৭", "8": "৮", "9": "৯"
+};
+
+function toBnDigits(num: number | string): string {
+  return String(num).replace(/[0-9]/g, (d) => BN_DIGITS[d] || d);
+}
+
 export default function DistrictsMap() {
   const { t, language } = useLanguage();
   const [activeDivision, setActiveDivision] = useState<typeof DIVISIONS[0] | null>(null);
   const [mapPaths, setMapPaths] = useState<Record<string, string>>({});
+
+  const getDistrictName = (d: string) => (language === "bn" ? DISTRICT_BN_MAP[d] || d : d);
 
   useEffect(() => {
     fetch('/map-paths.json')
@@ -109,7 +138,7 @@ export default function DistrictsMap() {
 
   // Helper to place districts in a circle around the division
   const getDistrictStyle = (index: number, total: number) => {
-    const radius = total > 8 ? 115 : 85;
+    const radius = total > 8 ? 95 : 75;
     const angle = (index / total) * 2 * Math.PI - Math.PI / 2; // start from top
     const x = Math.cos(angle) * radius;
     const y = Math.sin(angle) * radius;
@@ -121,7 +150,7 @@ export default function DistrictsMap() {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-gray-50 dark:bg-[#0a0a0a] relative overflow-hidden transition-colors duration-300">
+    <section className="pt-16 pb-8 sm:pt-24 sm:pb-12 md:pt-32 md:pb-16 bg-gray-50 dark:bg-[#0a0a0a] relative overflow-hidden transition-colors duration-300">
       
       {/* Background Decor */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
@@ -130,24 +159,56 @@ export default function DistrictsMap() {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-brand-900/20 text-brand-800 dark:text-brand-400 text-sm font-bold mb-6 uppercase tracking-wider border border-gray-200 dark:border-brand-500/20 shadow-sm">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 md:mb-20">
+          <div className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-brand-900/20 text-brand-800 dark:text-brand-400 text-xs sm:text-sm font-bold mb-4 sm:mb-6 uppercase tracking-wider border border-gray-200 dark:border-brand-500/20 shadow-sm">
             <MapPin className="w-4 h-4" /> {t("Nationwide Coverage", "দেশব্যাপী কভারেজ")}
           </div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight leading-tight">
-            {t("Serving all", "সেবা দিচ্ছি")} <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-indigo-600 dark:from-brand-400 dark:to-indigo-400">64 {t("Districts", "জেলায়")}</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 tracking-tight leading-tight">
+            {t("Serving all", "সেবা দিচ্ছি")} <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-indigo-600 dark:from-brand-400 dark:to-indigo-400">{language === 'bn' ? '৬৪' : '64'} {t("Districts", "জেলায়")}</span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p className="text-sm sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
             {t("From major cities to remote areas, our network of verified providers covers every corner of Bangladesh.", "প্রধান শহর থেকে প্রত্যন্ত অঞ্চল পর্যন্ত, আমাদের ভেরিফাইড প্রোভাইডার নেটওয়ার্ক বাংলাদেশের প্রতিটি কোণে পৌঁছে গেছে।")}
           </p>
+
+          {/* Mobile Quick Division Selector Chips */}
+          <div className="flex lg:hidden items-center gap-2 overflow-x-auto pb-2 pt-6 scrollbar-none no-scrollbar justify-start sm:justify-center">
+            <button
+              onClick={() => setActiveDivision(null)}
+              className={`px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all shrink-0 border ${
+                activeDivision === null
+                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 border-transparent shadow-sm"
+                  : "bg-white dark:bg-white/5 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-white/10"
+              }`}
+            >
+              {t("All Divisions", "সব বিভাগ")}
+            </button>
+            {DIVISIONS.map((div) => {
+              const isSelected = activeDivision?.id === div.id;
+              const hexColor = div.color.replace('bg-[', '').replace(']', '');
+              return (
+                <button
+                  key={div.id}
+                  onClick={() => setActiveDivision(isSelected ? null : div)}
+                  className={`px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all shrink-0 flex items-center gap-1.5 border ${
+                    isSelected
+                      ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 border-transparent shadow-sm"
+                      : "bg-white dark:bg-white/5 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-white/10"
+                  }`}
+                >
+                  <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: hexColor }} />
+                  <span>{language === 'bn' ? div.nameBn : div.name}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Map Container */}
         <div className="flex flex-col lg:flex-row gap-8 items-stretch w-full mx-auto">
           
           {/* Left: The Map Card */}
-          <div className="w-full lg:w-7/12 min-h-[550px] md:min-h-[620px] lg:min-h-[660px] relative bg-white/70 dark:bg-[#121214]/80 backdrop-blur-md border border-gray-200/80 dark:border-white/10 rounded-3xl shadow-xl overflow-hidden p-4 sm:p-6 md:p-8 flex items-center justify-center">
+          <div className="w-full max-w-[620px] lg:max-w-none mx-auto lg:w-7/12 min-h-[460px] sm:min-h-[550px] md:min-h-[620px] lg:min-h-[660px] relative bg-white/70 dark:bg-[#121214]/80 backdrop-blur-md border border-gray-200/80 dark:border-white/10 rounded-3xl shadow-none overflow-hidden p-3 sm:p-6 md:p-8 flex items-center justify-center">
             
             {/* Aspect Ratio Box that locks SVG and Pins to exact same coordinates */}
             <div className="relative w-full h-full max-h-[580px] lg:max-h-[620px] aspect-[678/949] mx-auto flex items-center justify-center">
@@ -286,7 +347,7 @@ export default function DistrictsMap() {
                             >
                               <span className="flex items-center gap-1">
                                 <span className="w-1 h-1 rounded-full bg-emerald-400 shadow-[0_0_4px_#34d399]"></span>
-                                {district}
+                                {getDistrictName(district)}
                               </span>
                             </div>
                           );
@@ -301,32 +362,32 @@ export default function DistrictsMap() {
             </div>
           </div>
 
-          {/* Right: Info Panel & Guidelines */}
-          <div className="w-full lg:w-5/12 flex flex-col gap-6">
-            <div className="bg-white dark:bg-[#121214] border border-gray-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col h-full min-h-[550px] md:min-h-[620px] lg:min-h-[660px]">
+          {/* Right: Info Panel & Guidelines (Desktop only, hidden on mobile) */}
+          <div className="hidden lg:flex w-full lg:w-5/12 flex-col gap-6">
+            <div className="bg-white dark:bg-[#121214] border border-gray-200 dark:border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-sm flex flex-col h-full min-h-[380px] sm:min-h-[520px] lg:min-h-[660px]">
               <div className="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-500/10 flex items-center justify-center mb-6 shrink-0">
                 <ShieldCheck className="w-6 h-6 text-brand-600 dark:text-brand-400" />
               </div>
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
                 {activeDivision ? (language === 'bn' ? `${activeDivision.nameBn} বিভাগ` : `${activeDivision.name} Division`) : t("64 Districts, 1 Network", "৬৪ জেলা, ১ নেটওয়ার্ক")}
               </h3>
               
               {activeDivision ? (
                 <div className="flex-1 flex flex-col">
                   <p className="text-brand-600 dark:text-brand-400 font-semibold mb-6 text-lg">
-                    {activeDivision.districts.length} {t("Districts Covered", "টি জেলা কভার করা হচ্ছে")}
+                    {language === 'bn' ? `${toBnDigits(activeDivision.districts.length)}টি জেলা অন্তর্ভুক্ত` : `${activeDivision.districts.length} Districts Covered`}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-8">
                     {activeDivision.districts.map((d, i) => (
                       <span key={i} className="px-3.5 py-1.5 bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5 rounded-xl text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
-                        {d}
+                        {getDistrictName(d)}
                       </span>
                     ))}
                   </div>
                   
                   <div className="mt-auto bg-brand-50 dark:bg-brand-900/20 rounded-2xl p-6 border border-brand-100 dark:border-brand-500/20">
                     <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                      {t("Ready to serve in", "সার্ভিস দিতে প্রস্তুত")} {language === 'bn' ? activeDivision.nameBn : activeDivision.name}?
+                      {language === 'bn' ? `${activeDivision.nameBn}-এ কাজ বা সেবা দিতে প্রস্তুত?` : `Ready to serve in ${activeDivision.name}?`}
                     </h4>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                       {t("Find verified providers or start offering your services in these districts today.", "আজই এই জেলাগুলোতে ভেরিফাইড প্রোভাইডার খুঁজুন অথবা আপনার সার্ভিস দেওয়া শুরু করুন।")}

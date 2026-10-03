@@ -39,7 +39,7 @@ export default function TalkToUsCTA() {
   };
 
   return (
-    <section className="py-24 lg:py-32 bg-white dark:bg-[#070709] relative overflow-hidden transition-colors duration-300 border-t border-gray-100 dark:border-white/5">
+    <section className="py-16 sm:py-24 lg:py-32 bg-white dark:bg-[#070709] relative overflow-hidden transition-colors duration-300 border-t border-gray-100 dark:border-white/5">
       
       {/* Background Lighting Effects */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[500px] bg-gradient-to-r from-brand-500/10 via-indigo-500/10 to-teal-500/10 dark:from-brand-500/15 dark:via-purple-600/15 dark:to-teal-500/15 rounded-full blur-[140px] pointer-events-none"></div>
@@ -48,13 +48,13 @@ export default function TalkToUsCTA() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 dark:bg-brand-900/20 text-brand-800 dark:text-brand-400 text-xs sm:text-sm font-bold mb-6 uppercase tracking-wider border border-brand-100 dark:border-brand-500/20 shadow-sm">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 dark:bg-brand-900/20 text-brand-800 dark:text-brand-400 text-xs sm:text-sm font-bold mb-4 sm:mb-6 uppercase tracking-wider border border-brand-100 dark:border-brand-500/20 shadow-sm">
             <Headphones className="w-4 h-4 text-brand-600 dark:text-brand-400" />
             <span>{t("Direct Communication", "সরাসরি যোগাযোগ")}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight mb-4 sm:mb-6">
             {t("Talk Directly with the", "সরাসরি কথা বলুন")} <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-indigo-600 to-teal-600 dark:from-brand-400 dark:via-indigo-400 dark:to-teal-300">
               {t("BRIIZZ Leadership Team", "BRIIZZ সেন্ট্রাল টিমের সাথে")}
@@ -76,7 +76,7 @@ export default function TalkToUsCTA() {
           <div className="lg:col-span-5 flex flex-col h-full">
             
             {/* Live Advisor Badge Card */}
-            <div className="bg-gradient-to-br from-brand-900 via-brand-950 to-gray-950 dark:from-[#13131a] dark:via-[#161622] dark:to-[#0f0f14] text-white p-6 sm:p-8 lg:p-9 rounded-3xl border border-brand-800/40 dark:border-white/10 shadow-xl relative overflow-hidden flex flex-col justify-between h-full">
+            <div className="bg-gradient-to-br from-brand-900 via-brand-950 to-gray-950 dark:from-[#13131a] dark:via-[#161622] dark:to-[#0f0f14] text-white p-5 sm:p-8 lg:p-9 rounded-2xl sm:rounded-3xl border border-brand-800/40 dark:border-white/10 shadow-xl relative overflow-hidden flex flex-col justify-between h-full">
               <div className="absolute top-0 right-0 w-56 h-56 bg-brand-500/20 rounded-full blur-[70px] pointer-events-none"></div>
               
               <div className="relative z-10 flex flex-col h-full justify-between gap-6">
@@ -130,7 +130,7 @@ export default function TalkToUsCTA() {
                     href={`${BRIZZ_SOCIAL_LINKS.whatsappUrl}?text=${encodeURIComponent(t("Hello BRIIZZ Team, I would like to talk about a requirement.", "হ্যালো BRIIZZ টিম, আমার একটি রিকোয়ারমেন্ট নিয়ে আলোচনা করতে চাই।"))}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-between px-5 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl font-bold text-sm transition-all duration-300 shadow-lg shadow-emerald-600/20 group hover:scale-[1.02]"
+                    className="w-full flex items-center justify-between px-4 sm:px-5 py-3 sm:py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl sm:rounded-2xl font-bold text-sm transition-all duration-300 shadow-lg shadow-emerald-600/20 group hover:scale-[1.02]"
                   >
                     <div className="flex items-center gap-3">
                       <MessageSquare className="w-5 h-5" />
@@ -142,10 +142,10 @@ export default function TalkToUsCTA() {
                   {/* Direct Phone Call */}
                   <a
                     href={`tel:+${BRIZZ_SOCIAL_LINKS.whatsappInternational}`}
-                    className="w-full flex items-center justify-between px-5 py-3.5 bg-white/10 hover:bg-white/15 text-white border border-white/15 rounded-2xl font-bold text-sm transition-all duration-300 backdrop-blur-md group hover:scale-[1.02]"
+                    className="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 px-4 sm:px-5 py-3 sm:py-3.5 bg-white/10 hover:bg-white/15 text-white border border-white/15 rounded-xl sm:rounded-2xl font-bold text-sm transition-all duration-300 backdrop-blur-md group hover:scale-[1.02]"
                   >
-                    <div className="flex items-center gap-3">
-                      <PhoneCall className="w-5 h-5 text-brand-400" />
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <PhoneCall className="w-5 h-5 text-brand-400 shrink-0" />
                       <span>{t("Call Central Hotline", "সরাসরি হটলাইনে কল করুন")}</span>
                     </div>
                     <span className="text-xs text-brand-300 font-mono">+880 {BRIZZ_SOCIAL_LINKS.whatsappNumber}</span>
@@ -154,10 +154,10 @@ export default function TalkToUsCTA() {
                   {/* Schedule Meeting */}
                   <a
                     href="mailto:contact@briizz.com?subject=Strategic%20Consultation%20Request"
-                    className="w-full flex items-center justify-between px-5 py-3.5 bg-white/5 hover:bg-white/10 text-gray-200 hover:text-white border border-white/10 rounded-2xl font-semibold text-sm transition-all duration-300 group"
+                    className="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 px-4 sm:px-5 py-3 sm:py-3.5 bg-white/5 hover:bg-white/10 text-gray-200 hover:text-white border border-white/10 rounded-xl sm:rounded-2xl font-semibold text-sm transition-all duration-300 group"
                   >
-                    <div className="flex items-center gap-3">
-                      <Mail className="w-5 h-5 text-indigo-400" />
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <Mail className="w-5 h-5 text-indigo-400 shrink-0" />
                       <span>{t("Email Our Core Team", "ইমেইল পাঠান")}</span>
                     </div>
                     <span className="text-xs text-gray-400">contact@briizz.com</span>
@@ -169,7 +169,7 @@ export default function TalkToUsCTA() {
           </div>
 
           {/* Right Column: Direct Message & Callback Request Form */}
-          <div className="lg:col-span-7 bg-white dark:bg-[#121216] border border-gray-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl flex flex-col justify-between">
+          <div className="lg:col-span-7 bg-white dark:bg-[#121216] border border-gray-200 dark:border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-xl flex flex-col justify-between">
             
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center text-center py-16 px-4">

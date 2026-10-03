@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import {
@@ -11,7 +12,10 @@ import {
   Settings2,
   Globe,
   Cpu,
-  TrendingUp
+  TrendingUp,
+  ArrowRight,
+  ChevronRight,
+  ShieldCheck,
 } from "lucide-react";
 
 interface TransitRoute {
@@ -143,12 +147,11 @@ export default function OneStopSolutionV3() {
   const { t, language } = useLanguage();
   const [activeRouteId, setActiveRouteId] = useState<string>("products");
   const [hoveredRouteId, setHoveredRouteId] = useState<string | null>(null);
-
   const effectiveActiveId = hoveredRouteId || activeRouteId;
   const activeRoute = ALL_ROUTES.find((r) => r.id === effectiveActiveId) || ALL_ROUTES[0];
 
   return (
-    <section className="py-24 lg:py-32 bg-[#fafbfc] dark:bg-[#06070a] text-gray-900 dark:text-white relative overflow-hidden border-t border-gray-200/80 dark:border-white/10 transition-colors duration-500">
+    <section className="py-16 sm:py-24 lg:py-32 bg-[#fafbfc] dark:bg-[#06070a] text-gray-900 dark:text-white relative overflow-hidden border-t border-gray-200/80 dark:border-white/10 transition-colors duration-500">
       
       {/* Background Precision Transit Grid */}
       <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:36px_36px] opacity-60 dark:opacity-40 pointer-events-none" />
@@ -157,23 +160,13 @@ export default function OneStopSolutionV3() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-brand-50 dark:bg-white/5 border border-brand-200/70 dark:border-white/10 text-brand-700 dark:text-brand-400 text-xs sm:text-sm font-semibold mb-6 uppercase tracking-wider backdrop-blur-md"
-          >
-            <Sparkles className="w-4 h-4 text-brand-500 dark:text-brand-400 animate-pulse" />
-            <span>{t("THE LITERAL ONE STOP", "একক সেন্ট্রাল গন্তব্য")}</span>
-          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white tracking-tight leading-[1.15] mb-6"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white tracking-tight leading-[1.15] mb-6"
           >
             {t("Your Ultimate", "আপনার পূর্ণাঙ্গ")}{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-700 via-indigo-600 to-teal-600 dark:from-brand-400 dark:via-teal-300 dark:to-indigo-300">
@@ -186,7 +179,7 @@ export default function OneStopSolutionV3() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-normal max-w-2xl mx-auto"
+            className="text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-normal max-w-2xl mx-auto"
           >
             {t(
               "You bring the idea. We connect everything you need to build, launch and grow your business.",
@@ -436,7 +429,7 @@ export default function OneStopSolutionV3() {
               
               <span className="text-lg font-black tracking-wider text-gray-900 dark:text-white">BRIIZZ</span>
               <span className="text-[9px] font-mono tracking-widest text-brand-700 dark:text-brand-300 uppercase font-bold">
-                ONE STOP
+                {t("ONE STOP", "ওয়ান-স্টপ")}
               </span>
               
               <div className="mt-1 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gray-100 dark:bg-white/10 text-[8.5px] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/10 font-medium">
@@ -508,7 +501,138 @@ export default function OneStopSolutionV3() {
 
         </div>
 
+        {/* ========================================================================= */}
+        {/* MOBILE & TABLET RESPONSIVE INTERACTIVE TRANSIT SYSTEM (< lg screens) */}
+        {/* ========================================================================= */}
+        <div className="block lg:hidden w-full space-y-6">
 
+          {/* Active Route Central Feature Card */}
+          <div
+            className="relative overflow-hidden rounded-3xl p-5 sm:p-7 border transition-all duration-500 shadow-lg bg-white dark:bg-[#10131d]"
+            style={{ borderColor: `${activeRoute.color}45` }}
+          >
+            {/* Ambient Glow */}
+            <div
+              className="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl pointer-events-none opacity-20"
+              style={{ backgroundColor: activeRoute.color }}
+            />
+
+            {/* Top Row: Central Hub Badge + Active Route Name */}
+            <div className="flex items-start justify-between gap-3 mb-4 relative z-10">
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-md shrink-0 transition-transform duration-300"
+                  style={{ backgroundColor: activeRoute.color }}
+                >
+                  <activeRoute.icon className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono tracking-widest text-brand-700 dark:text-brand-300 uppercase font-bold block">
+                    {language === "bn" ? activeRoute.category.bn : activeRoute.category.en}
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white">
+                    {language === "bn" ? activeRoute.name.bn : activeRoute.name.en}
+                  </h3>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 dark:bg-white/10 text-[11px] font-bold text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-white/10 shrink-0">
+                <span className="w-2 h-2 rounded-full animate-ping" style={{ backgroundColor: activeRoute.color }} />
+                <span>{language === "bn" ? activeRoute.metric.bn : activeRoute.metric.en}</span>
+              </div>
+            </div>
+
+            {/* Deliverable & Description */}
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 leading-relaxed relative z-10">
+              {language === "bn" ? activeRoute.deliverable.bn : activeRoute.deliverable.en}
+            </p>
+
+            {/* Meta SLA Banner & CTA Button */}
+            <div className="pt-4 border-t border-gray-100 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
+                <span className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  {language === "bn" ? activeRoute.sla.bn : activeRoute.sla.en}
+                </span>
+              </div>
+
+              <Link
+                href={activeRoute.link}
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white shadow-md transition-all hover:scale-[1.02] w-full sm:w-auto"
+                style={{ backgroundColor: activeRoute.color }}
+              >
+                <span>{t("Explore This Solution", "এই সমাধান দেখুন")}</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Station Selector Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            {ALL_ROUTES.map((route) => {
+              const isSelected = effectiveActiveId === route.id;
+              const Icon = route.icon;
+              return (
+                <button
+                  type="button"
+                  key={route.id}
+                  onClick={() => {
+                    setActiveRouteId(route.id);
+                    setHoveredRouteId(null);
+                  }}
+                  className={`w-full p-3.5 rounded-2xl cursor-pointer transition-all duration-300 border text-left flex items-center justify-between gap-3 ${
+                    isSelected
+                      ? "bg-white dark:bg-[#181820] border-brand-500 shadow-md ring-2 ring-brand-500/20 scale-[1.01]"
+                      : "bg-white/80 dark:bg-white/[0.03] border-gray-200/80 dark:border-white/10 hover:border-gray-300 hover:bg-white dark:hover:bg-white/[0.06]"
+                  }`}
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div
+                      className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                        isSelected
+                          ? "text-white shadow-sm"
+                          : "bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-300"
+                      }`}
+                      style={{ backgroundColor: isSelected ? route.color : undefined }}
+                    >
+                      <Icon className="w-4 h-4" />
+                    </div>
+
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5">
+                        <span
+                          className="w-2 h-2 rounded-full shrink-0"
+                          style={{ backgroundColor: route.color }}
+                        />
+                        <span
+                          className={`text-xs font-black tracking-wide truncate ${
+                            isSelected ? "text-brand-700 dark:text-brand-300" : "text-gray-900 dark:text-white"
+                          }`}
+                        >
+                          {language === "bn" ? route.name.bn : route.name.en}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-gray-500 dark:text-gray-400 truncate mt-0.5">
+                        {language === "bn" ? route.tagline.bn : route.tagline.en}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 border transition-all ${
+                      isSelected
+                        ? "border-transparent text-white"
+                        : "border-gray-200 dark:border-white/10 text-gray-400"
+                    }`}
+                    style={{ backgroundColor: isSelected ? route.color : undefined }}
+                  >
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
       </div>
     </section>

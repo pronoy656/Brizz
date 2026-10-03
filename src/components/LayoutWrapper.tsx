@@ -34,15 +34,54 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
         }
       };
       window.addEventListener("beforeunload", handleBeforeUnload);
-      return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+
+      // Global click tracking for analytics
+      const handleGlobalClick = (e: MouseEvent) => {
+        const target = e.target as HTMLElement | null;
+        if (!target) return;
+        const link = target.closest("a");
+        const button = target.closest("button");
+
+        if (link) {
+          const href = link.getAttribute("href") || "";
+          if (!href || href.startsWith("#") && href.length === 1) return;
+          const text = (link.textContent || link.getAttribute("aria-label") || href).trim().slice(0, 60);
+          let category: "cta" | "social" | "nav" | "emergency" | "service" | "general" = "nav";
+          if (href.includes("wa.me") || href.includes("whatsapp")) category = "cta";
+          else if (href.includes("facebook") || href.includes("linkedin") || href.includes("youtube") || href.includes("instagram")) category = "social";
+          else if (href.includes("needs/new") || href.includes("partners") || href.includes("login")) category = "cta";
+          else if (href.includes("free-help") || href.includes("blood")) category = "emergency";
+          else if (href.includes("solutions") || href.includes("services")) category = "service";
+
+          import("@/lib/analytics").then((m) => {
+            m.recordClick(text || href, href, category);
+          });
+        } else if (button) {
+          const btnText = (button.textContent || button.getAttribute("aria-label") || "").trim().slice(0, 60);
+          if (btnText && btnText !== "EN" && btnText !== "বাংলা") {
+            import("@/lib/analytics").then((m) => {
+              m.recordClick(btnText, pathname, "cta");
+            });
+          }
+        }
+      };
+      document.addEventListener("click", handleGlobalClick, { capture: true });
+
+      return () => {
+        window.removeEventListener("beforeunload", handleBeforeUnload);
+        document.removeEventListener("click", handleGlobalClick, { capture: true });
+      };
     }
   }, [pathname]);
 
-  // Hide Navbar and Footer on all dashboard and partner routes
-  const isDashboardRoute = pathname?.startsWith("/dashboard") || pathname?.startsWith("/partners");
+  // Hide Navbar and Footer on dashboard routes and analytics
+  const isDashboardRoute =
+    pathname?.startsWith("/dashboard") ||
+    pathname?.startsWith("/partners/dashboard") ||
+    pathname === "/analytics";
 
   if (isDashboardRoute) {
-    return <main className="flex-1 min-h-screen bg-gray-50">{children}</main>;
+    return <main className="flex-1 min-h-screen">{children}</main>;
   }
 
   return (
