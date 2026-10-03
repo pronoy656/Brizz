@@ -116,17 +116,17 @@ export default function SolutionsForEveryone() {
           </p>
         </div>
 
-        {/* Cards Layout: Horizontal Scrollable on Mobile, Classic 4-Column Grid on Desktop */}
+        {/* Cards Layout: Horizontal Scrollable on Mobile with 24px start gap & hidden scrollbar */}
         <div
           ref={carouselRef}
           onScroll={handleScroll}
-          className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 xl:gap-8 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory scrollbar-none no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0"
+          className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 xl:gap-8 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory scroll-pl-6 scrollbar-none no-scrollbar -mx-4 px-6 sm:mx-0 sm:px-0 sm:scroll-pl-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {solutions.map((item) => (
             <Link
               href={item.linkHref}
               key={item.id}
-              className="group flex flex-col justify-between bg-white dark:bg-[#18181b] border border-gray-100 dark:border-white/5 rounded-2xl sm:rounded-3xl p-5 sm:p-8 hover:shadow-xl dark:hover:shadow-[0_10px_40px_rgba(139,92,246,0.1)] transition-all duration-300 hover:-translate-y-1 w-[80vw] max-w-[320px] sm:w-[340px] md:w-auto md:max-w-none shrink-0 md:shrink snap-start"
+              className="group flex flex-col justify-between bg-white dark:bg-[#18181b] border border-gray-200/80 dark:border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-none md:hover:shadow-xl md:dark:hover:shadow-[0_10px_40px_rgba(139,92,246,0.1)] transition-all duration-300 md:hover:-translate-y-1 w-[80vw] max-w-[320px] sm:w-[340px] md:w-auto md:max-w-none shrink-0 md:shrink snap-start"
             >
               <div>
                 {/* Icon */}
@@ -159,6 +159,8 @@ export default function SolutionsForEveryone() {
               </div>
             </Link>
           ))}
+          {/* Spacer for mobile trailing scroll padding */}
+          <div className="shrink-0 w-2 md:hidden" aria-hidden="true" />
         </div>
 
         {/* Mobile Slide Indicator Dots */}

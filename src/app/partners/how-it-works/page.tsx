@@ -47,7 +47,7 @@ export default function PartnerHowItWorksPage() {
       phaseNum: "01",
       badge: { en: "Phase 01: Physical & Supply", bn: "ধাপ ০১: সাপ্লাই ও সোর্সিং" },
       title: { en: "Global & Local Product Sourcing", bn: "গ্লোবাল ও লোকাল প্রোডাক্ট সোর্সিং" },
-      shortTitle: { en: "Sourcing & Supply", bn: "পণ্য ও কাঁচামাল সোর্সিং" },
+      shortTitle: { en: "Sourcing & Supply", bn: "সোর্সিং ও সাপ্লাই" },
       subtitle: {
         en: "Source products directly from China factories, global suppliers, and top local manufacturers in Bangladesh.",
         bn: "চায়নার ফ্যাক্টরি থেকে শুরু করে দেশের শীর্ষ লোকাল ম্যানুফ্যাকচারারদের কাছ থেকে সরাসরি পণ্য ও কাঁচামাল সংগ্রহ করুন।",
@@ -102,7 +102,7 @@ export default function PartnerHowItWorksPage() {
       phaseNum: "02",
       badge: { en: "Phase 02: Digital Foundation", bn: "ধাপ ০২: ডিজিটাল ইনফ্রাস্ট্রাকচার" },
       title: { en: "Web, Mobile Apps & IT Infrastructure", bn: "ওয়েব, মোবাইল অ্যাপ ও সম্পূর্ণ আইটি সেটআপ" },
-      shortTitle: { en: "Web, Apps & Tech", bn: "ওয়েব, অ্যাপ ও সফটওয়্যার" },
+      shortTitle: { en: "Web & Tech", bn: "ওয়েব ও টেক" },
       subtitle: {
         en: "Starting an e-commerce, real estate, or retail company? We build custom web apps, mobile apps, and enterprise systems.",
         bn: "ই-কমার্স, রিয়েল এস্টেট বা যেকোনো ব্যবসা শুরু করছেন? আমরা তৈরি করে দেব কাস্টম ওয়েব, মোবাইল অ্যাপ ও আইটি প্ল্যাটফর্ম।",
@@ -157,7 +157,7 @@ export default function PartnerHowItWorksPage() {
       phaseNum: "03",
       badge: { en: "Phase 03: Scale & Network", bn: "ধাপ ০৩: ট্রাফিক ও নেটওয়ার্ক গ্রোথ" },
       title: { en: "Massive User Base & Traffic Growth", bn: "বিশাল ইউজার বেইজ ও ট্রাফিক বৃদ্ধি" },
-      shortTitle: { en: "Traffic & Expansion", bn: "কাস্টমার ট্রাফিক ও বড় ডিল" },
+      shortTitle: { en: "Traffic & Expansion", bn: "ট্রাফিক ও এক্সপেনশন" },
       subtitle: {
         en: "Unlock immediate access to thousands of active buyers and enterprise opportunities across Bangladesh.",
         bn: "সারাদেশের ৬৪ জেলার হাজারো সক্রিয় গ্রাহক ও এন্টারপ্রাইজ ক্লায়েন্টদের কাছে সরাসরি পৌঁছানোর অবারিত সুযোগ।",
@@ -165,7 +165,7 @@ export default function PartnerHowItWorksPage() {
       icon: TrendingUp,
       themeColor: "emerald",
       gradient: "from-emerald-600 via-teal-600 to-cyan-500",
-      accentBg: "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border-emerald-200/60 dark:border-emerald-800/40",
+      accentBg: "bg-emerald-50 /40 text-emerald-600 border-emerald-200/60 dark:border-emerald-800/40",
       activeTabBg: "bg-emerald-600 text-white shadow-lg shadow-emerald-500/25",
       deliverables: [
         { en: "Direct Inbound Client Inquiries to Phone/Dashboard", bn: "সরাসরি ফোন ও ড্যাশবোর্ডে ক্লায়েন্ট অর্ডার" },
@@ -322,11 +322,11 @@ export default function PartnerHowItWorksPage() {
   const CurrentIcon = currentPillar.icon;
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#07090e] text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div className="min-h-screen bg-slate-50 text-slate-900">
       {/* ========================================================================= */}
       {/* 1. HERO SECTION: Split 2-Column Desktop with Interactive Enterprise Engine */}
       {/* ========================================================================= */}
-      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 relative overflow-hidden border-b border-gray-200/80 dark:border-white/10 bg-gradient-to-b from-white via-slate-50 to-slate-100/70 dark:from-[#0a0e17] dark:via-[#07090e] dark:to-[#07090e]">
+      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 relative overflow-hidden border-b border-gray-200/80 bg-gradient-to-b from-white via-slate-50 to-slate-100/70">
         {/* Subtle geometric dot background for tech feel */}
         <div
           className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none"
@@ -345,26 +345,26 @@ export default function PartnerHowItWorksPage() {
             {/* Left Column: Copy & Actions */}
             <div className="lg:col-span-7 text-left">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-800 dark:text-brand-300 text-xs sm:text-sm font-bold mb-5 uppercase tracking-wider border border-brand-200/70 dark:border-brand-500/30 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 text-brand-800 text-xs sm:text-sm font-bold mb-5 uppercase tracking-wider border border-brand-200/70 shadow-sm">
                 <span className="flex h-2 w-2 relative">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-600"></span>
                 </span>
-                <Rocket className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
+                <Rocket className="w-3.5 h-3.5 text-brand-600" />
                 <span>{t("Complete Business Lifecycle Ecosystem", "জিরো থেকে ভবিষ্যৎ: পূর্ণাঙ্গ বিজনেস ইকোসিস্টেম")}</span>
               </div>
 
               {/* Headline */}
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white tracking-tight leading-[1.12] mb-5">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-[1.12] mb-5">
                 {t("How BRIIZZ Powers Your Business", "কীভাবে BRIIZZ আপনার ব্যবসাকে নিয়ে যায়")}{" "}
                 <br className="hidden sm:inline" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-indigo-600 to-cyan-500 dark:from-brand-400 dark:via-indigo-300 dark:to-cyan-400">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-indigo-600 to-cyan-500">
                   {t("From Zero to Scale", "জিরো থেকে শীর্ষ সফলতায়")}
                 </span>
               </h1>
 
               {/* Subheading */}
-              <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-8 max-w-2xl font-normal">
+              <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed mb-8 max-w-2xl font-normal">
                 {t(
                   "We don't just list your company on a static directory. From sourcing physical inventory at China factory gates & local mills, to crafting world-class web and mobile apps, and driving high-intent customer traffic — we engineer your growth end-to-end.",
                   "আমরা শুধু কোনো স্ট্যাটিক ডিরেক্টরি নই। চায়না ও লোকাল ফ্যাক্টরি থেকে পণ্য সোর্সিং, আধুনিক ওয়েবসাইট ও মোবাইল অ্যাপ তৈরি এবং আমাদের দেশব্যাপী বিশাল নেটওয়ার্ক থেকে নিশ্চিত ক্লায়েন্ট অর্ডার—ব্যবসার শুরু থেকে ভবিষ্যৎ পর্যন্ত যা দরকার, সবই আমরা দিচ্ছি।"
@@ -372,62 +372,63 @@ export default function PartnerHowItWorksPage() {
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-10">
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5 mb-8 sm:mb-10">
                 <Link
                   href="/providers/join"
-                  className="py-4 px-8 rounded-2xl font-bold text-base bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-700 hover:to-indigo-700 text-white flex items-center justify-center gap-2.5 shadow-xl shadow-brand-600/25 active:scale-[0.98] transition-all cursor-pointer group"
+                  className="py-3 sm:py-4 px-5 sm:px-8 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-700 hover:to-indigo-700 text-white flex items-center justify-center gap-2 sm:gap-2.5 shadow-lg shadow-brand-600/20 active:scale-[0.98] transition-all cursor-pointer group"
                 >
                   <span>{t("Apply as a Partner", "পার্টনার হিসেবে আবেদন করুন")}</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   href="/free-help"
-                  className="py-4 px-7 rounded-2xl font-bold text-base bg-white dark:bg-white/5 border border-gray-300/80 dark:border-white/15 text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 flex items-center justify-center gap-2 shadow-sm transition-all active:scale-[0.98] cursor-pointer"
+                  className="py-3 sm:py-4 px-5 sm:px-7 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base bg-white border border-gray-300/80 text-gray-800 hover:bg-gray-100 flex items-center justify-center gap-2 shadow-sm transition-all active:scale-[0.98] cursor-pointer"
                 >
-                  <PhoneCall className="w-4 h-4 text-brand-600 dark:text-brand-400" />
+                  <PhoneCall className="w-4 h-4 text-brand-600" />
                   <span>{t("Talk to an Advisor", "পরামর্শকের সাথে কথা বলুন")}</span>
                 </Link>
               </div>
 
               {/* Trust Metric Strip */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-gray-200/80 dark:border-white/10">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-brand-50 dark:bg-brand-950/60 border border-brand-200/60 dark:border-brand-800/40 flex items-center justify-center shrink-0">
-                    <Globe2 className="w-4 h-4 text-brand-600 dark:text-brand-400" />
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-5 sm:pt-6 border-t border-gray-200/80">
+                <div className="flex items-center gap-2 sm:gap-2.5 p-2 sm:p-0 rounded-xl bg-gray-50/80 sm:bg-transparent border border-gray-100 sm:border-0">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-brand-50 border border-brand-200/60 flex items-center justify-center shrink-0">
+                    <Globe2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-600" />
                   </div>
-                  <div>
-                    <div className="text-sm font-extrabold text-gray-900 dark:text-white">64 Districts</div>
-                    <div className="text-[11px] text-gray-500 dark:text-gray-400">{t("Nationwide", "দেশব্যাপী")}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/60 dark:border-emerald-800/40 flex items-center justify-center shrink-0">
-                    <Zap className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-extrabold text-gray-900 dark:text-white">0% Bidding</div>
-                    <div className="text-[11px] text-gray-500 dark:text-gray-400">{t("Direct Routing", "সরাসরি কাজ")}</div>
+                  <div className="min-w-0">
+                    <div className="text-xs sm:text-sm font-extrabold text-gray-900 truncate">64 Districts</div>
+                    <div className="text-[10px] sm:text-[11px] text-gray-500 truncate">{t("Nationwide", "দেশব্যাপী")}</div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/60 dark:border-indigo-800/40 flex items-center justify-center shrink-0">
-                    <Cpu className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                <div className="flex items-center gap-2 sm:gap-2.5 p-2 sm:p-0 rounded-xl bg-gray-50/80 sm:bg-transparent border border-gray-100 sm:border-0">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-50 border border-emerald-200/60 flex items-center justify-center shrink-0">
+                    <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
                   </div>
-                  <div>
-                    <div className="text-sm font-extrabold text-gray-900 dark:text-white">Full Stack</div>
-                    <div className="text-[11px] text-gray-500 dark:text-gray-400">{t("Apps & Web", "অ্যাপ ও ওয়েব")}</div>
+                  <div className="min-w-0">
+                    <div className="text-xs sm:text-sm font-extrabold text-gray-900 truncate">0% Bidding</div>
+                    <div className="text-[10px] sm:text-[11px] text-gray-500 truncate">{t("Direct Routing", "সরাসরি কাজ")}</div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-200/60 dark:border-cyan-800/40 flex items-center justify-center shrink-0">
-                    <ShieldCheck className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                <div className="flex items-center gap-2 sm:gap-2.5 p-2 sm:p-0 rounded-xl bg-gray-50/80 sm:bg-transparent border border-gray-100 sm:border-0">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-indigo-50 border border-indigo-200/60 flex items-center justify-center shrink-0">
+                    <Cpu className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-indigo-600" />
                   </div>
-                  <div>
-                    <div className="text-sm font-extrabold text-gray-900 dark:text-white">100% Vetted</div>
-                    <div className="text-[11px] text-gray-500 dark:text-gray-400">{t("Verified Badge", "ভেরিফায়েড")}</div>
+                  <div className="min-w-0">
+                    <div className="text-xs sm:text-sm font-extrabold text-gray-900 truncate">Full Stack</div>
+                    <div className="text-[10px] sm:text-[11px] text-gray-500 truncate">{t("Apps & Web", "অ্যাপ ও ওয়েব")}</div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 sm:gap-2.5 p-2 sm:p-0 rounded-xl bg-gray-50/80 sm:bg-transparent border border-gray-100 sm:border-0">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-cyan-50 border border-cyan-200/60 flex items-center justify-center shrink-0">
+                    <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-600" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-xs sm:text-sm font-extrabold text-gray-900 truncate">100% Vetted</div>
+                    <div className="text-[10px] sm:text-[11px] text-gray-500 truncate">{t("Verified Badge", "ভেরিফায়েড")}</div>
                   </div>
                 </div>
               </div>
@@ -437,41 +438,41 @@ export default function PartnerHowItWorksPage() {
             <div className="lg:col-span-5">
               <div className="relative mx-auto max-w-lg lg:max-w-none">
                 {/* Glow behind terminal */}
-                <div className="absolute -inset-1.5 bg-gradient-to-r from-brand-600 via-indigo-600 to-cyan-600 rounded-3xl blur-xl opacity-20 dark:opacity-40 animate-pulse"></div>
+                <div className="absolute -inset-1.5 bg-gradient-to-r from-brand-600 via-indigo-600 to-cyan-600 rounded-3xl blur-xl opacity-15 animate-pulse"></div>
 
-                {/* Main Console Box */}
-                <div className="relative bg-slate-900/95 dark:bg-[#0c1017]/95 backdrop-blur-2xl rounded-3xl p-5 sm:p-7 border border-slate-700/60 dark:border-white/10 shadow-2xl text-white">
+                {/* Main Console Box (Light Theme) */}
+                <div className="relative bg-white/95 rounded-3xl p-5 sm:p-7 border border-gray-200/90 shadow-xl shadow-gray-200/60 text-gray-900">
                   {/* Console Header */}
-                  <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/10">
+                  <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-gray-100">
                     <div className="flex items-center gap-2">
-                      <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block" />
-                      <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-                      <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
+                      <span className="w-3 h-3 rounded-full bg-red-400 inline-block" />
+                      <span className="w-3 h-3 rounded-full bg-amber-400 inline-block" />
+                      <span className="w-3 h-3 rounded-full bg-emerald-400 inline-block" />
                     </div>
-                    <div className="text-[11px] font-mono tracking-wider text-slate-400 font-semibold flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <div className="text-[11px] font-mono tracking-wider text-gray-500 font-semibold flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                       BRIIZZ PARTNER ENGINE v2.4
                     </div>
                   </div>
 
                   {/* 3 Live Architecture Nodes */}
-                  <div className="space-y-3.5">
+                  <div className="space-y-3">
                     {/* Node 1: Sourcing Gateway */}
-                    <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-blue-500/50 hover:bg-white/[0.07] transition-all group">
-                      <div className="flex items-center justify-between mb-1.5">
-                        <div className="flex items-center gap-2.5">
-                          <div className="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center">
+                    <div className="p-3.5 rounded-2xl bg-slate-50/90 border border-blue-100/80 hover:border-blue-300 hover:bg-blue-50/40 transition-all group">
+                      <div className="flex items-center justify-between gap-2 mb-1.5 min-w-0">
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div className="w-8 h-8 rounded-xl bg-blue-100/70 text-blue-600 flex items-center justify-center shrink-0">
                             <Ship className="w-4 h-4" />
                           </div>
-                          <span className="font-bold text-sm text-slate-100">
+                          <span className="font-bold text-sm text-gray-900 truncate">
                             {t("Phase 01: Sourcing Gateway", "ধাপ ০১: সোর্সিং ও সাপ্লাই")}
                           </span>
                         </div>
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                        <span className="shrink-0 whitespace-nowrap text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-200/80">
                           {t("Factory Gates", "ফ্যাক্টরি রেট")}
                         </span>
                       </div>
-                      <p className="text-xs text-slate-400 pl-10 leading-relaxed">
+                      <p className="text-xs text-gray-600 pl-10.5 leading-relaxed">
                         {t(
                           "China OEM (Guangzhou / Yiwu) + Local Bangladesh Mills. Customs cleared.",
                           "চায়না ও দেশীয় মিল থেকে সরাসরি সোর্সিং। শতভাগ কাস্টমস ক্লিয়ারেন্স।"
@@ -480,26 +481,26 @@ export default function PartnerHowItWorksPage() {
                     </div>
 
                     {/* Connecting Pipe */}
-                    <div className="flex justify-center -my-1.5">
-                      <div className="w-0.5 h-4 bg-gradient-to-b from-blue-500 to-indigo-500 opacity-60"></div>
+                    <div className="flex justify-center -my-1">
+                      <div className="w-0.5 h-3.5 bg-gradient-to-b from-blue-300 to-indigo-300 opacity-80"></div>
                     </div>
 
                     {/* Node 2: Digital Systems */}
-                    <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-indigo-500/50 hover:bg-white/[0.07] transition-all group">
-                      <div className="flex items-center justify-between mb-1.5">
-                        <div className="flex items-center gap-2.5">
-                          <div className="w-8 h-8 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
+                    <div className="p-3.5 rounded-2xl bg-slate-50/90 border border-indigo-100/80 hover:border-indigo-300 hover:bg-indigo-50/40 transition-all group">
+                      <div className="flex items-center justify-between gap-2 mb-1.5 min-w-0">
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div className="w-8 h-8 rounded-xl bg-indigo-100/70 text-indigo-600 flex items-center justify-center shrink-0">
                             <Cpu className="w-4 h-4" />
                           </div>
-                          <span className="font-bold text-sm text-slate-100">
+                          <span className="font-bold text-sm text-gray-900 truncate">
                             {t("Phase 02: Digital Infrastructure", "ধাপ ০২: ডিজিটাল ইনফ্রাস্ট্রাকচার")}
                           </span>
                         </div>
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                        <span className="shrink-0 whitespace-nowrap text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-800 border border-indigo-200/80">
                           {t("Turnkey Setup", "রেডি সফটওয়্যার")}
                         </span>
                       </div>
-                      <p className="text-xs text-slate-400 pl-10 leading-relaxed">
+                      <p className="text-xs text-gray-600 pl-10.5 leading-relaxed">
                         {t(
                           "High-speed Next.js Storefront + iOS/Android apps + Multi-branch POS & ERP.",
                           "আল্ট্রা-ফাস্ট Next.js ওয়েব, অ্যান্ড্রয়েড/আইওএস অ্যাপ ও পিওএস।"
@@ -508,26 +509,26 @@ export default function PartnerHowItWorksPage() {
                     </div>
 
                     {/* Connecting Pipe */}
-                    <div className="flex justify-center -my-1.5">
-                      <div className="w-0.5 h-4 bg-gradient-to-b from-indigo-500 to-emerald-500 opacity-60"></div>
+                    <div className="flex justify-center -my-1">
+                      <div className="w-0.5 h-3.5 bg-gradient-to-b from-indigo-300 to-emerald-300 opacity-80"></div>
                     </div>
 
                     {/* Node 3: Nationwide Traffic */}
-                    <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-emerald-500/50 hover:bg-white/[0.07] transition-all group">
-                      <div className="flex items-center justify-between mb-1.5">
-                        <div className="flex items-center gap-2.5">
-                          <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                    <div className="p-3.5 rounded-2xl bg-slate-50/90 border border-emerald-100/80 hover:border-emerald-300 hover:bg-emerald-50/40 transition-all group">
+                      <div className="flex items-center justify-between gap-2 mb-1.5 min-w-0">
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div className="w-8 h-8 rounded-xl bg-emerald-100/70 text-emerald-600 flex items-center justify-center shrink-0">
                             <TrendingUp className="w-4 h-4" />
                           </div>
-                          <span className="font-bold text-sm text-slate-100">
+                          <span className="font-bold text-sm text-gray-900 truncate">
                             {t("Phase 03: Demand & Lead Engine", "ধাপ ০৩: কাস্টমার ট্রাফিক ও লিড")}
                           </span>
                         </div>
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                        <span className="shrink-0 whitespace-nowrap text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200/80">
                           {t("Direct Matches", "সরাসরি অর্ডার")}
                         </span>
                       </div>
-                      <p className="text-xs text-slate-400 pl-10 leading-relaxed">
+                      <p className="text-xs text-gray-600 pl-10.5 leading-relaxed">
                         {t(
                           "Routing verified buyer requirements directly to your business across 64 districts.",
                           "৬৪ জেলার ক্রেতাদের চাহিদামতো সরাসরি আপনার ড্যাশবোর্ডে অর্ডার প্রেরণ।"
@@ -537,12 +538,14 @@ export default function PartnerHowItWorksPage() {
                   </div>
 
                   {/* Terminal Bottom Bar */}
-                  <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
+                  <div className="mt-4 pt-3.5 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
                     <div className="flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                      <span>{t("Verified Network Status", "ভেরিফায়েড নেটওয়ার্ক স্ট্যাটাস")}</span>
+                      <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                      <span className="font-medium">{t("Verified Network Status", "ভেরিফায়েড নেটওয়ার্ক স্ট্যাটাস")}</span>
                     </div>
-                    <span className="font-bold text-emerald-400">{t("100% Operational", "সক্রিয়")}</span>
+                    <span className="font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/60">
+                      {t("100% Operational", "সক্রিয়")}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -554,39 +557,37 @@ export default function PartnerHowItWorksPage() {
       {/* ========================================================================= */}
       {/* 2. THE THREE PILLARS: Interactive Bento Grid Showcase on Desktop */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-white dark:bg-[#090d16] relative overflow-hidden border-b border-gray-200/80 dark:border-white/10 transition-colors">
+      <section className="py-16 sm:py-24 bg-white relative overflow-hidden border-b border-gray-200/80">
         <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-            <span className="inline-block text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2">
+            <span className="inline-block text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-600 mb-2">
               {t("Ecosystem Architecture", "পূর্ণাঙ্গ ব্যবসায়িক কাঠামো")}
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white tracking-tight mb-3">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight mb-3">
               {t("Three Pillars of Partner Growth", "পার্টনারদের ব্যবসায়িক প্রবৃদ্ধির ৩টি মূল ভিত্তি")}
             </h2>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
               {t(
                 "Everything you need to source inventory, build digital infrastructure, and scale client orders under one unified network.",
                 "আপনার পণ্যের সোর্সিং, টেকনোলজি ইনফ্রাস্ট্রাকচার ও গ্রাহক বৃদ্ধি—সবকিছুই পাবেন একই নেটওয়ার্কে।"
               )}
             </p>
 
-            {/* Desktop & Mobile Interactive Phase Selector Tabs */}
-            <div className="inline-flex items-center gap-2 p-1.5 bg-gray-100 dark:bg-white/[0.06] rounded-2xl sm:rounded-full mt-6 border border-gray-200/80 dark:border-white/10 shadow-sm max-w-full overflow-x-auto">
+            {/* Phase Selector Tabs — Slim, compact, responsive, no icons */}
+            <div className="max-w-xl mx-auto grid grid-cols-3 gap-1 sm:gap-1.5 p-1 bg-gray-100 rounded-xl mt-6 border border-gray-200/80 shadow-sm w-full">
               {PILLARS.map((p) => {
-                const TabIcon = p.icon;
                 const isActive = activeTab === p.id;
                 return (
                   <button
                     key={p.id}
                     onClick={() => setActiveTab(p.id)}
-                    className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 rounded-xl sm:rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
+                    className={`py-2 px-1 sm:px-3 rounded-lg text-[11px] sm:text-xs md:text-sm font-bold transition-all cursor-pointer w-full text-center leading-tight ${
                       isActive
                         ? p.activeTabBg
-                        : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/5"
+                        : "text-gray-600 hover:text-gray-900 hover:bg-white/60"
                     }`}
                   >
-                    <TabIcon className="w-4 h-4 shrink-0" />
                     <span>{language === "bn" ? p.shortTitle.bn : p.shortTitle.en}</span>
                   </button>
                 );
@@ -595,12 +596,12 @@ export default function PartnerHowItWorksPage() {
           </div>
 
           {/* Active Pillar Bento Grid Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-stretch">
             {/* Left Bento: In-depth Features Showcase (Spans 8 cols on desktop) */}
-            <div className="lg:col-span-8 bg-gray-50/90 dark:bg-[#111624] border border-gray-200/90 dark:border-white/10 rounded-3xl p-6 sm:p-10 shadow-sm flex flex-col justify-between">
+            <div className="lg:col-span-8 bg-gray-50/90 border border-gray-200/90 rounded-3xl p-5 sm:p-10 shadow-sm flex flex-col justify-between">
               <div>
                 {/* Header Row */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-8 border-b border-gray-200/80 dark:border-white/10">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-8 border-b border-gray-200/80">
                   <div className="flex items-center gap-4">
                     <div
                       className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border ${currentPillar.accentBg} shadow-sm`}
@@ -608,42 +609,59 @@ export default function PartnerHowItWorksPage() {
                       <CurrentIcon className="w-7 h-7" />
                     </div>
                     <div>
-                      <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 border border-brand-200/50 dark:border-brand-500/20">
+                      <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-700 border border-brand-200/50">
                         {language === "bn" ? currentPillar.badge.bn : currentPillar.badge.en}
                       </span>
-                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-gray-900 dark:text-white mt-1.5">
+                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-gray-900 mt-1.5">
                         {language === "bn" ? currentPillar.title.bn : currentPillar.title.en}
                       </h3>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-8">
                   {language === "bn" ? currentPillar.subtitle.bn : currentPillar.subtitle.en}
                 </p>
 
-                {/* 3 Detailed Sub-Feature Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
+                {/* Feature Sub-Cards: Compact on mobile, full on desktop */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">
                   {currentPillar.features.map((feat, fIdx) => {
                     const FeatIcon = feat.icon;
                     return (
                       <div
                         key={fIdx}
-                        className="bg-white dark:bg-[#171d2d] border border-gray-200/90 dark:border-white/10 rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group"
+                        className="bg-white border border-gray-200/90 rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group overflow-hidden"
                       >
-                        <div>
-                          <div className="flex items-center justify-between mb-3">
-                            <div className="w-10 h-10 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200/60 dark:border-white/10 flex items-center justify-center group-hover:scale-105 transition-transform">
-                              <FeatIcon className="w-5 h-5 text-brand-600 dark:text-brand-400" />
+                        {/* Mobile: compact horizontal row */}
+                        <div className="flex sm:hidden items-center gap-3 p-3.5">
+                          <div className="w-9 h-9 rounded-xl bg-brand-50 border border-brand-200/60 flex items-center justify-center shrink-0">
+                            <FeatIcon className="w-4 h-4 text-brand-600" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="font-bold text-xs text-gray-900 leading-snug">
+                              {language === "bn" ? feat.title.bn : feat.title.en}
                             </div>
-                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-gray-200/60 dark:border-white/10">
+                            <div className="text-[10px] text-brand-600 font-semibold mt-0.5">
+                              {language === "bn" ? feat.tag.bn : feat.tag.en}
+                            </div>
+                          </div>
+                          <Check className="w-4 h-4 text-emerald-500 shrink-0" />
+                        </div>
+
+                        {/* Desktop: full card */}
+                        <div className="hidden sm:flex flex-col p-5">
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="w-10 h-10 rounded-xl bg-gray-50 border border-gray-200/60 flex items-center justify-center group-hover:scale-105 transition-transform">
+                              <FeatIcon className="w-5 h-5 text-brand-600" />
+                            </div>
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 border border-gray-200/60">
                               {language === "bn" ? feat.tag.bn : feat.tag.en}
                             </span>
                           </div>
-                          <h4 className="font-bold text-sm sm:text-base text-gray-900 dark:text-white mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                          <h4 className="font-bold text-sm text-gray-900 mb-2 group-hover:text-brand-600 transition-colors">
                             {language === "bn" ? feat.title.bn : feat.title.en}
                           </h4>
-                          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                          <p className="text-xs text-gray-500 leading-relaxed">
                             {language === "bn" ? feat.desc.bn : feat.desc.en}
                           </p>
                         </div>
@@ -654,36 +672,36 @@ export default function PartnerHowItWorksPage() {
               </div>
             </div>
 
-            {/* Right Bento: Deliverables & Advantage Summary (Spans 4 cols on desktop) */}
-            <div className="lg:col-span-4 bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 text-white border border-slate-700/60 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col justify-between relative overflow-hidden">
+            {/* Right Bento: Deliverables — Desktop only */}
+            <div className="hidden lg:flex lg:col-span-4 bg-gradient-to-br from-brand-600 via-indigo-600 to-indigo-700 text-white border border-brand-500/30 rounded-3xl p-5 sm:p-8 shadow-xl flex-col justify-between relative overflow-hidden">
               {/* Background accent ambient light */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
               <div className="relative z-10">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-cyan-300 text-xs font-bold uppercase tracking-wider mb-4 border border-white/10">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold uppercase tracking-wider mb-4 border border-white/30">
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>{t("Verified Deliverables", "নিশ্চিত সুবিধা")}</span>
                 </div>
 
-                <h4 className="text-lg sm:text-xl font-bold mb-4">
+                <h4 className="text-base sm:text-lg font-bold mb-4">
                   {t("What You Receive in this Phase:", "এই ধাপে আপনি যা যা পাচ্ছেন:")}
                 </h4>
 
                 <ul className="space-y-3.5 mb-8">
                   {currentPillar.deliverables.map((item, dIdx) => (
                     <li key={dIdx} className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                      <div className="w-5 h-5 rounded-full bg-white/20 text-white flex items-center justify-center shrink-0 mt-0.5">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
-                      <span className="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                      <span className="text-xs sm:text-sm text-white/90 leading-relaxed">
                         {language === "bn" ? item.bn : item.en}
                       </span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="p-4 rounded-2xl bg-white/[0.06] border border-white/10 mb-6">
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">
+                <div className="p-4 rounded-2xl bg-white/[0.15] border border-white/25 mb-6">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-white/60 mb-1">
                     {t("Ideal For", "যাদের জন্য প্রযোজ্য")}
                   </div>
                   <div className="text-xs sm:text-sm font-semibold text-white">
@@ -693,13 +711,13 @@ export default function PartnerHowItWorksPage() {
               </div>
 
               {/* Bottom Quick Trigger */}
-              <div className="relative z-10 pt-4 border-t border-white/10">
+              <div className="relative z-10 pt-4 border-t border-white/25">
                 <Link
                   href="/providers/join"
-                  className="w-full py-3 px-5 rounded-xl font-bold text-xs sm:text-sm bg-white text-slate-900 hover:bg-slate-100 flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.98] cursor-pointer"
+                  className="w-full py-3 px-5 rounded-xl font-bold text-xs sm:text-sm bg-white text-brand-900 hover:bg-brand-50 flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.98] cursor-pointer"
                 >
                   <span>{t("Apply for this Phase", "এই সার্ভিসের জন্য যুক্ত হোন")}</span>
-                  <ArrowRight className="w-4 h-4 text-slate-900" />
+                  <ArrowRight className="w-4 h-4 text-brand-900" />
                 </Link>
               </div>
             </div>
@@ -710,16 +728,16 @@ export default function PartnerHowItWorksPage() {
       {/* ========================================================================= */}
       {/* 3. COMPARISON MATRIX: Traditional Way vs. The BRIIZZ Ecosystem */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-slate-50 dark:bg-[#07090e] relative overflow-hidden border-b border-gray-200/80 dark:border-white/10">
+      <section className="py-16 sm:py-24 bg-slate-50 relative overflow-hidden border-b border-gray-200/80">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-600">
               {t("The Paradigm Shift", "কেন BRIIZZ সম্পূর্ণ আলাদা")}
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white tracking-tight mt-1 mb-3">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight mt-1 mb-3">
               {t("Traditional Portals vs. BRIIZZ Network", "সাধারণ ডিরেক্টরি বনাম BRIIZZ নেটওয়ার্ক")}
             </h2>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+            <p className="text-sm sm:text-base text-gray-600">
               {t(
                 "Stop wasting time in cutthroat bidding or handling complex supply chains alone.",
                 "অপ্রয়োজনীয় বিডিং যুদ্ধ বা একা সাপ্লাই চেইনের ঝুঁকি না নিয়ে যুক্ত হোন আধুনিক ইকোসিস্টেমে।"
@@ -728,25 +746,25 @@ export default function PartnerHowItWorksPage() {
           </div>
 
           {/* ── MOBILE: Compact 3-column Comparison Table ── */}
-          <div className="block md:hidden overflow-hidden rounded-2xl border border-gray-200/80 dark:border-white/10 shadow-lg">
+          <div className="block md:hidden overflow-hidden rounded-2xl border border-gray-200/80  shadow-lg">
             {/* Header Row */}
             <div className="grid grid-cols-[2fr_3fr_3fr]">
-              <div className="px-3 py-3.5 bg-gray-100 dark:bg-[#111624] border-r border-gray-200/80 dark:border-white/10 flex items-center">
-                <span className="text-[10px] font-black uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              <div className="px-3 py-3.5 bg-gray-100  border-r border-gray-200/80  flex items-center">
+                <span className="text-[10px] font-black uppercase tracking-wider text-gray-500">
                   {t("Feature", "বিষয়")}
                 </span>
               </div>
-              <div className="px-3 py-3.5 bg-rose-50 dark:bg-rose-950/30 border-r border-gray-200/80 dark:border-white/10">
+              <div className="px-3 py-3.5 bg-rose-50  border-r border-gray-200/80 ">
                 <div className="flex items-center gap-1.5">
                   <div className="w-5 h-5 rounded-md bg-rose-500 text-white flex items-center justify-center shrink-0">
                     <X className="w-3 h-3 stroke-[3]" />
                   </div>
-                  <div className="text-[10px] font-black text-gray-900 dark:text-white leading-tight">
+                  <div className="text-[10px] font-black text-gray-900 leading-tight">
                     {t("Traditional", "পুরনো পদ্ধতি")}
                   </div>
                 </div>
               </div>
-              <div className="px-3 py-3.5 bg-brand-600/10 dark:bg-brand-900/30">
+              <div className="px-3 py-3.5 bg-brand-600/10 ">
                 <div className="flex items-center gap-1.5">
                   <div className="w-5 h-5 rounded-md bg-brand-600 text-white flex items-center justify-center shrink-0 shadow">
                     <Check className="w-3 h-3 stroke-[3]" />
@@ -760,24 +778,24 @@ export default function PartnerHowItWorksPage() {
             {COMPARISON.map((c, idx) => (
               <div
                 key={idx}
-                className={`grid grid-cols-[2fr_3fr_3fr] border-t border-gray-200/70 dark:border-white/[0.06] ${
-                  idx % 2 === 0 ? "bg-white dark:bg-[#0d1120]" : "bg-gray-50/80 dark:bg-[#0f1423]"
+                className={`grid grid-cols-[2fr_3fr_3fr] border-t border-gray-200/70  ${
+                  idx % 2 === 0 ? "bg-white " : "bg-gray-50/80 "
                 }`}
               >
-                <div className="px-3 py-4 border-r border-gray-200/70 dark:border-white/[0.06] flex items-start">
-                  <span className="text-[10px] font-bold text-gray-700 dark:text-gray-300 leading-snug">
+                <div className="px-3 py-4 border-r border-gray-200/70  flex items-start">
+                  <span className="text-[10px] font-bold text-gray-700 leading-snug">
                     {language === "bn" ? c.feature.bn : c.feature.en}
                   </span>
                 </div>
-                <div className="px-3 py-4 border-r border-gray-200/70 dark:border-white/[0.06] flex items-start gap-1.5 bg-rose-50/30 dark:bg-rose-950/10">
+                <div className="px-3 py-4 border-r border-gray-200/70  flex items-start gap-1.5 bg-rose-50/30 ">
                   <X className="w-2.5 h-2.5 text-rose-500 shrink-0 mt-0.5 stroke-[3]" />
-                  <span className="text-[10px] text-rose-700 dark:text-rose-400 leading-snug">
+                  <span className="text-[10px] text-rose-700 leading-snug">
                     {language === "bn" ? c.traditional.bn : c.traditional.en}
                   </span>
                 </div>
-                <div className="px-3 py-4 flex items-start gap-1.5 bg-emerald-50/20 dark:bg-emerald-950/10">
+                <div className="px-3 py-4 flex items-start gap-1.5 bg-emerald-50/20 ">
                   <Check className="w-2.5 h-2.5 text-emerald-600 shrink-0 mt-0.5 stroke-[3]" />
-                  <span className="text-[10px] text-gray-800 dark:text-slate-200 leading-snug font-semibold">
+                  <span className="text-[10px] text-gray-800 leading-snug font-semibold">
                     {language === "bn" ? c.briizz.bn : c.briizz.en}
                   </span>
                 </div>
@@ -805,15 +823,15 @@ export default function PartnerHowItWorksPage() {
           {/* ── DESKTOP: Side-by-Side Cards ── */}
           <div className="hidden md:grid grid-cols-2 gap-6 lg:gap-8 items-stretch">
             {/* Traditional */}
-            <div className="bg-white dark:bg-[#10141f] border border-rose-200/80 dark:border-rose-900/30 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+            <div className="bg-white  border border-rose-200/80  rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between pb-4 mb-6 border-b border-rose-100 dark:border-rose-900/20">
+                <div className="flex items-center justify-between pb-4 mb-6 border-b border-rose-100 ">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-rose-50 dark:bg-rose-950/50 text-rose-600 flex items-center justify-center">
                       <X className="w-5 h-5 stroke-[2.5]" />
                     </div>
                     <div>
-                      <h3 className="font-extrabold text-base sm:text-lg text-gray-900 dark:text-white">
+                      <h3 className="font-extrabold text-base sm:text-lg text-gray-900">
                         {t("Traditional Directories", "সাধারণ মার্কেটপ্লেস ও ডিরেক্টরি")}
                       </h3>
                       <span className="text-xs text-rose-500 font-semibold">{t("Outdated Model", "পুরনো পদ্ধতি")}</span>
@@ -822,15 +840,15 @@ export default function PartnerHowItWorksPage() {
                 </div>
                 <div className="space-y-4">
                   {COMPARISON.map((c, idx) => (
-                    <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-rose-50/50 dark:bg-rose-950/20 border border-rose-100 dark:border-rose-900/20">
+                    <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-rose-50/50  border border-rose-100 ">
                       <div className="w-5 h-5 rounded-full bg-rose-200/60 dark:bg-rose-900/60 text-rose-700 dark:text-rose-300 flex items-center justify-center shrink-0 mt-0.5">
                         <X className="w-3 h-3 stroke-[3]" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-gray-800 dark:text-gray-200 mb-0.5">
+                        <div className="text-xs font-bold text-gray-800 mb-0.5">
                           {language === "bn" ? c.feature.bn : c.feature.en}
                         </div>
-                        <div className="text-xs text-rose-700 dark:text-rose-400">
+                        <div className="text-xs text-rose-700">
                           {language === "bn" ? c.traditional.bn : c.traditional.en}
                         </div>
                       </div>
@@ -841,36 +859,36 @@ export default function PartnerHowItWorksPage() {
             </div>
 
             {/* BRIIZZ Way */}
-            <div className="bg-gradient-to-b from-brand-50/60 via-white to-indigo-50/40 dark:from-[#111728] dark:via-[#0e1322] dark:to-[#111728] border-2 border-brand-500/40 dark:border-brand-500/50 rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col justify-between relative">
+            <div className="bg-gradient-to-b from-brand-50/60 via-white to-indigo-50/40    border-2 border-brand-500/40  rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col justify-between relative">
               <div className="absolute -top-3.5 right-6 px-3.5 py-1 rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 text-white text-[11px] font-black tracking-wider uppercase shadow-md flex items-center gap-1.5">
                 <Sparkles className="w-3 h-3" />
                 <span>{t("The Modern Solution", "আধুনিক সমাধান")}</span>
               </div>
               <div>
-                <div className="flex items-center justify-between pb-4 mb-6 border-b border-brand-200/60 dark:border-white/10">
+                <div className="flex items-center justify-between pb-4 mb-6 border-b border-brand-200/60 ">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center shadow-md shadow-brand-500/30">
                       <Check className="w-5 h-5 stroke-[2.5]" />
                     </div>
                     <div>
-                      <h3 className="font-extrabold text-base sm:text-lg text-gray-900 dark:text-white">
+                      <h3 className="font-extrabold text-base sm:text-lg text-gray-900">
                         {t("The BRIIZZ Partner Ecosystem", "BRIIZZ পার্টনার ইকোসিস্টেম")}
                       </h3>
-                      <span className="text-xs text-brand-600 dark:text-brand-400 font-semibold">{t("Full Lifecycle Growth", "পূর্ণাঙ্গ ব্যবসায়িক প্রবৃদ্ধি")}</span>
+                      <span className="text-xs text-brand-600 font-semibold">{t("Full Lifecycle Growth", "পূর্ণাঙ্গ ব্যবসায়িক প্রবৃদ্ধি")}</span>
                     </div>
                   </div>
                 </div>
                 <div className="space-y-4">
                   {COMPARISON.map((c, idx) => (
-                    <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-white dark:bg-white/[0.04] border border-brand-200/60 dark:border-brand-500/20 shadow-xs">
-                      <div className="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                    <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-white  border border-brand-200/60  shadow-xs">
+                      <div className="w-5 h-5 rounded-full bg-emerald-100  text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
                         <Check className="w-3 h-3 stroke-[3]" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-gray-900 dark:text-white mb-0.5">
+                        <div className="text-xs font-bold text-gray-900 mb-0.5">
                           {language === "bn" ? c.feature.bn : c.feature.en}
                         </div>
-                        <div className="text-xs text-gray-700 dark:text-slate-300 font-medium">
+                        <div className="text-xs text-gray-700 font-medium">
                           {language === "bn" ? c.briizz.bn : c.briizz.en}
                         </div>
                       </div>
@@ -886,16 +904,16 @@ export default function PartnerHowItWorksPage() {
       {/* ========================================================================= */}
       {/* 4. FOUR-STEP JOURNEY: Connected Pipeline on Desktop */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-white dark:bg-[#090d16] relative overflow-hidden border-b border-gray-200/80 dark:border-white/10">
+      <section className="py-16 sm:py-24 bg-white  relative overflow-hidden border-b border-gray-200/80 ">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-600">
               {t("Clear Onboarding", "সহজ ও স্বচ্ছ অনবোর্ডিং")}
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white tracking-tight mt-1 mb-3">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight mt-1 mb-3">
               {t("How to Join as a Verified Partner", "পার্টনার হিসেবে যুক্ত হওয়ার ৪টি ধাপ")}
             </h2>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+            <p className="text-sm sm:text-base text-gray-600">
               {t(
                 "A streamlined vetting process that guarantees high trust, verified credentials, and direct client connections.",
                 "একটি নির্ভরযোগ্য ভেরিফিকেশন ব্যবস্থা যা ক্লায়েন্ট ও পার্টনারদের পারস্পরিক আস্থা নিশ্চিত করে।"
@@ -913,28 +931,28 @@ export default function PartnerHowItWorksPage() {
               return (
                 <div
                   key={idx}
-                  className="relative z-10 bg-slate-50 dark:bg-[#121622] border border-gray-200/90 dark:border-white/10 rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
+                  className="relative z-10 bg-slate-50  border border-gray-200/90  rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
                 >
                   <div>
                     {/* Step Icon & Number Badge */}
                     <div className="flex items-center justify-between mb-5">
-                      <div className="w-12 h-12 rounded-xl bg-white dark:bg-white/5 border border-gray-200/60 dark:border-white/10 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
-                        <StepIcon className="w-6 h-6 text-brand-600 dark:text-brand-400" />
+                      <div className="w-12 h-12 rounded-xl bg-white  border border-gray-200/60  flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+                        <StepIcon className="w-6 h-6 text-brand-600" />
                       </div>
-                      <span className="font-mono text-2xl font-black text-gray-300 dark:text-white/15">
+                      <span className="font-mono text-2xl font-black text-gray-300/15">
                         {step.num}
                       </span>
                     </div>
 
-                    <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                    <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
                       {language === "bn" ? step.title.bn : step.title.en}
                     </h3>
-                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-4">
                       {language === "bn" ? step.desc.bn : step.desc.en}
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-gray-200/60 dark:border-white/10 flex items-center gap-1.5 text-[11px] font-bold text-brand-600 dark:text-brand-400">
+                  <div className="pt-3 border-t border-gray-200/60  flex items-center gap-1.5 text-[11px] font-bold text-brand-600">
                     <Clock className="w-3.5 h-3.5" />
                     <span>{language === "bn" ? step.time.bn : step.time.en}</span>
                   </div>
@@ -948,16 +966,16 @@ export default function PartnerHowItWorksPage() {
       {/* ========================================================================= */}
       {/* 5. INTERACTIVE FAQ SECTION: Accordion */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-slate-50 dark:bg-[#07090e] relative overflow-hidden border-b border-gray-200/80 dark:border-white/10">
+      <section className="py-16 sm:py-24 bg-slate-50 bg-slate-50 relative overflow-hidden border-b border-gray-200/80 ">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-600">
               {t("Frequently Asked Questions", "সাধারণ প্রশ্নোত্তর")}
             </span>
-            <h2 className="text-2xl sm:text-4xl font-black text-gray-900 dark:text-white tracking-tight mt-1 mb-3">
+            <h2 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight mt-1 mb-3">
               {t("Everything You Need to Know", "আপনার প্রয়োজনীয় সকল তথ্য")}
             </h2>
-            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-xs sm:text-sm text-gray-600">
               {t(
                 "Got questions about becoming a partner? Here are detailed answers.",
                 "পার্টনার হওয়া সংক্রান্ত সাধারণ প্রশ্নাবলীর বিস্তারিত উত্তর।"
@@ -971,18 +989,18 @@ export default function PartnerHowItWorksPage() {
               return (
                 <div
                   key={idx}
-                  className="bg-white dark:bg-[#111624] border border-gray-200/90 dark:border-white/10 rounded-2xl overflow-hidden shadow-xs transition-colors"
+                  className="bg-white  border border-gray-200/90  rounded-2xl overflow-hidden shadow-xs transition-colors"
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer hover:bg-gray-50/50 dark:hover:bg-white/[0.02] transition-colors"
+                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer hover:bg-gray-50 transition-colors"
                   >
-                    <span className="font-bold text-sm sm:text-base text-gray-900 dark:text-white">
+                    <span className="font-bold text-sm sm:text-base text-gray-900">
                       {language === "bn" ? faq.q.bn : faq.q.en}
                     </span>
                     <div
-                      className={`w-7 h-7 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                        isOpen ? "rotate-180 bg-brand-50 text-brand-600 dark:bg-brand-900/40 dark:text-brand-400" : "text-gray-500"
+                      className={`w-7 h-7 rounded-full bg-gray-100  flex items-center justify-center shrink-0 transition-transform duration-200 ${
+                        isOpen ? "rotate-180 bg-brand-50 text-brand-600 dark:bg-brand-900/40" : "text-gray-500"
                       }`}
                     >
                       <ChevronDown className="w-4 h-4" />
@@ -990,7 +1008,7 @@ export default function PartnerHowItWorksPage() {
                   </button>
 
                   {isOpen && (
-                    <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed border-t border-gray-100 dark:border-white/5">
+                    <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-gray-600 leading-relaxed border-t border-gray-100 dark:border-white/5">
                       {language === "bn" ? faq.a.bn : faq.a.en}
                     </div>
                   )}
@@ -1004,7 +1022,7 @@ export default function PartnerHowItWorksPage() {
       {/* ========================================================================= */}
       {/* 6. CALL TO ACTION BANNER: Radiant Gradient & Direct Impact */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-white dark:bg-[#090d16] relative overflow-hidden">
+      <section className="py-16 sm:py-24 bg-white  relative overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
           <div className="relative bg-gradient-to-r from-brand-700 via-indigo-700 to-cyan-700 text-white rounded-3xl p-8 sm:p-14 lg:p-16 shadow-2xl overflow-hidden">
             {/* Ambient glows inside banner */}
@@ -1038,7 +1056,7 @@ export default function PartnerHowItWorksPage() {
                 </Link>
                 <Link
                   href="/free-help"
-                  className="py-4 px-7 rounded-2xl font-bold text-base bg-white/10 hover:bg-white/20 border border-white/25 text-white flex items-center justify-center gap-2 backdrop-blur-md transition-all active:scale-[0.98] cursor-pointer"
+                  className="py-4 px-7 rounded-2xl font-bold text-base bg-white/10 hover:bg-white/20 border border-white/30 text-white flex items-center justify-center gap-2 transition-all active:scale-[0.98] cursor-pointer"
                 >
                   <PhoneCall className="w-4 h-4" />
                   <span>{t("Talk to a Consultant", "পরামর্শকের সাথে কথা বলুন")}</span>

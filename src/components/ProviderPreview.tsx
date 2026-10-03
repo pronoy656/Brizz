@@ -132,7 +132,7 @@ export default function ProviderPreview() {
           <div
             ref={scrollRef}
             onScroll={handleScroll}
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-none no-scrollbar pb-3 pt-1 -mx-4 px-4"
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-pl-6 scrollbar-none no-scrollbar pb-3 pt-1 -mx-4 px-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
             {NETWORK_CAPABILITIES.map((cap, idx) => {
@@ -187,6 +187,8 @@ export default function ProviderPreview() {
                 </div>
               );
             })}
+            {/* Spacer for mobile trailing scroll padding */}
+            <div className="shrink-0 w-2" aria-hidden="true" />
           </div>
 
           {/* Carousel Pagination & Swipe Indicator */}

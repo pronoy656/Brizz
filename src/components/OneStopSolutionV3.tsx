@@ -421,21 +421,16 @@ export default function OneStopSolutionV3() {
               style={{ borderColor: activeRoute.color }}
             >
               <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-950 shadow-md mb-1 transition-all"
+                className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-950 shadow-md mb-1.5 transition-all"
                 style={{ backgroundColor: activeRoute.color }}
               >
                 <Sparkles className="w-4 h-4 font-bold text-white" />
               </div>
               
-              <span className="text-lg font-black tracking-wider text-gray-900 dark:text-white">BRIIZZ</span>
-              <span className="text-[9px] font-mono tracking-widest text-brand-700 dark:text-brand-300 uppercase font-bold">
-                {t("ONE STOP", "ওয়ান-স্টপ")}
+              <span className="text-xl font-black tracking-wider text-gray-900 dark:text-white leading-tight">BRIIZZ</span>
+              <span className="text-[10px] font-mono tracking-widest text-brand-700 dark:text-brand-300 uppercase font-bold mt-1">
+                {t("One Stop Solution", "ওয়ান-স্টপ সলিউশন")}
               </span>
-              
-              <div className="mt-1 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gray-100 dark:bg-white/10 text-[8.5px] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/10 font-medium">
-                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: activeRoute.color }} />
-                <span>{language === "bn" ? activeRoute.metric.bn : activeRoute.metric.en}</span>
-              </div>
             </div>
           </div>
 
@@ -502,136 +497,270 @@ export default function OneStopSolutionV3() {
         </div>
 
         {/* ========================================================================= */}
-        {/* MOBILE & TABLET RESPONSIVE INTERACTIVE TRANSIT SYSTEM (< lg screens) */}
+        {/* MOBILE & TABLET RESPONSIVE INTERACTIVE TRANSIT NEXUS (< lg screens) */}
+        {/* Rotated 90 degrees: 4 Cards on Top -> BRIIZZ Hub in Center -> 3 Cards on Bottom */}
         {/* ========================================================================= */}
-        <div className="block lg:hidden w-full space-y-6">
+        <div className="block lg:hidden w-full max-w-[420px] mx-auto select-none">
 
-          {/* Active Route Central Feature Card */}
-          <div
-            className="relative overflow-hidden rounded-3xl p-5 sm:p-7 border transition-all duration-500 shadow-lg bg-white dark:bg-[#10131d]"
-            style={{ borderColor: `${activeRoute.color}45` }}
-          >
-            {/* Ambient Glow */}
-            <div
-              className="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl pointer-events-none opacity-20"
-              style={{ backgroundColor: activeRoute.color }}
-            />
+          {/* Interactive Mobile Nexus Canvas (360x480) */}
+          <div className="relative w-full h-[480px] mx-auto overflow-hidden">
 
-            {/* Top Row: Central Hub Badge + Active Route Name */}
-            <div className="flex items-start justify-between gap-3 mb-4 relative z-10">
-              <div className="flex items-center gap-3">
-                <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-md shrink-0 transition-transform duration-300"
-                  style={{ backgroundColor: activeRoute.color }}
-                >
-                  <activeRoute.icon className="w-6 h-6" />
-                </div>
-                <div>
-                  <span className="text-[10px] font-mono tracking-widest text-brand-700 dark:text-brand-300 uppercase font-bold block">
-                    {language === "bn" ? activeRoute.category.bn : activeRoute.category.en}
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white">
-                    {language === "bn" ? activeRoute.name.bn : activeRoute.name.en}
-                  </h3>
-                </div>
-              </div>
+            {/* SVG Canvas for S-Curve Convergence Rays */}
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
+              viewBox="0 0 360 480"
+              preserveAspectRatio="none"
+            >
+              <defs>
+                <filter id="mobileRouteGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="2.5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
 
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 dark:bg-white/10 text-[11px] font-bold text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-white/10 shrink-0">
-                <span className="w-2 h-2 rounded-full animate-ping" style={{ backgroundColor: activeRoute.color }} />
-                <span>{language === "bn" ? activeRoute.metric.bn : activeRoute.metric.en}</span>
-              </div>
-            </div>
+              {/* Central Radar Rings around (180, 240) - Scaled for enlarged central hub */}
+              <circle
+                cx={180}
+                cy={240}
+                r={68}
+                fill="none"
+                stroke="currentColor"
+                className="text-gray-200/80 dark:text-white/[0.06]"
+                strokeWidth="1"
+              />
+              <circle
+                cx={180}
+                cy={240}
+                r={92}
+                fill="none"
+                stroke="currentColor"
+                className="text-gray-200/50 dark:text-white/[0.03]"
+                strokeWidth="1"
+              />
 
-            {/* Deliverable & Description */}
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 leading-relaxed relative z-10">
-              {language === "bn" ? activeRoute.deliverable.bn : activeRoute.deliverable.en}
-            </p>
+              {/* TOP Converging S-Curves: From Top Cards (mobileX, 54) to Center (180, 240) */}
+              {[
+                { ...LEFT_ROUTES[0], mobileX: 52 },
+                { ...LEFT_ROUTES[1], mobileX: 137 },
+                { ...LEFT_ROUTES[2], mobileX: 223 },
+                { ...LEFT_ROUTES[3], mobileX: 308 },
+              ].map((route) => {
+                const isSelected = effectiveActiveId === route.id;
+                const isAnyHovered = hoveredRouteId !== null;
+                const controlY = Math.abs(route.mobileX - 180) < 60 ? 175 : 155;
+                const pathD = `M ${route.mobileX} 54 C ${route.mobileX} ${controlY}, 180 ${controlY}, 180 240`;
 
-            {/* Meta SLA Banner & CTA Button */}
-            <div className="pt-4 border-t border-gray-100 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">
-                  {language === "bn" ? activeRoute.sla.bn : activeRoute.sla.en}
-                </span>
-              </div>
+                return (
+                  <g key={`m-top-ray-${route.id}`}>
+                    {/* Track line - Sleek solid guide without dot clutter */}
+                    <path
+                      d={pathD}
+                      fill="none"
+                      stroke={
+                        isSelected
+                          ? route.color
+                          : isAnyHovered
+                          ? "rgba(156,163,175,0.12)"
+                          : "rgba(156,163,175,0.25)"
+                      }
+                      strokeWidth={isSelected ? 2.8 : 1.2}
+                      className="transition-all duration-300"
+                      filter={isSelected ? "url(#mobileRouteGlow)" : undefined}
+                    />
 
-              <Link
-                href={activeRoute.link}
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white shadow-md transition-all hover:scale-[1.02] w-full sm:w-auto"
-                style={{ backgroundColor: activeRoute.color }}
-              >
-                <span>{t("Explore This Solution", "এই সমাধান দেখুন")}</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
+                    {/* Flowing animated energy beam (Top to Center) */}
+                    <path
+                      d={pathD}
+                      fill="none"
+                      stroke={route.color}
+                      strokeWidth={isSelected ? 3.5 : 1.8}
+                      strokeDasharray="14 120"
+                      strokeDashoffset="0"
+                      className={isSelected ? "animate-pulse" : ""}
+                      style={{ opacity: isSelected ? 1 : isAnyHovered ? 0.15 : 0.65 }}
+                    >
+                      <animate
+                        attributeName="stroke-dashoffset"
+                        from="200"
+                        to="0"
+                        dur={isSelected ? "1.2s" : "3s"}
+                        repeatCount="indefinite"
+                      />
+                    </path>
+                  </g>
+                );
+              })}
 
-          {/* Station Selector Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-            {ALL_ROUTES.map((route) => {
+              {/* BOTTOM Diverging S-Curves: From Center (180, 240) to Bottom Cards (mobileX, 426) */}
+              {[
+                { ...RIGHT_ROUTES[0], mobileX: 68 },
+                { ...RIGHT_ROUTES[1], mobileX: 180 },
+                { ...RIGHT_ROUTES[2], mobileX: 292 },
+              ].map((route) => {
+                const isSelected = effectiveActiveId === route.id;
+                const isAnyHovered = hoveredRouteId !== null;
+                const pathD =
+                  route.mobileX === 180
+                    ? `M 180 240 L 180 426`
+                    : `M 180 240 C 180 325, ${route.mobileX} 325, ${route.mobileX} 426`;
+
+                return (
+                  <g key={`m-bot-ray-${route.id}`}>
+                    {/* Track line - Sleek solid guide without dot clutter */}
+                    <path
+                      d={pathD}
+                      fill="none"
+                      stroke={
+                        isSelected
+                          ? route.color
+                          : isAnyHovered
+                          ? "rgba(156,163,175,0.12)"
+                          : "rgba(156,163,175,0.25)"
+                      }
+                      strokeWidth={isSelected ? 2.8 : 1.2}
+                      className="transition-all duration-300"
+                      filter={isSelected ? "url(#mobileRouteGlow)" : undefined}
+                    />
+
+                    {/* Flowing animated energy beam (Center to Bottom) */}
+                    <path
+                      d={pathD}
+                      fill="none"
+                      stroke={route.color}
+                      strokeWidth={isSelected ? 3.5 : 1.8}
+                      strokeDasharray="14 120"
+                      strokeDashoffset="0"
+                      className={isSelected ? "animate-pulse" : ""}
+                      style={{ opacity: isSelected ? 1 : isAnyHovered ? 0.15 : 0.65 }}
+                    >
+                      <animate
+                        attributeName="stroke-dashoffset"
+                        from="200"
+                        to="0"
+                        dur={isSelected ? "1.2s" : "3s"}
+                        repeatCount="indefinite"
+                      />
+                    </path>
+                  </g>
+                );
+              })}
+            </svg>
+
+            {/* TOP ROW: 4 Clean Bold Transit Station Cards with comfortable left & right gap */}
+            {[
+              { ...LEFT_ROUTES[0], leftPercent: 14.4 },
+              { ...LEFT_ROUTES[1], leftPercent: 38.1 },
+              { ...LEFT_ROUTES[2], leftPercent: 61.9 },
+              { ...LEFT_ROUTES[3], leftPercent: 85.6 },
+            ].map((route) => {
               const isSelected = effectiveActiveId === route.id;
-              const Icon = route.icon;
+              const isAnyHovered = hoveredRouteId !== null;
+              const isDimmed = isAnyHovered && !isSelected;
+
               return (
-                <button
-                  type="button"
-                  key={route.id}
+                <div
+                  key={`m-card-top-${route.id}`}
                   onClick={() => {
                     setActiveRouteId(route.id);
                     setHoveredRouteId(null);
                   }}
-                  className={`w-full p-3.5 rounded-2xl cursor-pointer transition-all duration-300 border text-left flex items-center justify-between gap-3 ${
+                  onMouseEnter={() => setHoveredRouteId(route.id)}
+                  onMouseLeave={() => setHoveredRouteId(null)}
+                  className={`absolute top-[10px] w-[76px] min-[380px]:w-[80px] sm:w-[86px] h-[44px] px-1 py-1 rounded-xl cursor-pointer transition-all duration-300 border flex items-center justify-center text-center z-20 ${
                     isSelected
-                      ? "bg-white dark:bg-[#181820] border-brand-500 shadow-md ring-2 ring-brand-500/20 scale-[1.01]"
-                      : "bg-white/80 dark:bg-white/[0.03] border-gray-200/80 dark:border-white/10 hover:border-gray-300 hover:bg-white dark:hover:bg-white/[0.06]"
+                      ? "bg-white dark:bg-gray-900 border-brand-500 shadow-md ring-1 ring-brand-500/30 scale-[1.04]"
+                      : isDimmed
+                      ? "bg-white/50 dark:bg-white/[0.02] border-gray-200/50 dark:border-white/5 opacity-40"
+                      : "bg-white/90 dark:bg-white/[0.04] border-gray-200/80 dark:border-white/10 hover:border-brand-400 hover:bg-white shadow-sm"
                   }`}
+                  style={{
+                    left: `${route.leftPercent}%`,
+                    transform: "translateX(-50%)",
+                  }}
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div
-                      className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                        isSelected
-                          ? "text-white shadow-sm"
-                          : "bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-300"
-                      }`}
-                      style={{ backgroundColor: isSelected ? route.color : undefined }}
-                    >
-                      <Icon className="w-4 h-4" />
-                    </div>
-
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-1.5">
-                        <span
-                          className="w-2 h-2 rounded-full shrink-0"
-                          style={{ backgroundColor: route.color }}
-                        />
-                        <span
-                          className={`text-xs font-black tracking-wide truncate ${
-                            isSelected ? "text-brand-700 dark:text-brand-300" : "text-gray-900 dark:text-white"
-                          }`}
-                        >
-                          {language === "bn" ? route.name.bn : route.name.en}
-                        </span>
-                      </div>
-                      <p className="text-[11px] text-gray-500 dark:text-gray-400 truncate mt-0.5">
-                        {language === "bn" ? route.tagline.bn : route.tagline.en}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div
-                    className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 border transition-all ${
-                      isSelected
-                        ? "border-transparent text-white"
-                        : "border-gray-200 dark:border-white/10 text-gray-400"
+                  <span
+                    className={`text-[9.5px] min-[380px]:text-[10px] font-black tracking-tight leading-tight w-full ${
+                      isSelected ? "text-brand-700 dark:text-brand-300" : "text-gray-900 dark:text-white"
                     }`}
-                    style={{ backgroundColor: isSelected ? route.color : undefined }}
                   >
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </div>
-                </button>
+                    {language === "bn" ? route.name.bn : route.name.en}
+                  </span>
+                </div>
               );
             })}
+
+            {/* CENTER: Mobile Central BRIIZZ ONE-STOP Hub (Enlarged & Prominently Visible) */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center justify-center pointer-events-none">
+              {/* Ambient Pulse Halo */}
+              <div className="absolute w-44 h-44 rounded-full border border-brand-500/20 animate-ping opacity-25" />
+              <div className="absolute w-36 h-36 rounded-full border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-brand-500/5 backdrop-blur-md" />
+
+              {/* Central Solid Hub Badge - Enlarged for great mobile visibility */}
+              <div
+                className="relative w-[116px] h-[116px] rounded-full bg-white dark:bg-gradient-to-b dark:from-gray-900 dark:via-gray-950 dark:to-black border-2 shadow-2xl flex flex-col items-center justify-center p-2 text-center transition-all duration-500"
+                style={{ borderColor: activeRoute.color }}
+              >
+                <div
+                  className="w-6 h-6 rounded-lg flex items-center justify-center text-gray-950 shadow-sm mb-1 transition-all"
+                  style={{ backgroundColor: activeRoute.color }}
+                >
+                  <Sparkles className="w-3.5 h-3.5 font-bold text-white" />
+                </div>
+                
+                <span className="text-sm sm:text-base font-black tracking-wider text-gray-900 dark:text-white leading-tight">BRIIZZ</span>
+                <span className="text-[7.5px] font-mono tracking-wider text-brand-700 dark:text-brand-300 uppercase font-bold mt-0.5 leading-tight px-1">
+                  {t("One Stop Solution", "ওয়ান-স্টপ সলিউশন")}
+                </span>
+              </div>
+            </div>
+
+            {/* BOTTOM ROW: 3 Clean Bold Transit Station Cards with comfortable left & right gap */}
+            {[
+              { ...RIGHT_ROUTES[0], leftPercent: 18.9 },
+              { ...RIGHT_ROUTES[1], leftPercent: 50 },
+              { ...RIGHT_ROUTES[2], leftPercent: 81.1 },
+            ].map((route) => {
+              const isSelected = effectiveActiveId === route.id;
+              const isAnyHovered = hoveredRouteId !== null;
+              const isDimmed = isAnyHovered && !isSelected;
+
+              return (
+                <div
+                  key={`m-card-bot-${route.id}`}
+                  onClick={() => {
+                    setActiveRouteId(route.id);
+                    setHoveredRouteId(null);
+                  }}
+                  onMouseEnter={() => setHoveredRouteId(route.id)}
+                  onMouseLeave={() => setHoveredRouteId(null)}
+                  className={`absolute top-[426px] w-[98px] min-[380px]:w-[104px] sm:w-[112px] h-[44px] px-1.5 py-1 rounded-xl cursor-pointer transition-all duration-300 border flex items-center justify-center text-center z-20 ${
+                    isSelected
+                      ? "bg-white dark:bg-gray-900 border-brand-500 shadow-md ring-1 ring-brand-500/30 scale-[1.04]"
+                      : isDimmed
+                      ? "bg-white/50 dark:bg-white/[0.02] border-gray-200/50 dark:border-white/5 opacity-40"
+                      : "bg-white/90 dark:bg-white/[0.04] border-gray-200/80 dark:border-white/10 hover:border-brand-400 hover:bg-white shadow-sm"
+                  }`}
+                  style={{
+                    left: `${route.leftPercent}%`,
+                    transform: "translateX(-50%)",
+                  }}
+                >
+                  <span
+                    className={`text-[10.5px] min-[380px]:text-[11px] font-black tracking-tight leading-tight w-full ${
+                      isSelected ? "text-brand-700 dark:text-brand-300" : "text-gray-900 dark:text-white"
+                    }`}
+                  >
+                    {language === "bn" ? route.name.bn : route.name.en}
+                  </span>
+                </div>
+              );
+            })}
+
           </div>
+
         </div>
 
       </div>

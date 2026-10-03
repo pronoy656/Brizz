@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { ChevronDown, MessageCircleQuestion, Mail } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { motion, AnimatePresence } from "framer-motion";
 
 const FAQS = [
   {
@@ -67,16 +68,17 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/10 transition-colors duration-300">
+    <section className="py-12 sm:py-24 md:py-32 bg-white dark:bg-[#0a0a0a] border-t border-gray-100 dark:border-white/10 transition-colors duration-300">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
-        <div className="flex flex-col lg:flex-row gap-10 sm:gap-16 lg:gap-24">
-          {/* Left Side: Header and CTA */}
+        <div className="flex flex-col lg:flex-row gap-8 sm:gap-14 lg:gap-20">
+          {/* Left Side: Header and Desktop CTA */}
           <div className="lg:w-1/3 flex flex-col items-start lg:sticky lg:top-32 lg:h-fit">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-brand-50 dark:bg-brand-900/20 rounded-2xl flex items-center justify-center text-brand-800 dark:text-brand-400 mb-5 sm:mb-6 shadow-sm border border-brand-100 dark:border-brand-500/20 transition-colors">
+            {/* Question Icon - Hidden on mobile, visible on sm+ */}
+            <div className="hidden sm:flex w-14 h-14 sm:w-16 sm:h-16 bg-brand-50 dark:bg-brand-900/20 rounded-2xl items-center justify-center text-brand-800 dark:text-brand-400 mb-5 sm:mb-6 shadow-sm border border-brand-100 dark:border-brand-500/20 transition-colors">
               <MessageCircleQuestion className="w-7 h-7 sm:w-8 sm:h-8" />
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 tracking-tight leading-tight transition-colors">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-6 tracking-tight leading-tight transition-colors">
               {t("Got questions?", "কোনো প্রশ্ন আছে?")}
               <br />
               {t("We have", "আমাদের কাছে আছে")}{" "}
@@ -85,14 +87,15 @@ export default function FAQSection() {
               </span>
             </h2>
 
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 sm:mb-10 leading-relaxed transition-colors">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 mb-6 sm:mb-10 leading-relaxed transition-colors">
               {t(
                 "Everything you need to know about the BRIIZZ network, how we source providers, and how to get started.",
                 "BRIIZZ নেটওয়ার্ক, পার্টনার নির্বাচন পদ্ধতি এবং কীভাবে শুরু করবেন সে সম্পর্কিত যাবতীয় তথ্য।"
               )}
             </p>
 
-            <div className="bg-gray-50 dark:bg-[#18181b] border border-gray-200 dark:border-white/10 rounded-2xl p-5 sm:p-6 w-full transition-colors duration-300">
+            {/* Desktop Left-Sidebar "Still have questions?" card */}
+            <div className="hidden lg:block bg-gray-50 dark:bg-[#18181b] border border-gray-200 dark:border-white/10 rounded-2xl p-5 sm:p-6 w-full transition-colors duration-300 shadow-sm">
               <h4 className="font-bold text-gray-900 dark:text-white mb-2 transition-colors">
                 {t("Still have questions?", "আরও প্রশ্ন রয়েছে?")}
               </h4>
@@ -104,14 +107,14 @@ export default function FAQSection() {
               </p>
               <Link
                 href="/contact"
-                className="flex items-center justify-center gap-2 w-full py-3 bg-white dark:bg-[#27272a] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white font-bold rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-colors shadow-sm"
+                className="flex items-center justify-center gap-2 w-full py-3 bg-white dark:bg-[#27272a] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white font-bold rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-colors shadow-sm active:scale-[0.98]"
               >
                 <Mail className="w-4 h-4" /> {t("Get in touch", "যোগাযোগ করুন")}
               </Link>
             </div>
           </div>
 
-          {/* Right Side: Accordion */}
+          {/* Right Side: Accordion & Mobile CTA */}
           <div className="lg:w-2/3">
             <div className="space-y-3 sm:space-y-4">
               {FAQS.map((faq, index) => {
@@ -122,9 +125,9 @@ export default function FAQSection() {
                 return (
                   <div
                     key={index}
-                    className={`border rounded-2xl transition-all duration-300 overflow-hidden ${
+                    className={`border rounded-2xl transition-colors duration-300 overflow-hidden ${
                       isOpen
-                        ? "border-brand-200 dark:border-brand-500/30 bg-brand-50/50 dark:bg-brand-900/10 shadow-sm"
+                        ? "border-brand-200 dark:border-brand-500/30 bg-brand-50/40 dark:bg-brand-900/10 shadow-sm"
                         : "border-gray-200 dark:border-white/10 bg-white dark:bg-[#18181b] hover:border-brand-300 dark:hover:border-brand-500/50"
                     }`}
                   >
@@ -142,7 +145,7 @@ export default function FAQSection() {
                         {questionText}
                       </span>
                       <div
-                        className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                        className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
                           isOpen
                             ? "bg-brand-800 dark:bg-brand-600 text-white rotate-180"
                             : "bg-gray-50 dark:bg-[#27272a] text-gray-400 dark:text-gray-500 border border-gray-200 dark:border-white/10"
@@ -152,20 +155,59 @@ export default function FAQSection() {
                       </div>
                     </button>
 
-                    <div
-                      className={`transition-all duration-300 ease-in-out ${
-                        isOpen
-                          ? "max-h-[500px] opacity-100 pb-5 sm:pb-6 px-4 sm:px-6"
-                          : "max-h-0 opacity-0 px-4 sm:px-6"
-                      }`}
-                    >
-                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed border-t border-brand-100/50 dark:border-white/10 pt-6 mt-2 transition-colors">
-                        {answerText}
-                      </p>
-                    </div>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          key={`faq-content-${index}`}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{
+                            height: "auto",
+                            opacity: 1,
+                            transition: {
+                              height: { duration: 0.35, ease: [0.04, 0.62, 0.23, 0.98] },
+                              opacity: { duration: 0.25, delay: 0.08 },
+                            },
+                          }}
+                          exit={{
+                            height: 0,
+                            opacity: 0,
+                            transition: {
+                              height: { duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] },
+                              opacity: { duration: 0.15 },
+                            },
+                          }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pb-5 sm:pb-6 px-4 sm:px-6">
+                            <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed border-t border-brand-100/50 dark:border-white/10 pt-4 transition-colors">
+                              {answerText}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               })}
+            </div>
+
+            {/* Mobile / Tablet (< lg): Placed BELOW the FAQ questions and answers */}
+            <div className="block lg:hidden mt-8 sm:mt-10 bg-gray-50 dark:bg-[#18181b] border border-gray-200 dark:border-white/10 rounded-2xl p-5 sm:p-6 w-full transition-colors duration-300 shadow-sm">
+              <h4 className="font-bold text-gray-900 dark:text-white mb-2 transition-colors">
+                {t("Still have questions?", "আরও প্রশ্ন রয়েছে?")}
+              </h4>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 transition-colors">
+                {t(
+                  "Can't find the answer you're looking for? Please chat to our friendly team.",
+                  "আপনার প্রশ্নের উত্তর খুঁজে পাচ্ছেন না? সরাসরি আমাদের টিমের সাথে কথা বলুন।"
+                )}
+              </p>
+              <Link
+                href="/contact"
+                className="flex items-center justify-center gap-2 w-full py-3 bg-white dark:bg-[#27272a] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white font-bold rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-colors shadow-sm active:scale-[0.98]"
+              >
+                <Mail className="w-4 h-4" /> {t("Get in touch", "যোগাযোগ করুন")}
+              </Link>
             </div>
           </div>
         </div>

@@ -90,9 +90,9 @@ export default function BecomePartner() {
                 </span>
               </div>
 
-              <ul className="space-y-3.5 sm:space-y-6">
-                {/* 1. Complete Business Solutions (0 to Future: Products, Web, Mobile, IT) */}
-                <li className="flex items-start gap-3 sm:gap-4">
+              <ul className="divide-y divide-gray-200/80 dark:divide-white/10">
+                {/* 1. Complete Business Solutions (0 to Future) */}
+                <li className="flex items-start gap-3 sm:gap-4 pb-4">
                   <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-white dark:bg-[#27272a] border border-gray-100 dark:border-white/5 flex items-center justify-center shrink-0 shadow-sm transition-colors">
                     <Rocket className="w-4 h-4 sm:w-6 sm:h-6 text-indigo-600 dark:text-indigo-400" />
                   </div>
@@ -102,15 +102,15 @@ export default function BecomePartner() {
                     </h4>
                     <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm leading-relaxed transition-colors">
                       {t(
-                        "From products and supply sourcing to modern websites, mobile apps, and IT infrastructure — we provide everything your business needs from zero to scale.",
-                        "প্রোডাক্ট ও সাপ্লাই সোর্সিং থেকে শুরু করে ওয়েবসাইট, মোবাইল অ্যাপ ও সম্পূর্ণ আইটি সেটআপ—আপনার ব্যবসার জিরো থেকে ভবিষ্যৎ পর্যন্ত যা যা প্রয়োজন, সবই আমরা দিচ্ছি এক ছাদের নিচে।"
+                        "Sourcing, custom apps, and full IT infrastructure — everything you need to scale under one roof.",
+                        "সোর্সিং, অ্যাপ ও পূর্ণাঙ্গ আইটি সেটআপ—ব্যবসা বড় করার সকল সুবিধা এক ছাদের নিচে।"
                       )}
                     </p>
                   </div>
                 </li>
 
                 {/* 2. Official Verified Badge */}
-                <li className="flex items-start gap-3 sm:gap-4">
+                <li className="flex items-start gap-3 sm:gap-4 py-4">
                   <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-white dark:bg-[#27272a] border border-gray-100 dark:border-white/5 flex items-center justify-center shrink-0 shadow-sm transition-colors">
                     <CheckCircle2 className="w-4 h-4 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400" />
                   </div>
@@ -120,15 +120,15 @@ export default function BecomePartner() {
                     </h4>
                     <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm leading-relaxed transition-colors">
                       {t(
-                        "Stand out with the official BRIIZZ Verified badge that wins immediate client confidence and secures high-value deals with zero bidding wars.",
-                        "অফিসিয়াল ভেরিফায়েড ব্যাজের মাধ্যমে গ্রাহকদের সর্বোচ্চ বিশ্বাস অর্জন করুন এবং কোনো বিডিং যুদ্ধ ছাড়াই নিশ্চিত করুন প্রিমিয়াম সব কাজের সুযোগ।"
+                        "Win client trust instantly and secure high-value contracts without bidding wars or price drops.",
+                        "গ্রাহকের শতভাগ আস্থা অর্জন করে বিডিং ছাড়াই সরাসরি আকর্ষণীয় কাজ নিশ্চিত করুন।"
                       )}
                     </p>
                   </div>
                 </li>
 
                 {/* 3. Massive User Base & Traffic Growth */}
-                <li className="flex items-start gap-3 sm:gap-4">
+                <li className="flex items-start gap-3 sm:gap-4 pt-4">
                   <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-white dark:bg-[#27272a] border border-gray-100 dark:border-white/5 flex items-center justify-center shrink-0 shadow-sm transition-colors">
                     <TrendingUp className="w-4 h-4 sm:w-6 sm:h-6 text-emerald-600 dark:text-emerald-400" />
                   </div>
@@ -138,8 +138,8 @@ export default function BecomePartner() {
                     </h4>
                     <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm leading-relaxed transition-colors">
                       {t(
-                        "Tap into our huge, nationwide user base to drive high-intent traffic to your platform or website and capture massive business growth opportunities.",
-                        "আমাদের প্ল্যাটফর্মের বিশাল ইউজার বেস কাজে লাগিয়ে আপনার সাইট বা সার্ভিসে গ্রাহক ট্রাফিক বৃদ্ধি করুন এবং বড় বড় ব্যবসায়িক প্রজেক্টে যুক্ত হওয়ার সুযোগ নিন।"
+                        "Tap into thousands of active buyers nationwide to boost your orders and grow rapidly.",
+                        "দেশব্যাপী হাজারো সক্রিয় ক্রেতাদের চাহিদামতো সরাসরি নিয়মিত অর্ডার পান।"
                       )}
                     </p>
                   </div>

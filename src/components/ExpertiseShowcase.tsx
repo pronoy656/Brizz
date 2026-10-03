@@ -8,12 +8,6 @@ import {
   CheckCircle2, 
   Star, 
   MapPin, 
-  Code2, 
-  Server, 
-  Palette, 
-  TrendingUp,
-  Sparkles,
-  ExternalLink,
   Lock
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -104,7 +98,7 @@ export default function ExpertiseShowcase() {
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
-              {t("Our Core Expertise & Verified Profiles", "আমাদের স্পেশালাইজড এক্সপার্টাইজ ও ভেরিফায়েড পার্টনার")}
+              {t("Our Core Expertise", "আমাদের স্পেশালাইজড এক্সপার্টাইজ")}
             </h2>
 
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -131,7 +125,7 @@ export default function ExpertiseShowcase() {
           {displayedList.map((partner) => (
             <div
               key={partner.id}
-              className="group relative bg-white dark:bg-[#111622] rounded-2xl sm:rounded-[2rem] border border-slate-200/80 dark:border-white/10 p-5 sm:p-6 shadow-[0_10px_35px_rgba(0,0,0,0.05)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.3)] hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
+              className="group relative bg-white dark:bg-[#111622] rounded-2xl sm:rounded-[2rem] border border-slate-200/80 dark:border-white/10 p-4 sm:p-6 shadow-none md:shadow-[0_10px_35px_rgba(0,0,0,0.05)] md:dark:shadow-[0_10px_35px_rgba(0,0,0,0.3)] md:hover:shadow-2xl transition-all duration-500 md:hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
             >
               {/* Hover Glow Edge */}
               <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${partner.accentGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
@@ -143,7 +137,7 @@ export default function ExpertiseShowcase() {
                   <img
                     src={partner.heroImage}
                     alt={partner.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover md:group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
                   
@@ -196,22 +190,10 @@ export default function ExpertiseShowcase() {
                   </div>
                 </div>
 
-                {/* Clean Tech / Skill Chips */}
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {partner.techStack.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="text-[10px] font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-white/5"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
               </div>
 
               {/* Bottom Action */}
-              <div className="pt-5 mt-5 border-t border-slate-100 dark:border-white/10 flex items-center justify-between">
+              <div className="pt-4 mt-4 border-t border-slate-100 dark:border-white/10 flex items-center justify-between">
                 <span className="text-[11px] font-medium text-slate-400 flex items-center gap-1">
                   <Lock className="w-3.5 h-3.5 text-emerald-500" />
                   {t("Escrow Protected", "এসক্রো সুরক্ষিত")}
